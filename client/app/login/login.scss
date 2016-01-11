@@ -1,18 +1,6 @@
 login.login {
-  table {
-            border-collapse: collapse;
-        }
-
-        table, th, td {
-            border: 1px solid black;
-        }
-
-        thead {
-            background-color: lightgray;
-        }
-
-        .error {
-            background-color: red;
-            color: white;
-        }
+    .error {
+        background-color: red;
+        color: white;
+    }
 }
