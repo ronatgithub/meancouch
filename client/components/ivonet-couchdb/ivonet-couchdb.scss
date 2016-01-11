@@ -1,0 +1,18 @@
+ivonet.ivonet {
+  table {
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        thead {
+            background-color: lightgray;
+        }
+
+        .error {
+            background-color: red;
+            color: white;
+        }
+}
