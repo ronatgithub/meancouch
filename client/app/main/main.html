@@ -8,7 +8,7 @@
   </div>
 </header>
 
-<div class="container">
+<div class="container"> <!-- START container -->
   <div class="row">
     <div class="col-lg-12">
       <h1 class="page-header">Features:</h1>
@@ -17,7 +17,134 @@
       </ul>
     </div>
   </div>
-  <ivonet></ivonet>
+
+<ivonet></ivonet>
+
+<div ng-controller="CouchController as ctrl">
+
+<h1>CouchDB client example</h1>
+
+<div class="jumbotron">
+    <h1 ng-show="ctrl.user">Hello {{ctrl.user}}</h1>
+
+    <p ng-hide="ctrl.user">You are currently not logged in.</p>
+
+    <p ng-hide="ctrl.user">{{ctrl.intro}}</p>
+
 </div>
+
+<div>
+    <p>CouchDB information:</p>
+    <table>
+        <tr>
+            <td class="col-md-2">Server URL</td>
+            <td class="col-md-4">{{ctrl.serverLocation()}}</td>
+            <td class="col-md-2">
+                <div class="input-group">
+                    <span class="input-group-addon">URL</span>
+                    <input type="text" ng-model="ctrl.server"
+                           ng-change="ctrl.setServerLocation()"
+                           class="form-control"
+                           placeholder="Server location"/>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="col-md-2">Database name</td>
+            <td class="col-md-4">{{ctrl.databaseName() || "none set"}}</td>
+            <td class="col-md-2">
+                <div class="input-group">
+                    <span class="input-group-addon">DB</span>
+                    <input type="text"
+                           ng-model="ctrl.db"
+                           ng-change="ctrl.setDatabase()"
+                           class="form-control"
+                           placeholder="Database for test..."/>
+                </div>
+
+            </td>
+        </tr>
+        <!--<tr>-->
+            <!--<td class="col-md-2">DB generated uuids</td>-->
+            <!--<td class="col-md-4">-->
+                <!--<select ng-model="user.colorid" ng-options="color.name for color in colors">-->
+                    <!--<option value="">Select color</option>-->
+                <!--</select>-->
+            <!--</td>-->
+            <!--<td class="col-md-2">-->
+                <!--<div class="input-group">-->
+                    <!--<span class="input-group-addon">DB</span>-->
+                    <!--<input type="text"-->
+                           <!--ng-model="ctrl.db"-->
+                           <!--ng-change="ctrl.setDatabase()"-->
+                           <!--class="form-control"-->
+                           <!--placeholder="Database for test..."/>-->
+                <!--</div>-->
+
+            <!--</td>-->
+        <!--</tr>-->
+        <tr>
+            <td class="col-md-2">isAuthenticated</td>
+            <td class="col-md-4">{{ctrl.user !== null}}</td>
+            <td class="col-md-2"><input type="button" ng-click="ctrl.check()" value="Check" class="btn btn-info"></td>
+        </tr>
+        <tr>
+            <td class="col-md-2">Error messages by app</td>
+            <td class="col-md-4" ng-class="{error: ctrl.msg != ''}">{{ctrl.msg || "-"}}</td>
+            <td class="col-md-2">
+                <button type="submit" class="btn btn-info" ng-click="ctrl.msg = ''">Clear</button>
+            </td>
+        </tr>
+        
+        <tr ng-if="ctrl.user && ctrl.roles">
+            <td class="col-md-2">You have roles</td>
+            <td class="col-md-4">
+                <ul ng-repeat="role in ctrl.roles" class="list-group">
+                    <li class="list-group-item">{{role}}</li>
+                </ul>
+            </td>
+            <td class="col-md-2"></td>
+        </tr>
+    </table>
+
+    <table ng-show="ctrl.docs != null && ctrl.docs.length > 0">
+        <thead>
+        <tr>
+            <th>Available documents:</th>
+        </tr>
+        </thead>
+        <tr ng-repeat="doc in ctrl.docs">
+            <td class="col-md-6">{{doc._id}}</td>
+            <td class="col-md-6">
+                <input type="button" class="btn btn-info" value="X" ng-click="ctrl.deleteDoc(doc)"/>
+                <input type="button" class="btn btn-info" value="E" ng-click="ctrl.editDoc(doc._id)"/>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Save a document...</div>
+    <div class="panel-body">
+        <div>
+            <form name="docu" novalidate>
+                <div class="input-group">
+                    <span class="input-group-addon">ID</span>
+                    <input type="text"
+                           ng-model="ctrl.doc._id"
+                           class="form-control"
+                           placeholder="Title"/>
+                </div>
+                <textarea class="form-control" rows="3" data-ng-model="ctrl.doc.data" title="couch document"
+                          placeholder="Document data"></textarea>
+                <button type="submit" class="btn btn-primary" ng-click="ctrl.doc = {}">NEW</button>
+                <button type="submit" class="btn btn-primary" ng-click="ctrl.postDoc()">POST</button>
+                <button type="submit" class="btn btn-primary" ng-click="ctrl.putDoc()">PUT</button>
+            </form>
+        </div>
+    </div>
+</div>
+</div> <!-- END container -->
 
 <footer></footer>
