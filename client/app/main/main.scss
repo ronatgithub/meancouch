@@ -25,3 +25,20 @@
 .navbar-text {
   margin-left: 15px;
 }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        thead {
+            background-color: lightgray;
+        }
+
+        .error {
+            background-color: red;
+            color: white;
+        }
