@@ -1,9 +1,3 @@
-<!--
-  ~ to login
-  -->
-
-
-
 
 <div ng-controller="CouchController as ctrl">
 
@@ -18,7 +12,8 @@
                 <label for="password_field">Password</label>
                 <input id="password_field" type="password" name="pwd" class="form-control" placeholder="Password">
             </div>
-            <button type="submit" class="btn btn-primary">Sign in</button>
+            <a style="padding-right:15px" ng-click="ctrl.login()" href="#">Sign in</a>
+            <button type="submit" class="btn btn-primary">Add your business</button>
         </form>
     </div>
 
