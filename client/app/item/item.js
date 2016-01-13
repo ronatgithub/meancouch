@@ -6,7 +6,7 @@ angular.module('meancouchApp')
       // the item view show details about an item
       .state('item', {
         url: '/item/:itemId',
-        templateUrl: 'app/main/main.html',
+        templateUrl: 'app/item/item.html',
         controller: 'ItemCtrl',
         controllerAs: 'item'
       });
