@@ -5,7 +5,7 @@ angular.module('meancouchApp')
     $stateProvider
       // the item view show details about an item
       .state('item', {
-        url: '/adsoko/:itemId',
+        url: '/item/:itemId',
         templateUrl: 'app/item/item.html',
         controller: 'ItemCtrl',
         controllerAs: 'item'

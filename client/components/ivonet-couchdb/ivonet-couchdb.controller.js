@@ -27,7 +27,7 @@
       self.roles = couchdb.user.roles();
       self.msg = '';
       self.server = couchdb.server.getUrl();
-      couchdb.db.use("adsoko");
+      couchdb.db.use("test");
       self.db = couchdb.db.getName();
       self.docs = [];
 
