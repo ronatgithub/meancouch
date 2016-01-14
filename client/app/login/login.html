@@ -12,7 +12,7 @@
                     <label for="password_field">Password</label>
                     <input id="password_field" type="password" name="pwd" class="form-control" placeholder="Password">
                 </div>
-            <a style="padding-right:15px" ng-hide="bool" ng-click="bool=true" href="#">Sign in</a>
+            <a id="signin-link" ng-hide="bool" ng-click="bool=true" href="#">Sign in</a>
             <button ng-show="bool" type="submit" class="btn btn-primary">Sign in</button>
             <button ng-hide="bool" type="submit" class="btn btn-primary">Add your business</button>
         </form>
