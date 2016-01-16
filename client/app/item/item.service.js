@@ -21,5 +21,6 @@ angular.module('meancouchApp')
         'links' : [],
         'categories' : [],
         'social' : [],
+        'user_name' : ''
     };
   });

@@ -27,7 +27,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div ui-view=""></div>
+    <div ui-view="" autoscroll="true"></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
@@ -55,19 +55,24 @@
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
       <script src="bower_components/angular-ivonet-couchdb/dist/angular-ivonet-couchdb.min.js"></script>
+      <script src="bower_components/api-check/dist/api-check.js"></script>
+      <script src="bower_components/angular-formly/dist/formly.js"></script>
       <!-- endbower -->
     <!-- endbuild -->
+    <script src="bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.js"></script>
     <!-- build:js(.tmp) app/app.js -->
       <script src="app/app.js"></script>
       <!-- injector:js -->
       <script src="components/util/util.module.js"></script>
-      <script src="components/footer/footer.directive.js"></script>
+      <script src="app/profile/profile.js"></script>
       <script src="app/item/item.js"></script>
       <script src="app/item/item.service.js"></script>
       <script src="app/login/login.directive.js"></script>
       <script src="app/main/main.controller.js"></script>
       <script src="app/main/main.js"></script>
+      <script src="app/profile/profile.controller.js"></script>
       <script src="app/item/item.controller.js"></script>
+      <script src="components/footer/footer.directive.js"></script>
       <script src="components/ivonet-couchdb/ivonet-couchdb.controller.js"></script>
       <script src="components/modal/modal.service.js"></script>
       <script src="components/navbar/navbar.controller.js"></script>

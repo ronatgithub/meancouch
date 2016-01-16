@@ -21,6 +21,8 @@ module.exports = function(config) {
       'client/bower_components/lodash/dist/lodash.compat.js',
       'client/bower_components/angular-ui-router/release/angular-ui-router.js',
       'client/bower_components/angular-ivonet-couchdb/dist/angular-ivonet-couchdb.min.js',
+      'client/bower_components/api-check/dist/api-check.js',
+      'client/bower_components/angular-formly/dist/formly.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'client/app/app.js',
