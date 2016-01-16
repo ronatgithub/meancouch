@@ -17,8 +17,8 @@ angular.module('meancouchApp')
       templateOptions: {
       	type: 'text',
         label: 'Profile Name',
-        placeholder: 'Enter the name of your profile/business here',
-        description: 'Descriptive text',
+        placeholder: 'Peru Bike Adventures',
+        description: 'Enter the name of your profile/business here',
         required: true
       }
     },
@@ -42,8 +42,8 @@ angular.module('meancouchApp')
       templateOptions: {
       	type: 'text',
         label: 'Promotional message',
-        placeholder: 'Enter short message to promote your business',
-        description: '',
+        placeholder: 'Best Bike Adventures in Peru with experienced guides',
+        description: 'Enter short but clear message to promote your business',
         required: true
       }
     },
@@ -54,7 +54,7 @@ angular.module('meancouchApp')
       	type: 'text',
         label: 'Description',
         placeholder: 'Enter a description about what you offer and what people will experience. Kepp it simple and informative.',
-        description: '',
+        description: '1500 characters',
         required: true
       }
     }

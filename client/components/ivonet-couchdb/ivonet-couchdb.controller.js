@@ -83,7 +83,7 @@
       self.postDoc = function () {
          if (couchdb.db.getName() != null) {
             couchdb.doc.post(self.doc).then(function (data) {
-                    console.log("post: " + JSON.stringify(data));
+                    //console.log("post: " + JSON.stringify(data));
                     self.doc._rev = data.rev;
                     self.allDocs();
                  }, function (data) {
@@ -129,7 +129,7 @@
 
       self.allDocs = function () {
          couchdb.doc.all().then(function (data) {
-            console.log(JSON.stringify(data));
+            //console.log(JSON.stringify(data));
             self.docs = [];
             angular.forEach(data.rows, function (row) {
                self.docs.push({_id: row.id, _rev: row.value.rev})

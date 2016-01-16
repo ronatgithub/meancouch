@@ -10,48 +10,29 @@ angular.module('meancouchApp')
         controller: 'ProfileCtrl',
         controllerAs: 'vm',
         access: {
-          requiresLogin: true
-        }
+            requiresLogin: true,
+            // requiredPermissions: ['Admin', 'UserManager'],
+            // permissionType: 'AtLeastOne'
+
+                }
       });
   })
-  .run(function ($rootScope, couchdb) {
-    $rootScope.$on('$stateChangeStart', function (event, next) {
-      var access = next.access.requiresLogin;
-      if (access) {
-        
-        couchdb.user.isAuthenticated().then(function (data) {
-                 console.log("isAuthenticated: " + data);
-                 if (data) {
-                    event.preventDefault()
-                  }
-              }, function (data) {
-                // if error check data.reason
-                 console.log(data.reason);
-              }
-         )
-        
-        } else {
-          // else, user is allowed to view, so you can go on
-          console.log('no need to login, go ahead');
+  
+
+  .run(function ($rootScope, $location, couchdb) {
+    // Redirect to login if route requires authentication and you're not logged in
+    // http://www.jonahnisenson.com/angular-js-ui-router-redirect-after-login-to-requested-url/
+    $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
+      var authorization = toState.access.requiresLogin;
+      couchdb.user.isAuthenticated().then(function(data) { console.log(data);
+        if (authorization && !data) {
+          // Redirect to login
+          $rootScope.returnToState = toState.url;
+          $rootScope.returnToStateParams = toParams.Id;
+          $location.path('/login');
         }
-    })
+      });
+    });
   });
 
 
-
-
-
-
-
-
-
-
-  /* route which requires the user to be logged in and have the 'Admin' or 'UserManager' permission
-    $routeProvider.when('/admin/users', {
-        controller: 'userListCtrl',
-        templateUrl: 'js/modules/admin/html/users.tmpl.html',
-        access: {
-            requiresLogin: true,
-            requiredPermissions: ['Admin', 'UserManager'],
-            permissionType: 'AtLeastOne'
-        });*/
