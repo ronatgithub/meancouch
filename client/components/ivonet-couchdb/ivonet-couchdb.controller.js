@@ -18,7 +18,7 @@
 
 (function () {
    angular.module('meancouchApp').config(function () {
-   }).controller('CouchController', function (couchdb) {
+   }).controller('CouchController', function ($location, couchdb) {
 
       var self = this;
 
@@ -38,6 +38,7 @@
                  self.msg = '';
                  self.user = data.name;
                  self.roles = data.roles;
+                 $location.path('/profile');
               }, function (data) {
                  self.check();
                  self.msg = data.reason;
@@ -61,6 +62,7 @@
       self.logout = function () {
          couchdb.user.logout().then(function () {
             self.check();
+            $location.path('/');
          });
       };
 
