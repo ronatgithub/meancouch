@@ -1,20 +1,25 @@
 
 /* adjust the navbar css to display nice when over on image */
-div .header .navbar-default {
+div .item-header .navbar-default {
   background-color: rgba(0, 0, 0, 0.2);
   border-color: rgba(255, 255, 255, 0.6);
 }
 
-div .header .navbar-default .navbar-nav > li > a {
+div .item-header .navbar-default .navbar-nav > li > a {
     color: #FFF;
 }
 
-div .header .navbar-default .navbar-brand {
+div .item-header .navbar-default .navbar-brand {
     color: #FFF;
 }
 
-div .header login a {
+div .item-header login a {
   color: #FFF;
+}
+
+div .item-header login #signin-link {
+  color: #FFF;
+  padding-right: 15px
 }
 
 /* css for full hero image */
