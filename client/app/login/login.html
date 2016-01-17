@@ -21,7 +21,7 @@
     <div >
         <form class="navbar-form navbar-right" role="search" ng-submit="ctrl.logout()" ng-show="ctrl.user">
             <div class="form-group">
-                <div id="signin-link">{{ctrl.user}} - <span ng-repeat="role in ctrl.roles">{{role}}</span></div>
+                <small id="signin-link">{{ctrl.user}}</small>
             </div>
             <button type="submit" class="btn btn-default">logout</button>
         </form>
