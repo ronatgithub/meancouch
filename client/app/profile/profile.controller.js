@@ -7,6 +7,8 @@ angular.module('meancouchApp')
   var vm = this; // vm stands for "View Model" --> see https://github.com/johnpapa/angular-styleguide#controlleras-with-vm
   var self = this;
   vm.user = {};
+  //to toogle elements
+  vm.isCollapsed = true;
 
   vm.userFields = [
     {

@@ -1,6 +1,6 @@
 'use strict';
 
-class NavbarController {
+class SidebarController {
   //start-non-standard
   menu = [{
     'title': 'Dashboard',
@@ -15,4 +15,4 @@ class NavbarController {
 }
 
 angular.module('meancouchApp')
-  .controller('NavbarController', NavbarController);
+  .controller('SidebarController', SidebarController);
