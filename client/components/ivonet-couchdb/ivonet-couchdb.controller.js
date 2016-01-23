@@ -32,7 +32,7 @@
       self.docs = [];
 
       self.login = function () {
-         couchdb.user.login(myLogin.user.value, myLogin.pwd.value)
+         couchdb.user.login(loginForm.email.value, loginForm.password.value)
               .then(function (data) {
                  console.log("login: " + data);
                  self.msg = '';

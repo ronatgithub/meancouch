@@ -23,6 +23,13 @@ module.exports = function(config) {
       'client/bower_components/angular-ivonet-couchdb/dist/angular-ivonet-couchdb.min.js',
       'client/bower_components/api-check/dist/api-check.js',
       'client/bower_components/angular-formly/dist/formly.js',
+      'client/bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.min.js',
+      'client/bower_components/ng-file-upload/ng-file-upload.js',
+      'client/bower_components/ng-file-upload-shim/ng-file-upload-shim.js',
+      'client/bower_components/nya-bootstrap-select/dist/js/nya-bs-select.js',
+      'client/bower_components/pouchdb/dist/pouchdb.js',
+      'client/bower_components/pouchdb-authentication/dist/pouchdb.authentication.js',
+      'client/bower_components/angular-ui-notification/dist/angular-ui-notification.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'client/app/app.js',

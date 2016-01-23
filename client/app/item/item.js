@@ -8,6 +8,12 @@ angular.module('meancouchApp')
         url: '/item/:itemId',
         templateUrl: 'app/item/item.html',
         controller: 'ItemCtrl',
-        controllerAs: 'item'
+        controllerAs: 'item',
+        access: {
+            requiresLogin: false,
+            // requiredPermissions: ['Admin', 'UserManager'],
+            // permissionType: 'AtLeastOne'
+
+                }
       });
   });

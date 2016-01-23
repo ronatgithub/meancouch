@@ -1,0 +1,19 @@
+<div class="container col-md-6 col-md-offset-3">
+  <form ng-submit="vm.onSubmit()" novalidate>
+      <h1>Ad Data Entry Form</h1>
+      <formly-form model="vm.user" fields="vm.userFields" form="vm.AdForm">
+          <button type="submit" class="btn btn-primary" ng-disabled="vm.AdForm.$invalid" >Submit</button>
+      </formly-form>
+  </form>
+</div>
+
+
+<script type="text/ng-template" id="loading.html">
+      <div ng-if="to.loading.$$state.status === 0" style="line-height:34px">
+       <span class="glyphicon glyphicon-refresh spinning"></span> Loading List...
+      </div>
+      <div ng-if="to.loading.$$state.status !== 0">
+        <formly-transclude></formly-transclude>
+      </div>
+</script>
+

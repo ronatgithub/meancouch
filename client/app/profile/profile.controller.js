@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('meancouchApp')
-  .controller('ProfileCtrl', function MyFormCtrl(couchdb) {
+  .controller('ProfileCtrl', function MyFormCtrl(couchdb, sharedProperties) {
   	// set variables
   	couchdb.db.use("test");
   var vm = this; // vm stands for "View Model" --> see https://github.com/johnpapa/angular-styleguide#controlleras-with-vm
@@ -59,7 +59,17 @@ angular.module('meancouchApp')
         description: '1500 characters',
         required: true
       }
-    }
+    },
+    {
+      
+      key: 'media1',
+      type: 'upload-file',
+      templateOptions: {label: 'Photo Large (385x205)', required: true},
+      // to disable form fields
+      //expressionProperties: {'templateOptions.disabled': function($viewValue, $modelValue, scope) {if(scope.model.ad_size === 4) {return false;} if(scope.model.ad_size === 6) {return false;} return true;}}
+      // to hide form fields
+      
+      }
   ];
   
   vm.onSubmit = onSubmit;
@@ -68,7 +78,7 @@ angular.module('meancouchApp')
   function onSubmit() {
   	// set the _id for couchdb doc using date
   	vm.user._id = new Date().toISOString();
-
+    vm.user._attachments = sharedProperties.dataObj;
     console.log('form submitted:', vm.user);
 
     couchdb.doc.put(vm.user);

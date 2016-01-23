@@ -9,7 +9,10 @@ angular.module('meancouchApp', [
   'ui.bootstrap',
   'IvoNetCouchDB',
   'formly',
-  'formlyBootstrap'
+  'formlyBootstrap',
+  'ngFileUpload',
+  'nya.bootstrap.select',
+  'ui-notification'
 ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider
@@ -17,50 +20,35 @@ angular.module('meancouchApp', [
 
     $locationProvider.html5Mode(true);
   })
-  // to configer formy bootstrap templates
-  .config(config);
+  // Redirect to login if route requires authentication and you're not logged in
+  // http://www.jonahnisenson.com/angular-js-ui-router-redirect-after-login-to-requested-url/
+  .run(function ($rootScope, $location, couchdb) {
+    $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
+      var authorization = toState.access.requiresLogin;
+      couchdb.user.isAuthenticated().then(function(data) {
+        if (authorization && !data) {
+          // Redirect to login
+          $rootScope.returnToState = toState.url;
+          $rootScope.returnToStateParams = toParams.Id;
+          $location.path('/login');
+        }
+      });
+    });
+  })
+  // configure Notification
+  .config(function(NotificationProvider) {
+    NotificationProvider.setOptions({
+      delay: 10000,
+      startTop: 20,
+      startRight: 10,
+      verticalSpacing: 20,
+      horizontalSpacing: 20,
+      positionX: 'left',
+      positionY: 'bottom'
+    });
+  })
 
-      config.$inject = ['formlyConfigProvider'];
 
-      function config(formlyConfigProvider){
-        // set templates here
-        formlyConfigProvider.setWrapper({
-          name: 'horizontalBootstrapLabel',
-          template: [
-            '<label for="{{::id}}" class="col-sm-2 control-label">',
-              '{{to.label}} {{to.required ? "*" : ""}}',
-            '</label>',
-            '<div class="col-sm-8">',
-              '<formly-transclude></formly-transclude>',
-            '</div>'
-          ].join(' ')
-        });
-        
-        formlyConfigProvider.setWrapper({
-          name: 'horizontalBootstrapCheckbox',
-          template: [
-            '<div class="col-sm-offset-2 col-sm-8">',
-              '<formly-transclude></formly-transclude>',
-            '</div>'
-          ].join(' ')
-        });
-        
-        formlyConfigProvider.setType({
-          name: 'horizontalInput',
-          extends: 'input',
-          wrapper: ['horizontalBootstrapLabel', 'bootstrapHasError']
-        });
-        
-        formlyConfigProvider.setType({
-          name: 'horizontalCheckbox',
-          extends: 'checkbox',
-          wrapper: ['horizontalBootstrapCheckbox', 'bootstrapHasError']
-        });
-        
-        formlyConfigProvider.setType({
-            name: 'lx-file-input',
-            templateUrl: 'static/file_input_formly.html'
-        });
-      };
+
 
 

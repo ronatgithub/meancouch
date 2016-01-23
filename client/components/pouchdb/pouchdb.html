@@ -1,0 +1,30 @@
+<navbar></navbar>
+
+<div class="container"> <!-- START container -->
+  
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Pouch:</h1>
+      
+        <form class="navbar-form navbar-right" role="search" ng-submit="ctrl.signin()" name="signupForm" novalidate>
+                <div ng-show="bool" class="form-group">
+                    <label for="email_field">Email</label>
+                    <input id="email_field" type="text" name="email" class="form-control"
+                                   placeholder="Username">
+                </div>
+                <div ng-show="bool" class="form-group">
+                    <label for="password_field">Password</label>
+                    <input id="password_field" type="password" name="password" class="form-control" placeholder="Password">
+                </div>
+            <a id="signin-link" ng-hide="bool" ng-click="bool=true" href="#">Sign in</a>
+            <button ng-show="bool" type="submit" class="btn btn-primary">Sign in</button>
+            <button ng-hide="bool" type="submit" class="btn btn-primary">Add your business</button>
+        </form>
+
+
+    </div>
+  </div>
+
+</div> <!-- END container -->
+
+<footer></footer>

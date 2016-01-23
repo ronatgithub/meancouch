@@ -3,12 +3,13 @@
 angular.module('meancouchApp')
   .config(function($stateProvider) {
     $stateProvider
-      // the main view will have listing of all items
-      .state('main', {
-        url: '/',
-        templateUrl: 'app/main/main.html',
-        controller: 'MainController',
-        controllerAs: 'main',access: {
+      // the item view show details about an item
+      .state('pouch', {
+        url: '/pouch',
+        templateUrl: 'components/pouchdb/pouchdb.html',
+        controller: 'PouchdbCtrl',
+        controllerAs: 'ctrl',
+        access: {
             requiresLogin: false,
             // requiredPermissions: ['Admin', 'UserManager'],
             // permissionType: 'AtLeastOne'
@@ -16,4 +17,3 @@ angular.module('meancouchApp')
                 }
       });
   });
-  
