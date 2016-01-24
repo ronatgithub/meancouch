@@ -13,7 +13,7 @@ angular.module('meancouchApp')
 
 	    self.signin = function () {
 		    db.signin({
-	            name: signupForm.user.value,
+	            name: signupForm.email.value,
 	            password: signupForm.password.value
         	})
         	.then(function (data) {

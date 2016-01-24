@@ -30,12 +30,13 @@ angular.module('meancouchApp', [
           // Redirect to login
           $rootScope.returnToState = toState.url;
           $rootScope.returnToStateParams = toParams.Id;
-          $location.path('/login');
+          $location.path('/');
         }
       });
     });
   })
   // configure Notification
+  // https://github.com/alexcrack/angular-ui-notification
   .config(function(NotificationProvider) {
     NotificationProvider.setOptions({
       delay: 10000,

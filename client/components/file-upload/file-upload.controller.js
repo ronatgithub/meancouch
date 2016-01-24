@@ -237,6 +237,27 @@ angular.module('meancouchApp')
   function onSubmit() { console.log('form data to be submitted (vm.user):', vm.user);
     // save to db logic here
     console.log(sharedProperties.dataObj);
-  }
+
+
+    // set the _id for couchdb doc using date
+    vm.user._id = new Date().toISOString();
+    vm.user._attachments = sharedProperties.dataObj;
+    console.log('form submitted:', vm.user);
+
+         if (couchdb.db.getName() != null) {
+            couchdb.doc.put(vm.user).then(function (data) {
+                    console.log("put: " + JSON.stringify(data));
+                    
+                 }, function (data) {
+                    self.msg = data.reason;
+                 }
+            )
+         } else {
+            self.msg = "No DB defined..."
+         };
+  
+
+
+  } // end on submit
 
 });

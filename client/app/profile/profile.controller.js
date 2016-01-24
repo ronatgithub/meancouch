@@ -1,9 +1,13 @@
 'use strict';
 
 angular.module('meancouchApp')
-  .controller('ProfileCtrl', function MyFormCtrl(couchdb, sharedProperties) {
+  .controller('ProfileCtrl', function ProfileCtrl(couchdb, Database, sharedProperties) {
   	// set variables
   	couchdb.db.use("test");
+
+    // set databse name for local db
+    var db = new Database('adsoko_v2');
+
   var vm = this; // vm stands for "View Model" --> see https://github.com/johnpapa/angular-styleguide#controlleras-with-vm
   var self = this;
   vm.user = {};
@@ -77,11 +81,18 @@ angular.module('meancouchApp')
   
   function onSubmit() {
   	// set the _id for couchdb doc using date
-  	vm.user._id = new Date().toISOString();
-    vm.user._attachments = sharedProperties.dataObj;
+  	// vm.user._id = new Date().toISOString();
+    // vm.user._attachments = sharedProperties.dataObj;
     console.log('form submitted:', vm.user);
 
-    couchdb.doc.put(vm.user);
+      db.create({ // db.create because of pouch factory i use. check the factory to see options
+        _id: new Date().toISOString(),
+        item_profile_name: vm.user.item_profile_name,
+        item_link: vm.user.item_link,
+        item_promo: vm.user.item_promo,
+        item_description: vm.user.item_description,
+        _attachments: sharedProperties.dataObj
+      });
   };
 
   self.check = function () {

@@ -11,7 +11,8 @@ angular.module('meancouchApp')
 
       self.showDoc = function (id) {
           couchdb.doc.get(id).then(function (data) {
-              self.doc = data;
+              self.return = data;
+              console.log(data)
           })
       };
 

@@ -13,11 +13,11 @@ angular.module('meancouchApp')
         var Database = function (databaseName) {
             _databaseName = databaseName;
             // setup remote db (couchdb)
-            _db = new PouchDB('http://127.0.0.1:5984/adsoko_v2', {skipSetup: true});
+            _db = new PouchDB('http://127.0.0.1:5984/test', {skipSetup: true});
             // https://github.com/nolanlawson/pouchdb-authentication
             PouchDB.plugin('pouchdb-authentication');
             // get local db name from controller
-            _localDB = new PouchDB(_databaseName);
+            /* _localDB = new PouchDB(_databaseName);
             
             _db.sync(_localDB, {
               live: true,
@@ -40,23 +40,30 @@ angular.module('meancouchApp')
             }).on('complete', function (info) {
               // handle complete
               console.log('complete')
-            });
+            }); */
         };
 
-        Database.prototype.all = function () {
-            var options = {
-                include_docs: true
-            };
+        Database.prototype.all = function (options) {
+            /* options to be set in controller */
+            /* options = {
+                include_docs: true,
+                attachments: true
+               }; */
 
             return $q.when(_db.allDocs(options))
                 .then(function (response) {
-                var converted;
-
-                converted = response.rows.map(function (element) {
-                    return element.doc;
-                });
-
-                return converted;
+                // Remove all design documents
+                    for (var i = response.rows.length - 1; i >= 0; i--) {
+                       if (response.rows[i].id.indexOf('_design') >= 0) {
+                          delete response.rows.splice(i, 1);
+                       }
+                    }
+                // convert response to ...?
+                    var converted;
+                    converted = response.rows.map(function (element) {
+                        return element.doc;
+                    });
+                    return converted;
             });
         };
 
