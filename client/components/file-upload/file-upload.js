@@ -49,12 +49,13 @@ angular.module('meancouchApp')
       });
     })
   // setType for ng-file-upload implementation into formly fields
+  // https://angular-file-upload.appspot.com/
   // https://gist.github.com/kentcdodds/8bfdbf832b3cebfb050f or https://gist.github.com/benoror/6d70a1d81caa0ce08523
   .run(function(formlyConfig) {
           formlyConfig.setType({
               name: 'upload-file',
-              template: '<input type="file" ngf-select multiple ngf-max-files="1" ng-model="files" name="files" accept="image/*" required="" ngf-multiple="false"><img class="img-thumbnail img-responsive" ngf-src="files[0]">',
-              wrapper: ['bootstrapLabel', 'bootstrapHasError'],
+              template: '<input type="file" ngf-resize="{width: 1500, height: 843, centerCrop: true}" ngf-select multiple ngf-max-files="1" ng-model="files" name="files" accept="image/*" required="" ngf-multiple="false"><img class="img-thumbnail img-responsive" ngf-src="files[0]">',
+              wrapper: ['horizontalBootstrapLabel', 'bootstrapHasError'],
               extends: 'input',
               defaultOptions: {
                   //templateOptions: {label: 'File Upload',}

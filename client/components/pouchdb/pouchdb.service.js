@@ -1,4 +1,4 @@
-// factory (Database) for pouchdb
+// service factory (Database) for pouchdb
 // Notification is a Angular.js service providing simple notifications using Bootstrap 3 styles with css transitions for animationshttps://github.com/alexcrack/angular-ui-notification
 // http://plnkr.co/edit/h08qQF2qlVE3arERpdfi?p=preview
 'use strict';
@@ -136,7 +136,7 @@ angular.module('meancouchApp')
                     }
                 });
         };
-
+// TODO - this function has a problem
         Database.prototype.isAuthenticated = function () {
             return $q.when(_db.getSession())
                 .then(function (response) {

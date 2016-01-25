@@ -8,7 +8,8 @@ angular.module('meancouchApp')
         url: '/',
         templateUrl: 'app/main/main.html',
         controller: 'MainController',
-        controllerAs: 'main',access: {
+        controllerAs: 'main',
+        access: {
             requiresLogin: false,
             // requiredPermissions: ['Admin', 'UserManager'],
             // permissionType: 'AtLeastOne'

@@ -1,3 +1,4 @@
+<!-- TODO set url to get images from db dynamicaly -->
 <navbar></navbar>
 
 <header class="hero-unit" id="banner">
@@ -16,7 +17,7 @@
       <ul class="nav nav-tabs nav-stacked col-md-3 col-lg-3 col-sm-6" ng-repeat="doc in main.docs">
         <li>
             <div>
-                <img width="100%" height="100%" data-ng-src="data:image/png;base64,{{doc.media.media1.data}}" data-err-src="images/png/avatar.png"/>
+                <img width="100%" height="100%" data-ng-src="http://localhost:5984/test/{{doc.id}}/media1" data-err-src="images/png/avatar.png"/>
             </div>
             <a ui-sref="item({ itemId: doc.id })">{{doc.name}}</a>
         </li>

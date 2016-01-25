@@ -68,7 +68,7 @@ angular.module('meancouchApp')
       
       key: 'media1',
       type: 'upload-file',
-      templateOptions: {label: 'Photo Large (385x205)', required: true},
+      templateOptions: {label: 'Image', required: true},
       // to disable form fields
       //expressionProperties: {'templateOptions.disabled': function($viewValue, $modelValue, scope) {if(scope.model.ad_size === 4) {return false;} if(scope.model.ad_size === 6) {return false;} return true;}}
       // to hide form fields
