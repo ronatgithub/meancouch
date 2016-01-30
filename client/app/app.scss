@@ -19,10 +19,10 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
 @import 'item/item.scss';
 @import 'main/main.scss';
 @import 'profile/profile.scss';
+@import '../components/dashboard/dashboard-partials/profile-listing/profile-listing.scss';
 @import '../components/file-upload/file-upload.scss';
 @import '../components/footer/footer.scss';
 @import '../components/login/login.scss';
 @import '../components/modal/modal.scss';
 @import '../components/navbar/navbar.scss';
-@import '../components/sidebar/sidebar.scss';
 // endinjector
