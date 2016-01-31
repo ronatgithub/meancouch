@@ -56,7 +56,7 @@ angular.module('meancouchApp')
 					};
 					self.docs.push(self.data);
 				}
-				console.log('docs ', self.docs);
+				// console.log('docs ', self.docs);
 			}).catch(function (err) {
 				console.log(err);
 			});

@@ -1,8 +1,16 @@
 <form class="form-horizontal" ng-submit="vm.onSubmit()" novalidate>
 	<div class="page-header">
-		<h3>Profile Listing Setup</h3>
+	    <h2>Create New Profile</h2>
+	    <p class="lead">
+	        Emulate tables that collapse beautifully on mobile devices!
+	    </p>
+	    <div class="alert alert-info">
+	        <h4>Row modifier class included</h4>
+	        <p>This feature uses a row modifier I created called ".margin-0". When applied to a ".row" element, it will ensure the margins between the columns will be 0. </p>
+	        <p>This is important in order to emulate the table-like effect, but it will work in any environment.</p>
+	    </div>
 	</div>
-	<formly-form model="vm.user" fields="vm.userFields"> </formly-form>
+	<formly-form model="vm.profile" fields="vm.formFields"> </formly-form>
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
 			<button type="submit" class="btn btn-primary submit-button">Save</button>

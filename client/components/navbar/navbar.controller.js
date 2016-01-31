@@ -4,7 +4,7 @@ class NavbarController {
   //start-non-standard
   menu = [{
     'title': 'Dashboard',
-    'state': 'profile'
+    'state': 'dashboard.profile-listing'
   }];
 
   isCollapsed = true;

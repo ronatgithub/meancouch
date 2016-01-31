@@ -28,7 +28,7 @@ angular.module('meancouchApp', [
   })
   // Redirect to login if route requires authentication and you're not logged in
   // http://www.jonahnisenson.com/angular-js-ui-router-redirect-after-login-to-requested-url/
-  /*.run(function ($rootScope, $location, couchdb) {
+  .run(function ($rootScope, $location, couchdb) {
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
       var authorization = toState.access.requiresLogin;
       couchdb.user.isAuthenticated().then(function(data) {
@@ -40,7 +40,7 @@ angular.module('meancouchApp', [
         }
       });
     });
-  })*/
+  })
   // configure Notification
   // https://github.com/alexcrack/angular-ui-notification
   .config(function(NotificationProvider) {

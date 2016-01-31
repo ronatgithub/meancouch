@@ -6,9 +6,11 @@
 (function() {
 
 angular.module('meancouchApp')
-	.controller('ProfileListingCtrl', function ProfileListingCtrl(couchdb, Database) {
+	.controller('ProfileListingCtrl', function ProfileListingCtrl(couchdb, Database, Notification) {
 		
 	    var self = this;
+	    // set databse name for local db
+			var db = new Database('test');
 
 	    self.user = couchdb.user.name();
 	    self.roles = couchdb.user.roles();
@@ -33,21 +35,21 @@ angular.module('meancouchApp')
 
 		self.getAll = function () {
 		// the below code manages to get data from the db using pouch.js (Database service)
-			// set databse name for local db
-			var db = new Database('test');
+			
 
 			db.all({
 				include_docs: true, 
 			    attachments: false
 			}).then(function (result) {
 			// handle result
-			// console.log(result);
+			console.log(result);
 				self.docs = [];
 
 				for (var key in result) {
 				// do stuff
 					self.data = {
-						id: result[key]._id,
+						_id: result[key]._id,
+						_rev: result[key]._rev,
 						name: result[key].item_profile_name,
 						link: result[key].item_link,
 						promo: result[key].item_promo,
@@ -60,6 +62,20 @@ angular.module('meancouchApp')
 			}).catch(function (err) {
 				console.log(err);
 			});
+		};
+
+		
+		// using angular app couchdb to delete doc
+		self.deleteDoc = function(doc) {console.log(doc);
+		// TODO: use db.remove(id) from pouchdb instate of angular app
+         couchdb.doc.delete(doc).then(function (data) {
+          // console.log(data);
+            return Notification.success(doc.name + ' successful deleted');
+         }, function (data) {
+          // console.log(data);
+            return Notification.error('there was an error deleting the document ' + data.reason);
+         })
+      
 		}
 	}); // end controller
 })();

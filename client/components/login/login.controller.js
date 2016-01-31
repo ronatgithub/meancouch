@@ -15,7 +15,7 @@ angular.module('meancouchApp')
         	})
         	.then(function (data) {
         		self.user = data;
-        		$location.path('/profile');
+        		$location.path('/dashboard');
         	});
 		};
 

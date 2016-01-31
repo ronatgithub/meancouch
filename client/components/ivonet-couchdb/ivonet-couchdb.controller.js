@@ -18,7 +18,7 @@
 
 (function () {
    angular.module('meancouchApp').config(function () {
-   }).controller('CouchController', function ($location, couchdb) {
+   }).controller('CouchController', function ($state, $location, couchdb) {
 
       var self = this;
 
@@ -38,7 +38,8 @@
                  self.msg = '';
                  self.user = data.name;
                  self.roles = data.roles;
-                 $location.path('/profile');
+                 /* $location.path('/dashboard'); */
+                 $state.go('dashboard.profile-listing');
               }, function (data) {
                  self.check();
                  self.msg = data.reason;
