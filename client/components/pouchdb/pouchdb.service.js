@@ -70,8 +70,24 @@ angular.module('meancouchApp')
         Database.prototype.create = function (record) {
             return $q.when(_db.put(record)) // _db.post(record)
                 .then(function (response) {
-                return _db.get(response.id);
-            });
+                // handle success
+                    return Notification.success('successful created on ' + response.id);
+                })
+                .catch(function (error) {console.log(error.reason)
+                // handle error
+                    if (error) {
+                        if (error.name === 'conflict') {
+                        // There is a conflict. Nothing was created.
+                            return Notification.error(error.reason + ' Nothing was created.');
+                        } else if (error.name === 'forbidden') {
+                          // You dont have permissions. Nothing was created.
+                            return Notification.error(error.reason + ' Nothing was created.');
+                        } else {
+                          // HTTP error, cosmic rays, etc.
+                            return Notification.error('Something went wrong. Thats all we know.');
+                        }
+                    }
+                });
         };
 
         Database.prototype.signup = function (user) {

@@ -1,35 +1,41 @@
 <div class="page-header">
-    <h2>View All Your Profiles</h2>
+    <h2>Profile Listing View</h2>
     <p class="lead">
-        Emulate tables that collapse beautifully on mobile devices!
+        This view lists all of your saved profiles. You can edit or delete them here.
     </p>
-    <div class="alert alert-info">
+    <!-- <div class="alert alert-info">
         <h4>Row modifier class included</h4>
         <p>This feature uses a row modifier I created called ".margin-0". When applied to a ".row" element, it will ensure the margins between the columns will be 0. </p>
         <p>This is important in order to emulate the table-like effect, but it will work in any environment.</p>
-    </div>
+    </div> -->
 </div>
 
 <div class="method">
     <div class="row margin-0 list-header hidden-sm hidden-xs">
-        <div class="col-md-3"><div class="header">Profile Name</div></div>
+        <div class="col-md-4"><div class="header">Profile Name</div></div>
+        <div class="col-md-1"><div class="header">Action</div></div>
         <div class="col-md-2"><div class="header">created</div></div>
-        <div class="col-md-2"><div class="header">Link</div></div>
         <div class="col-md-5"><div class="header">Description</div></div>
     </div>
 
     <div ng-repeat="doc in ctrl.docs" class="row margin-0">
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="cell">
                 <div class="propertyname">
-                    {{doc.name}} <span class="mobile-isrequired">[Required]</span>
+                    {{doc.name}}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1">
+            <div class="cell">
+                <div class="propertyname">
                     <a tooltip="edit" tooltip-placement="top" class="pull-right" href="#">
-                        <i class="glyphicon glyphicon-list-alt"></i>
+                        <i class="fa fa-file-text fa-2x "></i>
                     </a>
                     <!-- Our delete modal takes a string as the first arg (used to display what we are deleting)
                     all other args are passed to the callback defined in profile.listing.controller.js -->
                     <a ng-click="ctrl.delete(doc.name, doc)" tooltip="delete" tooltip-placement="top" style="padding-right:15px;color:red;" class="pull-right" href="#">
-                        <i class="glyphicon glyphicon-trash"></i>
+                        <i class="fa fa-trash-o fa-2x "></i>
                     </a>
                 </div>
             </div>
@@ -37,20 +43,13 @@
         <div class="col-md-2">
             <div class="cell">
                 <div class="type">
-                    <code>{{doc._id}}</code>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="cell">
-                <div class="isrequired">
-                    <span class="text-muted">{{doc.link}}</span>
+                    <span am-time-ago="doc._id"></span>
                 </div>
             </div>
         </div>
         <div class="col-md-5">
             <div class="cell">
-                <div class="description">
+                <div class="type">
                     {{doc.description}}
                 </div>
             </div>

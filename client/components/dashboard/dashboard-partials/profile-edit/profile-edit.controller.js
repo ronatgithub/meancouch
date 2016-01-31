@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('meancouchApp')
-  .controller('ProfileEditCtrl', function ProfileEditCtrl($q, couchdb, Database, sharedProperties) {
+  .controller('ProfileEditCtrl', function ProfileEditCtrl($state, $q, Notification, couchdb, Database, sharedProperties) {
   // set database name for couchdb (angular app)
   	couchdb.db.use("test");
   // set databse name for local db (pouchdb)
@@ -80,7 +80,7 @@ angular.module('meancouchApp')
   
   
     function onSubmit() {
-
+//
       console.log('form submitted:', vm.profile);
       // mixed with pouchdb and couchdb
       // db.create because of pouch factory i use. check the factory to see options
@@ -95,9 +95,10 @@ angular.module('meancouchApp')
           item_description: vm.profile.description,
           _attachments: sharedProperties.dataObj
         }))
-        .then(function () {
+        .then(function (response) {console.log(response);
         // clear sharedProperties.dataObj
           sharedProperties.dataObj = {};
+          $state.go('dashboard.profile-listing');
         });
     };
 

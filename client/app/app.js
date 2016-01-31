@@ -18,7 +18,8 @@ angular.module('meancouchApp', [
   'formlyBootstrap',
   'ngFileUpload',
   'nya.bootstrap.select',
-  'ui-notification'
+  'ui-notification',
+  'angularMoment'
 ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider
