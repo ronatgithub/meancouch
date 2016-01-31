@@ -26,7 +26,9 @@
                     <a tooltip="edit" tooltip-placement="top" class="pull-right" href="#">
                         <i class="glyphicon glyphicon-list-alt"></i>
                     </a>
-                    <a ng-click="ctrl.deleteDoc(doc)" tooltip="delete" tooltip-placement="top" style="padding-right:15px;color:red;" class="pull-right" href="#">
+                    <!-- Our delete modal takes a string as the first arg (used to display what we are deleting)
+                    all other args are passed to the callback defined in profile.listing.controller.js -->
+                    <a ng-click="ctrl.delete(doc.name, doc)" tooltip="delete" tooltip-placement="top" style="padding-right:15px;color:red;" class="pull-right" href="#">
                         <i class="glyphicon glyphicon-trash"></i>
                     </a>
                 </div>
@@ -35,7 +37,7 @@
         <div class="col-md-2">
             <div class="cell">
                 <div class="type">
-                    <code>{{doc.id}}</code>
+                    <code>{{doc._id}}</code>
                 </div>
             </div>
         </div>

@@ -6,11 +6,11 @@
 (function() {
 
 angular.module('meancouchApp')
-	.controller('ProfileListingCtrl', function ProfileListingCtrl(couchdb, Database, Notification) {
+	.controller('ProfileListingCtrl', function ProfileListingCtrl(couchdb, Database, Notification, Modal) {
 		
 	    var self = this;
 	    // set databse name for local db
-			var db = new Database('test');
+		var db = new Database('test');
 
 	    self.user = couchdb.user.name();
 	    self.roles = couchdb.user.roles();
@@ -35,7 +35,6 @@ angular.module('meancouchApp')
 
 		self.getAll = function () {
 		// the below code manages to get data from the db using pouch.js (Database service)
-			
 
 			db.all({
 				include_docs: true, 
@@ -65,18 +64,21 @@ angular.module('meancouchApp')
 		};
 
 		
-		// using angular app couchdb to delete doc
-		self.deleteDoc = function(doc) {console.log(doc);
-		// TODO: use db.remove(id) from pouchdb instate of angular app
-         couchdb.doc.delete(doc).then(function (data) {
-          // console.log(data);
-            return Notification.success(doc.name + ' successful deleted');
-         }, function (data) {
-          // console.log(data);
-            return Notification.error('there was an error deleting the document ' + data.reason);
-         })
-      
-		}
+		// delete doc with modal confirm dialog using angular app couchdb
+		self.delete = Modal.confirm.delete(function(doc) {
+		// Our callback function is called if/when the delete modal is confirmed
+		  // console.log(doc);
+			// TODO: use pouchdb instate of angular app
+		    couchdb.doc.delete(doc).then(function (data) {
+		    // handle success
+		    	// console.log(data);
+		        return Notification.success(doc.name + ' successful deleted');
+		    }, function (data) {
+		    // handle error
+		    	// console.log(data);
+		        return Notification.error('there was an error deleting the document ' + data.reason);
+		    })
+		});
 	}); // end controller
 })();
 
