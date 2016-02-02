@@ -18,15 +18,15 @@ angular.module('meancouchApp')
         '': { templateUrl: 'components/dashboard/dashboard.html' }
       }
     })
-    .state('dashboard.profile-edit', {
-      controller: 'ProfileEditCtrl',
+    .state('dashboard.profile-new', {
+      controller: 'ProfileFormCtrl',
       controllerAs: 'vm',
       access: {
         requiresLogin: true,
         // requiredPermissions: ['Admin', 'UserManager'],
         // permissionType: 'AtLeastOne'
       },
-      templateUrl: 'components/dashboard/dashboard-partials/profile-edit/profile-edit.html'
+      templateUrl: 'components/dashboard/dashboard-partials/profile-new/profile-new.html'
     })
     .state('dashboard.profile-listing', {
       controller: 'ProfileListingCtrl',
@@ -37,6 +37,17 @@ angular.module('meancouchApp')
         // permissionType: 'AtLeastOne'
       },
       templateUrl: 'components/dashboard/dashboard-partials/profile-listing/profile-listing.html'
+    })
+    .state('dashboard.profile-edit/:id', {
+      controller: 'ProfileFormCtrl',
+      controllerAs: 'vm',
+      params: {id: null},
+      access: {
+        requiresLogin: true,
+        // requiredPermissions: ['Admin', 'UserManager'],
+        // permissionType: 'AtLeastOne'
+      },
+      templateUrl: 'components/dashboard/dashboard-partials/profile-edit/profile-edit.html'
     });
   }])
 

@@ -6,7 +6,7 @@
 (function() {
 
 angular.module('meancouchApp')
-	.controller('ProfileListingCtrl', function ProfileListingCtrl(couchdb, Database, Notification, Modal) {
+	.controller('ProfileListingCtrl', function ProfileListingCtrl($state, couchdb, Database, Notification, Modal) {
 		
 	    var self = this;
 	    // set databse name for local db
@@ -60,6 +60,11 @@ angular.module('meancouchApp')
 				// console.log(err);
 				return Notification.error('something went wrong ' + error);
 			});
+		};
+
+		// edit doc
+		self.edit = function(doc_id) {
+			$state.go('dashboard.profile-edit/:id', { id: doc_id });
 		};
 
 		

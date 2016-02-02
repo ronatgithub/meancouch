@@ -1,3 +1,4 @@
+// http://docs.angular-formly.com/v6.3.2/docs/field-configuration-object
 'use strict';
 
 angular.module('meancouchApp')
@@ -76,7 +77,7 @@ angular.module('meancouchApp')
               } // end of function
           }) // end formly config
   }) // end of .run
-    
+
     // to configer formly bootstrap templates to use bootstrap horizontal form
     .config(config);
 
@@ -111,6 +112,12 @@ angular.module('meancouchApp')
             wrapper: ['horizontalBootstrapLabel', 'bootstrapHasError']
           });
           
+          formlyConfigProvider.setType({
+            name: 'horizontalTextArea',
+            extends: 'textarea',
+            wrapper: ['horizontalBootstrapLabel', 'bootstrapHasError']
+          });
+
           formlyConfigProvider.setType({
             name: 'horizontalCheckbox',
             extends: 'checkbox',
