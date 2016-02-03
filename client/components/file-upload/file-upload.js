@@ -70,7 +70,7 @@ angular.module('meancouchApp')
                           data: $scope.files[0]
                       }
                     } // end of if
-                    console.log(sharedProperties.dataObj);
+                    // console.log(sharedProperties.dataObj);
                 });
                     // set default directive values
                     // Upload.setDefaults( {ngf-keep:false ngf-accept:'image/*', ...} );

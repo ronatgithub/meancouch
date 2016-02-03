@@ -68,7 +68,7 @@ angular.module('meancouchApp')
 		};
 
 		
-		// delete doc with modal confirm dialog using angular app couchdb
+		// delete doc with modal confirm dialog using angular-app-couchdb
 		self.delete = Modal.confirm.delete(function(doc) {
 		  // Our callback function is called if/when the delete modal is confirmed
 		  // console.log(doc);

@@ -43,13 +43,13 @@
         <div class="col-md-1">
             <div class="cell">
                 <div class="propertyname">
-                    <a ng-click="ctrl.edit(doc._id)" tooltip="edit" tooltip-placement="top" class="pull-right" href="#">
-                        <i class="fa fa-file-text fa-2x "></i>
-                    </a>
                     <!-- Our delete modal takes a string as the first arg (used to display what we are deleting)
                     all other args are passed to the callback defined in profile.listing.controller.js -->
-                    <a ng-click="ctrl.delete(doc.name, doc)" tooltip="delete" tooltip-placement="top" style="padding-right:15px;color:red;" class="pull-right" href="#">
+                    <a ng-click="ctrl.delete(doc.name, doc)" tooltip="delete" tooltip-placement="top" style="color:red;" class="pull-right" href="#">
                         <i class="fa fa-trash-o fa-2x "></i>
+                    </a>
+                    <a ng-click="ctrl.edit(doc._id)" tooltip="edit" tooltip-placement="top" style="padding-right:15px;" class="pull-right" href="#">
+                        <i class="fa fa-file-text fa-2x "></i>
                     </a>
                 </div>
             </div>

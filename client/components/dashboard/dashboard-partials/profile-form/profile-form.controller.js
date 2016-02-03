@@ -21,17 +21,18 @@ angular.module('meancouchApp')
      }; */
 
     function checkId() {
-      if ($state.params.id !== null) {
-      // if its not null and we have got an id, start function editProfile
-        return editProfile($state.params.id);
-      } else {
-      // if we dont have an id, set an empty object and start function formFields to trigger formly to load the form with empty model values
+      if ($state.params.id === undefined) {
+      // if we dont have an id, set an empty object then set _id to new Date().toISOString() then start function formFields to trigger formly to load the form with _id set to data
         vm.object = {};
+        vm.object._id = new Date().toISOString();
         return formFields(vm.object);
+      } else {
+      // if $state.params.id is not undefined means we have an id, start function editProfile
+        return editProfile($state.params.id);
       }
     };
 
-    function formFields(object) {
+    function formFields(object) { console.log(object)
     // set the model for the form view to hold the submited form data and to set default values for form fields
       vm.profile = object;
     // the form fields configuration using angular formly
@@ -104,14 +105,16 @@ angular.module('meancouchApp')
 
     vm.onSubmit = onSubmit;
   
-    function onSubmit() {
+    function onSubmit() {console.log(vm.profile)
 //
-      console.log('form submitted:', vm.profile);
+      // console.log('form submitted:', vm.profile);
+        
       // mixed with pouchdb and couchdb
       // db.create because of pouch factory i use. check the factory to see options
-        return $q.when(db.create({
-        // set the _id for couchdb doc using date
-          _id: new Date().toISOString(),
+        db.create({
+        // _id and _rev are pre-set in another function, otherwise they need to be set here
+          _id: vm.profile._id,
+          _rev: vm.profile._rev,
         // get the current user name and make him the owner
           item_owner: couchdb.user.name(),
           item_profile_name: vm.profile.name,
@@ -119,24 +122,26 @@ angular.module('meancouchApp')
           item_promo: vm.profile.promo,
           item_description: vm.profile.description,
           _attachments: sharedProperties.dataObj
-        }))
-        .then(function (response) {console.log(response);
+        })
+        .then(function (response) { // console.log(response);
         // clear sharedProperties.dataObj
           sharedProperties.dataObj = {};
           $state.go('dashboard.profile-listing');
         });
     };
 
-    function editProfile(id) {
+    function editProfile(id) { 
 //
-      couchdb.doc.get(id).then(function (data) {
+      couchdb.doc.get(id).then(function (response) { 
       // handle success
-        vm.object = {
+        vm.object = { 
         // set keys to the key name in formly form fields and the value to the response from databse
-          name: data.item_profile_name,
-          link: data.item_link,
-          promo: data.item_promo,
-          description: data.item_description
+          _id: response._id,
+          _rev: response._rev,
+          name: response.item_profile_name,
+          link: response.item_link,
+          promo: response.item_promo,
+          description: response.item_description
         };
       })
       .then(function() {

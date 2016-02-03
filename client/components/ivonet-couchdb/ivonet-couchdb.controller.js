@@ -49,7 +49,7 @@
 
       self.check = function () {
          couchdb.user.isAuthenticated().then(function (data) {
-                 console.log("Ivonet: isAuthenticated: " + data);
+                 // console.log("Ivonet: isAuthenticated: " + data);
                  self.user = couchdb.user.name();
                  self.roles = couchdb.user.roles();
                  self.allDocs();

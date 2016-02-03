@@ -53,7 +53,7 @@ angular.module('meancouchApp')
 
 // TODO: remove state from scope
   .controller('StateController', ['$scope', '$state', function($scope, $state) {
-    $scope.$state = $state; console.log($state)
+    $scope.$state = $state; // console.log($state)
   }])
 
       
