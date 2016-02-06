@@ -1,7 +1,7 @@
 <div class="page-header">
     <h2>Profile Listing View</h2>
     <p class="lead">
-        The View lists all of your saved profiles. You can edit or delete them here.
+        This View lists all of your saved profiles. You can edit or delete them here.
     </p>
     <!-- <div class="alert alert-info">
         <h4>Row modifier class included</h4>
@@ -14,8 +14,8 @@
     <div class="row margin-0 list-header hidden-sm hidden-xs">
         <div class="col-md-4"><div class="header">Profile Name</div></div>
         <div class="col-md-2"><div class="header">created</div></div>
-        <div class="col-md-5"><div class="header">Description</div></div>
-        <div class="col-md-1"><div class="header">Action</div></div>
+        <div class="col-md-4"><div class="header">Description</div></div>
+        <div class="col-md-2"><div class="header">Action</div></div>
     </div>
 
     <div ng-repeat="doc in ctrl.docs" class="row margin-0">
@@ -33,14 +33,14 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-4">
             <div class="cell">
                 <div class="type">
                     {{doc.description}}
                 </div>
             </div>
         </div>
-        <div class="col-md-1">
+        <div class="col-md-2">
             <div class="cell">
                 <div class="propertyname">
                     <!-- Our delete modal takes a string as the first arg (used to display what we are deleting)
@@ -50,6 +50,9 @@
                     </a>
                     <a ng-click="ctrl.edit(doc._id)" tooltip="edit" tooltip-placement="top" style="padding-right:15px;" class="pull-right" href="#">
                         <i class="fa fa-file-text fa-2x "></i>
+                    </a>
+                    <a tooltip="view online" tooltip-placement="top" style="padding-right:15px;color:#B7B7B7;" class="pull-right" href="/item/{{doc._id}}">
+                        <i class="fa fa-television fa-2x "></i>
                     </a>
                 </div>
             </div>

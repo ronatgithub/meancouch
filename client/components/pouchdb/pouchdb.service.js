@@ -90,11 +90,12 @@ angular.module('meancouchApp')
                 });
         };
 
-        Database.prototype.signup = function (user) {
+        Database.prototype.signup = function (user) { 
             return $q.when(_db.signup(user.name, user.password))
                 .then(function (response) {
                 // handle response from db
-                    return Notification(response.ok);
+                    Notification.success('successful signed up');
+                    return response;
                 })
                 .catch(function (error) {
                 // handle error
@@ -107,7 +108,7 @@ angular.module('meancouchApp')
                             return Notification.error('invalid username');
                         } else {
                           // HTTP error, cosmic rays, etc.
-                            return Notification.error('something went totaly wrong. reload the page.');
+                            return Notification.error('Something went wrong. Thats all we know.');
                         }
                     }
                 });
