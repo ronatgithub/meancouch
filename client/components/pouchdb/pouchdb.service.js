@@ -67,7 +67,7 @@ angular.module('meancouchApp')
             });
         };
 
-        Database.prototype.create = function (record) { console.log(record)
+        Database.prototype.create = function (record) { // console.log(record)
             return $q.when(_db.put(record)) // _db.post(record)
                 .then(function (response) {
                 // handle success
