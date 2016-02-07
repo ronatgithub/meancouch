@@ -45,10 +45,10 @@ angular.module('meancouchApp')
           // set keys to the key name in formly form fields and the value to the response from databse to allow pre-populate a form with values
             _id: response._id,
             _rev: response._rev,
-            name: response.item_profile_name,
-            link: response.item_link,
-            promo: response.item_promo,
-            description: response.item_description,
+            name: response.name,
+            link: response.link,
+            promo: response.promo,
+            description: response.description,
             user: response.user
           };
         })
@@ -141,10 +141,10 @@ angular.module('meancouchApp')
             _id: vm.profile._id,
             _rev: vm.profile._rev,
             user: vm.profile.user,
-            item_profile_name: vm.profile.name,
-            item_link: vm.profile.link,
-            item_promo: vm.profile.promo,
-            item_description: vm.profile.description,
+            name: vm.profile.name,
+            link: vm.profile.link,
+            promo: vm.profile.promo,
+            description: vm.profile.description,
             // _attachments: if new -> sharedProperties.dataObj comes from file-input - if edit -> sharedProperties.dataObj is defined in editProfile function
             _attachments: sharedProperties.dataObj
           })

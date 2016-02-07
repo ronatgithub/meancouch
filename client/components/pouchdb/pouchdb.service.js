@@ -67,6 +67,25 @@ angular.module('meancouchApp')
             });
         };
 
+        Database.prototype.query = function (user) {
+            // start here
+            return $q.when(_db.query('doc_name/by_user', {
+                    key: user,
+                    include_docs: true
+                })
+                .then(function (response) {
+                    // index was build
+                    return response;
+                })
+                .catch(function (error) {
+                    // handle error
+                    return error;
+                })
+            )
+
+            
+        };
+
         Database.prototype.create = function (record) { // console.log(record)
             return $q.when(_db.put(record)) // _db.post(record)
                 .then(function (response) {

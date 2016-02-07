@@ -1,6 +1,17 @@
 // using couchdb-angular-app and pouchdb.js together
 // couchdb service - angular app
 // Database service - pouchdb
+// couchdb view _design document for map function in couchdb
+	/* _design/doc_name/by_user
+	map
+	function(doc, user) {
+	  if(doc.user && doc.name) {
+	    		emit(doc.user, doc.name);
+		
+	  }
+	} */
+
+
 'use strict';
 
 (function() {
@@ -22,7 +33,8 @@ angular.module('meancouchApp')
 	    self.check = function () {
 		    couchdb.user.isAuthenticated().then(function (data) {
 		        // handle success
-		            self.getAll();
+		           // start function useQuery with the current user as key to retrieve all documents belonging only to that user
+		           self.useQuery(self.user);
 		    	}, function (data) {
 		        // handle error
 		            self.user = null;
@@ -30,7 +42,34 @@ angular.module('meancouchApp')
 		       	}
 		    );
 	    };
+
+	    // using couchdb views to retrieve only current user documents
+	    self.useQuery = function (user) {
+	    	// empty docs array
+	    	self.docs = [];
+	    	// use the current user the get all documents belonging to that user. See pouchdb service factory for details
+	    	db.query(user)
+	    	.then(function (result) {
+	    	  // handle result
+	    		// console.log(result);
+	    		for (var key in result.rows) {
+				// do stuff
+					self.data = {
+						_id: result.rows[key].id,
+						_rev: result.rows[key].doc._rev,
+						user: result.rows[key].key,
+						name: result.rows[key].value
+					};
+					self.docs.push(self.data);
+				}
+	    	})
+	    	.catch(function (error) {
+	    		// handle error
+	    		console.log(error);
+	    	});
+	    };
 		
+		// NOT USED -> use query instate
 		// the below code manages to get data from the db using pouch.js (Database service)
 		self.getAll = function () {
 			// clear the objects from array so the view will update after delete
@@ -47,10 +86,10 @@ angular.module('meancouchApp')
 						_id: result[key]._id,
 						_rev: result[key]._rev,
 						user: result[key].user,
-						name: result[key].item_profile_name,
-						link: result[key].item_link,
-						promo: result[key].item_promo,
-						description: result[key].item_description,
+						name: result[key].name,
+						link: result[key].link,
+						promo: result[key].promo,
+						description: result[key].description,
 						media: result[key]._attachments
 					};
 					self.docs.push(self.data);
@@ -75,15 +114,16 @@ angular.module('meancouchApp')
 		  // console.log(doc);
 			// TODO: use pouchdb instate of couchdb-angular-app
 		    db.remove(doc).then(function (data) {
-		    // handle success
+		     // handle success
 		    	// console.log(data);
 		    	if (data.hasOwnProperty('ok')) {
-		    		self.getAll();
+		    		// go back to document list and show only the users own documents
+		    		self.check();
 		        	return Notification.success(doc.name + ' successful deleted');
 		    	};
 		    	
 		    }, function (data) {
-		    // handle error
+		      // handle error
 		    	// console.log(data);
 		        return Notification.error('there was an error deleting the document ' + data.reason);
 		    })

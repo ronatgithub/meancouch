@@ -27,3 +27,22 @@ Run `grunt build` for building and `grunt serve` for preview.
 ## Testing
 
 Running `npm test` will run the unit tests with karma.
+
+# couchdb validate_doc_update
+
+function(newDoc, oldDoc, userCtx) {
+    if (newDoc._deleted === true) {
+        // allow deletes by admins and matching users
+        // without checking the other fields
+        if ((userCtx.roles.indexOf('_admin') !== -1) ||
+            (userCtx.name == oldDoc.user)) {
+            return;
+        } else {
+            throw({forbidden: 'Only Admins may delete other user docs. Nothing was deleted.'});
+        }
+    };
+
+  if (userCtx.roles.indexOf('_admin') === -1 && newDoc.user !== userCtx.name) {
+    throw({forbidden : "Only the user himself or an Admin can modify this documents."});
+  }
+}

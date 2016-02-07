@@ -48,10 +48,10 @@ angular.module('meancouchApp')
 				// do stuff
 					self.data = {
 						id: result[key]._id,
-						name: result[key].item_profile_name,
-						link: result[key].item_link,
-						promo: result[key].item_promo,
-						description: result[key].item_description,
+						name: result[key].name,
+						link: result[key].link,
+						promo: result[key].promo,
+						description: result[key].description,
 						media: result[key]._attachments
 					};
 					self.docs.push(self.data);
