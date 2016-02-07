@@ -25,6 +25,8 @@ angular.module('meancouchApp')
         // if (new) we dont have an id, set an empty object then set _id to a timestamp then start function formFields to trigger formly to load the form with _id set to data
           vm.object = {};
           vm.object._id = new Date().toISOString();
+          // get the current user name and make him the owner
+          vm.object.user = couchdb.user.name();
           return formFields(vm.object);
         } else {
         // if (edit) $state.params.id is not undefined means we have an id, start function editProfile
@@ -46,7 +48,8 @@ angular.module('meancouchApp')
             name: response.item_profile_name,
             link: response.item_link,
             promo: response.item_promo,
-            description: response.item_description
+            description: response.item_description,
+            user: response.user
           };
         })
         .then(function() {
@@ -137,8 +140,7 @@ angular.module('meancouchApp')
             // _id and _rev are pre-set in another function, otherwise they need to be set here
             _id: vm.profile._id,
             _rev: vm.profile._rev,
-            // get the current user name and make him the owner
-            item_owner: couchdb.user.name(),
+            user: vm.profile.user,
             item_profile_name: vm.profile.name,
             item_link: vm.profile.link,
             item_promo: vm.profile.promo,

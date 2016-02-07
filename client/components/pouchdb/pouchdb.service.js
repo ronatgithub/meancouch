@@ -78,20 +78,25 @@ angular.module('meancouchApp')
                     if (error) {
                         if (error.name === 'conflict') {
                         // There is a conflict. Nothing was created.
-                            return Notification.error(error.reason + ' Nothing was created.');
+                            return Notification.error(error.reason + ' Nothing has changed.');
                         } else if (error.name === 'forbidden') {
                           // You dont have permissions. Nothing was created.
-                            return Notification.error(error.reason + ' Nothing was created.');
+                            return Notification.error(error.reason + ' Nothing has changed.');
                         } else {
                           // HTTP error, cosmic rays, etc.
-                            return Notification.error('Something went wrong. Thats all we know.');
+                            return Notification.error('Pufff! Something went wrong. Thats all we know.');
                         }
                     }
                 });
         };
 
         Database.prototype.signup = function (user) { 
-            return $q.when(_db.signup(user.name, user.password))
+            return $q.when(_db.signup(user.name, user.password, {
+                  metadata : {
+                    // email: 'bla"mail.com',
+                    // birthday: '10/12/1990'
+                  }
+                }))
                 .then(function (response) {
                 // handle response from db
                     Notification.success('successful signed up');
@@ -108,7 +113,7 @@ angular.module('meancouchApp')
                             return Notification.error('invalid username');
                         } else {
                           // HTTP error, cosmic rays, etc.
-                            return Notification.error('Something went wrong. Thats all we know.');
+                            return Notification.error('Pufff! Something went wrong. Thats all we know.');
                         }
                     }
                 });
@@ -130,7 +135,7 @@ angular.module('meancouchApp')
                             return false;
                         } else {
                           // HTTP error, cosmic rays, a meteor, etc.
-                            Notification.error('something went wrong.');
+                            Notification.error('Pufff! Something went wrong. Thats all we know.');
                             return false;
                         }
                     }
@@ -177,8 +182,16 @@ angular.module('meancouchApp')
                 });
         };
 
-        Database.prototype.remove = function (record) {
-            return $q.when(_db.remove(record));
+        Database.prototype.remove = function (record) { 
+            return $q.when(_db.remove(record))
+                .then(function (response){
+                    // console.log(response)
+                    return response;
+                })
+                .catch(function (error){
+                    // console.log(error.reason)
+                    return Notification.error('Ooops! ' + error.reason);
+                });
         };
 
         return Database;

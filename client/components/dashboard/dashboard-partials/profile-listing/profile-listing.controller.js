@@ -46,6 +46,7 @@ angular.module('meancouchApp')
 					self.data = {
 						_id: result[key]._id,
 						_rev: result[key]._rev,
+						user: result[key].user,
 						name: result[key].item_profile_name,
 						link: result[key].item_link,
 						promo: result[key].item_promo,
@@ -73,11 +74,14 @@ angular.module('meancouchApp')
 		  // Our callback function is called if/when the delete modal is confirmed
 		  // console.log(doc);
 			// TODO: use pouchdb instate of couchdb-angular-app
-		    couchdb.doc.delete(doc).then(function (data) {
+		    db.remove(doc).then(function (data) {
 		    // handle success
 		    	// console.log(data);
-		    	self.getAll();
-		        return Notification.success(doc.name + ' successful deleted');
+		    	if (data.hasOwnProperty('ok')) {
+		    		self.getAll();
+		        	return Notification.success(doc.name + ' successful deleted');
+		    	};
+		    	
 		    }, function (data) {
 		    // handle error
 		    	// console.log(data);
