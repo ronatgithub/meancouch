@@ -76,11 +76,13 @@ angular.module('meancouchApp')
               } // end of function
           }) // end formly config
   })
-  // taken from formly demo page
+  // configure Formly Validations Messages
   .run(function(formlyConfig, formlyValidationMessages) {
     formlyConfig.extras.ngModelAttrsManipulatorPreferBound = true;
     formlyValidationMessages.addTemplateOptionValueMessage('minlength', 'minlength', '', 'characters is the minimum length required', 'Too short');
     formlyValidationMessages.addTemplateOptionValueMessage('maxlength', 'maxlength', '', 'characters is the maximum length allowed', 'Too long');
+    formlyValidationMessages.messages.url = '$viewValue + " is not a valid url. e.g. http://www.yourdomain.com"';
+    formlyValidationMessages.messages.required = 'to.label + " is required"';
   })
     // to configer formly bootstrap templates to use bootstrap horizontal form and ng-messages for validation notefication
     .config(config);

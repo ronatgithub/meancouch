@@ -84,13 +84,6 @@ angular.module('meancouchApp')
               description: 'Enter the name of your profile/business here',
               required: true
             },
-            validation: {
-              messages: {
-                required: function(viewValue, modelValue, scope) {
-                  return scope.to.label + ' is required'
-                }
-              }
-            }
           },
           {
             key: 'promo',
@@ -106,38 +99,24 @@ angular.module('meancouchApp')
               description: 'Enter short but clear message to promote your business',
               required: true
             },
-            validation: {
-              messages: {
-                required: function(viewValue, modelValue, scope) {
-                  return scope.to.label + ' is required'
-                }
-              }
-            }
           },
           {
             key: 'link',
             type: 'horizontalInput',
             templateOptions: {
-              type: 'text',
+              type: 'url',
               maxlength: 35,
               label: 'Your Website',
               addonRight: {
                 class: 'fa fa-globe fa-1x'
               },
               placeholder: 'Enter your website address here',
-              description: 'www.your-site.com',
+              description: 'NOTE: please enter your website adress like this http://www.your-site.com',
               required: false
             },
             expressionProperties: {
               /*'templateOptions.disabled': '!model.item_name' // disabled when username is blank*/
             },
-            validation: {
-              messages: {
-                required: function(viewValue, modelValue, scope) {
-                  return scope.to.label + ' is required'
-                }
-              }
-            }
           },
           {
             key: 'description',
@@ -152,25 +131,12 @@ angular.module('meancouchApp')
               description: '1500 characters',
               required: true
             },
-            validation: {
-              messages: {
-                required: function(viewValue, modelValue, scope) {
-                  return scope.to.label + ' is required'
-                }
-              }
-            }
           },
           {
             key: 'media1',
             type: 'upload-file',
             templateOptions: {label: 'Image', required: true},
-            validation: {
-              messages: {
-                required: function(viewValue, modelValue, scope) {
-                  return scope.to.label + ' is required'
-                }
-              }
-            }
+            
             // to disable form fields
             //expressionProperties: {'templateOptions.disabled': function($viewValue, $modelValue, scope) {if(scope.model.ad_size === 4) {return false;} if(scope.model.ad_size === 6) {return false;} return true;}}
             // to hide form fields
