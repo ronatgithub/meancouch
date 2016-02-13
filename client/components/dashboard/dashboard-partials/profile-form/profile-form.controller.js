@@ -75,25 +75,21 @@ angular.module('meancouchApp')
             templateOptions: {
               type: 'text',
               maxlength: 25,
+              minlength: 5,
               label: 'Profile Name',
+              addonRight: {
+                class: 'fa fa-file-text fa-1x'
+              },
               placeholder: 'Peru Bike Adventures',
               description: 'Enter the name of your profile/business here',
               required: true
-            }
-          },
-          {
-            key: 'link',
-            type: 'horizontalInput',
-            templateOptions: {
-              type: 'text',
-              maxlength: 35,
-              label: 'Link',
-              placeholder: 'Enter your website address here',
-              description: 'http://www.your-site.com',
-              required: true
             },
-            expressionProperties: {
-              /*'templateOptions.disabled': '!model.item_name' // disabled when username is blank*/
+            validation: {
+              messages: {
+                required: function(viewValue, modelValue, scope) {
+                  return scope.to.label + ' is required'
+                }
+              }
             }
           },
           {
@@ -103,9 +99,44 @@ angular.module('meancouchApp')
               type: 'text',
               maxlength: 35,
               label: 'Promotional message',
+              addonRight: {
+                class: 'fa fa-commenting fa-1x'
+              },
               placeholder: 'Best Bike Adventures in Peru with experienced guides',
               description: 'Enter short but clear message to promote your business',
               required: true
+            },
+            validation: {
+              messages: {
+                required: function(viewValue, modelValue, scope) {
+                  return scope.to.label + ' is required'
+                }
+              }
+            }
+          },
+          {
+            key: 'link',
+            type: 'horizontalInput',
+            templateOptions: {
+              type: 'text',
+              maxlength: 35,
+              label: 'Your Website',
+              addonRight: {
+                class: 'fa fa-globe fa-1x'
+              },
+              placeholder: 'Enter your website address here',
+              description: 'www.your-site.com',
+              required: false
+            },
+            expressionProperties: {
+              /*'templateOptions.disabled': '!model.item_name' // disabled when username is blank*/
+            },
+            validation: {
+              messages: {
+                required: function(viewValue, modelValue, scope) {
+                  return scope.to.label + ' is required'
+                }
+              }
             }
           },
           {
@@ -115,16 +146,31 @@ angular.module('meancouchApp')
               type: 'textarea',
               rows: 10,
               maxlength: 1500,
+              minlength: 30,
               label: 'Description',
               placeholder: 'Enter a description about what you offer and what people will experience. Kepp it simple and informative.',
               description: '1500 characters',
               required: true
+            },
+            validation: {
+              messages: {
+                required: function(viewValue, modelValue, scope) {
+                  return scope.to.label + ' is required'
+                }
+              }
             }
           },
           {
             key: 'media1',
             type: 'upload-file',
             templateOptions: {label: 'Image', required: true},
+            validation: {
+              messages: {
+                required: function(viewValue, modelValue, scope) {
+                  return scope.to.label + ' is required'
+                }
+              }
+            }
             // to disable form fields
             //expressionProperties: {'templateOptions.disabled': function($viewValue, $modelValue, scope) {if(scope.model.ad_size === 4) {return false;} if(scope.model.ad_size === 6) {return false;} return true;}}
             // to hide form fields

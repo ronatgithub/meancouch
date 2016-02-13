@@ -32,6 +32,7 @@ module.exports = function(config) {
       'client/bower_components/angular-ui-notification/dist/angular-ui-notification.js',
       'client/bower_components/moment/moment.js',
       'client/bower_components/angular-moment/angular-moment.js',
+      'client/bower_components/angular-messages/angular-messages.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'client/app/app.js',

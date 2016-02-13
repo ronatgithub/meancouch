@@ -18,7 +18,6 @@ angular.module('meancouchApp')
                 }
       });
   })
-
   // for nya.bootstrap.select to work with formly
   .config(['formlyConfigProvider', function(formlyConfigProvider) {
         //nya-bs-select : grouped select template : 
@@ -35,20 +34,20 @@ angular.module('meancouchApp')
                                    '       </li>' +
                                    '     </ol>';
                                    
-     formlyConfigProvider.setType(
-        {
-          name: 'groupedSelect',
-          template: groupedSelectTemplate
-        }
-      );  
+       formlyConfigProvider.setType(
+          {
+            name: 'groupedSelect',
+            template: groupedSelectTemplate
+          }
+       );  
   }])
   // setWrapper for loading status to be displayed when json select list is loading data. the loading.html file is in same file as the form itself
   .run(function(formlyConfig) {
-      formlyConfig.setWrapper({
-        name: 'loading',
-        templateUrl: 'loading.html'
-      });
-    })
+    formlyConfig.setWrapper({
+      name: 'loading',
+      templateUrl: 'loading.html'
+    });
+  })
   // setType for ng-file-upload implementation into formly fields
   // https://angular-file-upload.appspot.com/
   // https://gist.github.com/kentcdodds/8bfdbf832b3cebfb050f or https://gist.github.com/benoror/6d70a1d81caa0ce08523
@@ -76,9 +75,14 @@ angular.module('meancouchApp')
                     // Upload.setDefaults( {ngf-keep:false ngf-accept:'image/*', ...} );
               } // end of function
           }) // end formly config
-  }) // end of .run
-
-    // to configer formly bootstrap templates to use bootstrap horizontal form
+  })
+  // taken from formly demo page
+  .run(function(formlyConfig, formlyValidationMessages) {
+    formlyConfig.extras.ngModelAttrsManipulatorPreferBound = true;
+    formlyValidationMessages.addTemplateOptionValueMessage('minlength', 'minlength', '', 'characters is the minimum length required', 'Too short');
+    formlyValidationMessages.addTemplateOptionValueMessage('maxlength', 'maxlength', '', 'characters is the maximum length allowed', 'Too long');
+  })
+    // to configer formly bootstrap templates to use bootstrap horizontal form and ng-messages for validation notefication
     .config(config);
 
         config.$inject = ['formlyConfigProvider'];
@@ -92,6 +96,15 @@ angular.module('meancouchApp')
                 '{{to.label}} {{to.required ? "*" : ""}}',
               '</label>',
               '<div class="col-sm-8">',
+                
+                '<div class="label validation"',
+                  'ng-if="options.validation.errorExistsAndShouldBeVisible"',
+                  'ng-messages="options.formControl.$error">',
+                  '<div ng-message="{{::name}}" ng-repeat="(name, message) in ::options.validation.messages">',
+                    '{{message(options.formControl.$viewValue, options.formControl.$modelValue, this)}}',
+                  '</div>',
+                '</div>',
+
                 '<formly-transclude></formly-transclude>',
               '</div>'
             ].join(' ')
