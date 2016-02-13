@@ -105,13 +105,13 @@ angular.module('meancouchApp')
             type: 'horizontalInput',
             templateOptions: {
               type: 'url',
-              maxlength: 35,
+              maxlength: 50,
               label: 'Your Website',
               addonRight: {
                 class: 'fa fa-globe fa-1x'
               },
               placeholder: 'Enter your website address here',
-              description: 'NOTE: please enter your website adress like this http://www.your-site.com',
+              description: 'NOTE: please enter your website adress like this http://www.yourdomain.com',
               required: false
             },
             expressionProperties: {

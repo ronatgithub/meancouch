@@ -1,3 +1,25 @@
+/* Tablet and bigger */
+@media ( min-width: 768px ) {
+    .grid-divider {
+        position: relative;
+        padding: 0;
+    }
+    .grid-divider>[class*='col-'] {
+        position: static;
+    }
+    .grid-divider>[class*='col-']:nth-child(n+2):before {
+        content: "";
+        /* border-left: 1px solid #DDD; */
+        position: absolute;
+        top: 0;
+        bottom: 0;
+    }
+}
+
+    .col-padding {
+        padding: 15px 0;
+    }
+
 /* Bootstrap Hover Image Gallery -> http://miketricking.github.io/dist/ */
 
 .thing-form {
@@ -23,7 +45,7 @@
   color: #F5F5F5;
   text-align: center;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-  background: #4393B9;
+  background: #428bca;
 }
 
 .navbar-text {
