@@ -49,7 +49,8 @@ angular.module('meancouchApp')
             link: response.link,
             promo: response.promo,
             description: response.description,
-            user: response.user
+            user: response.user,
+            image: 'http://localhost:5984/test/' + response._id + '/media1'
           };
         })
         .then(function() {
@@ -130,16 +131,23 @@ angular.module('meancouchApp')
               placeholder: 'Enter a description about what you offer and what people will experience. Kepp it simple and informative.',
               description: '1500 characters',
               required: true
-            },
+            }
           },
           {
             key: 'media1',
             type: 'upload-file',
-            templateOptions: {label: 'Image', required: true},
-            
+            templateOptions: {label: 'Image', required: true}
             // to disable form fields
             //expressionProperties: {'templateOptions.disabled': function($viewValue, $modelValue, scope) {if(scope.model.ad_size === 4) {return false;} if(scope.model.ad_size === 6) {return false;} return true;}}
             // to hide form fields
+          },
+          { // add a formly field with only html. here we display the image when we edit a profile.
+            noFormControl: true,
+            template: 
+              ['<div class="col-sm-offset-2 col-sm-8">',
+                  '<img id="image" class="img-thumbnail img-responsive" style="margin-bottom: 15px;" data-ng-src="' + vm.profile.image + '" alt="">',
+                '</div>'
+              ].join(' ')
           }
         ];
       };

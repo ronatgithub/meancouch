@@ -54,13 +54,21 @@ angular.module('meancouchApp')
   .run(function(formlyConfig) {
           formlyConfig.setType({
               name: 'upload-file',
-              template: '<input type="file" ngf-resize="{width: 1500, height: 843, centerCrop: true}" ngf-select multiple ngf-max-files="1" ng-model="files" name="files" accept="image/*" required="" ngf-multiple="false"><img ng-if="files" class="img-thumbnail img-responsive" ngf-src="files[0]">',
+              template: '<input type="file" ngf-select="upload($file)" ngf-resize="{width: 1500, height: 843, centerCrop: true}" ngf-select multiple ngf-max-files="1" ng-model="files" name="files" accept="image/*" required="" ngf-multiple="false"><img ng-if="files" class="img-thumbnail img-responsive" style="margin-top:15px;" ngf-src="files[0]">',
               wrapper: ['horizontalBootstrapLabel', 'bootstrapHasError'],
               extends: 'input',
               defaultOptions: {
                   //templateOptions: {label: 'File Upload',}
               },
               controller: /* @ngInject */ function ($scope, Upload, sharedProperties) {
+                // when edit and we select a new image, we need to remove the current image from view
+                // file comes from: ngf-select="upload($file)"
+                $scope.upload = function (file) {
+                  // console.log(file);
+                  // to remove a element by id
+                  document.getElementById("image").outerHTML='';
+                };
+                // to get the selected image to sharedProperties.dataObj to be able to share it between controllers
                 $scope.$watch('files', function () { 
               
                     if( $scope.files && $scope.files.length) {

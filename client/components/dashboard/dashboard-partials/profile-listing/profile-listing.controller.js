@@ -58,7 +58,8 @@ angular.module('meancouchApp')
 						_id: result.rows[key].id,
 						_rev: result.rows[key].doc._rev,
 						user: result.rows[key].key,
-						name: result.rows[key].value
+						name: result.rows[key].value,
+						description: result.rows[key].doc.description
 					};
 					self.docs.push(self.data);
 				}
