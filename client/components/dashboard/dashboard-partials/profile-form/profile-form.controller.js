@@ -27,6 +27,7 @@ angular.module('meancouchApp')
           vm.object._id = new Date().toISOString();
           // get the current user name and make him the owner
           vm.object.user = couchdb.user.name();
+          vm.object.image = false;
           return formFields(vm.object);
         } else {
         // if (edit) $state.params.id is not undefined means we have an id, start function editProfile
@@ -141,15 +142,25 @@ angular.module('meancouchApp')
             //expressionProperties: {'templateOptions.disabled': function($viewValue, $modelValue, scope) {if(scope.model.ad_size === 4) {return false;} if(scope.model.ad_size === 6) {return false;} return true;}}
             // to hide form fields
           },
-          { // add a formly field with only html. here we display the image when we edit a profile.
+          { // add a formly field with only html. here we display the image when we edit a profile. -> http://docs.angular-formly.com/docs/field-configuration-object
             noFormControl: true,
-            template: 
-              ['<div class="col-sm-offset-2 col-sm-8">',
-                  '<img id="image" class="img-thumbnail img-responsive" style="margin-bottom: 15px;" data-ng-src="' + vm.profile.image + '" alt="">',
-                '</div>'
-              ].join(' ')
+            className: 'image',
+            template: function() {
+              console.log('template invoked');
+              if(vm.profile.image !== false) {
+                console.log('we got an image');
+                return  ['<div class="col-sm-offset-2 col-sm-8">',
+                            '<img id="image" class="img-thumbnail img-responsive" style="margin-bottom: 15px;" data-ng-src="' + vm.profile.image + '" alt="">',
+                          '</div>'
+                        ].join(' ')
+              } else {
+                console.log('we dont have an image');
+                return ['<span id="image"></span>']
+              };
+              
+            }
           }
-        ];
+        ]; // END vm.formFields
       };
     
       function onSubmit() { // console.log(vm.profile);

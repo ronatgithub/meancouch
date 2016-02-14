@@ -65,7 +65,7 @@ angular.module('meancouchApp')
                 // file comes from: ngf-select="upload($file)"
                 $scope.upload = function (file) {
                   // console.log(file);
-                  // to remove a element by id
+                  // to remove a element by its id -> document.getElementById("image").outerHTML='';
                   document.getElementById("image").outerHTML='';
                 };
                 // to get the selected image to sharedProperties.dataObj to be able to share it between controllers
