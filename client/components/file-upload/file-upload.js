@@ -99,6 +99,9 @@ angular.module('meancouchApp')
   // configure Formly Validations Messages
   .run(function(formlyConfig, formlyValidationMessages) {
     formlyConfig.extras.ngModelAttrsManipulatorPreferBound = true;
+    // validation on form submit
+    formlyConfig.extras.errorExistsAndShouldBeVisibleExpression = 'fc.$touched || form.$submitted';
+    // validation messages
     formlyValidationMessages.addTemplateOptionValueMessage('minlength', 'minlength', '', 'characters is the minimum length required', 'Too short');
     formlyValidationMessages.addTemplateOptionValueMessage('maxlength', 'maxlength', '', 'characters is the maximum length allowed', 'Too long');
     formlyValidationMessages.messages.url = '$viewValue + " is not a valid url. e.g. http://www.yourdomain.com"';

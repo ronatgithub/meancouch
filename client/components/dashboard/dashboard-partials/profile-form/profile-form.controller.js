@@ -168,6 +168,8 @@ angular.module('meancouchApp')
         // console.log('form submitted:', vm.profile);
         // mixed with pouchdb and couchdb
         // db.create because of pouch factory i use. check the factory to see options
+        if (vm.form.$valid) {
+          vm.options.updateInitialValue();
           db.create({
             // _id and _rev are pre-set in another function, otherwise they need to be set here
             _id: vm.profile._id,
@@ -185,6 +187,7 @@ angular.module('meancouchApp')
             sharedProperties.dataObj = {};
             $state.go('dashboard.profile-listing');
           });
+        }
       };
 
     // function to start when controller loads
