@@ -65,6 +65,7 @@ angular.module('meancouchApp')
                 // file comes from: ngf-select="onSelect($file)"
                 $scope.onSelect = function (file) {
                   // console.log(file)
+                  // to resize image: Upload.resize(file, width, height, quality, type, ratio, centerCrop, resizeIf).then(function(resizedFile){...}); -> https://github.com/danialfarid/ng-file-upload
                   Upload.resize(file, 711, 400, 100)
                     .then(function(resizedFile) {
                       Upload.rename(resizedFile, 'image_small');
