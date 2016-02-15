@@ -54,7 +54,7 @@ angular.module('meancouchApp')
   .run(function(formlyConfig) {
           formlyConfig.setType({
               name: 'upload-file',
-              template: '<input type="file" ngf-select="upload($file)" ngf-resize="{width: 1500, height: 843, centerCrop: true}" ngf-select multiple ngf-max-files="1" ng-model="files" name="files" accept="image/*" required="" ngf-multiple="false"><img ng-if="files" class="img-thumbnail img-responsive" style="margin-top:15px;" ngf-src="files[0]">',
+              template: '<input type="file" ngf-select="onSelect($file)" ngf-resize="{width: 1500, height: 843, centerCrop: true}" ngf-select multiple ngf-max-files="1" ng-model="files" name="files" accept="image/*" required="" ngf-multiple="false"><img ng-if="files" class="img-thumbnail img-responsive" style="margin-top:15px;" ngf-src="files[0]">',
               wrapper: ['horizontalBootstrapLabel', 'bootstrapHasError'],
               extends: 'input',
               defaultOptions: {
@@ -62,11 +62,23 @@ angular.module('meancouchApp')
               },
               controller: /* @ngInject */ function ($scope, Upload, sharedProperties) {
                 // when edit and we select a new image, we need to remove the current image from view
-                // file comes from: ngf-select="upload($file)"
-                $scope.upload = function (file) {
-                  // console.log(file);
+                // file comes from: ngf-select="onSelect($file)"
+                $scope.onSelect = function (file) {
+                  // console.log(file)
+                  Upload.resize(file, 711, 400, 100)
+                    .then(function(resizedFile) {
+                      Upload.rename(resizedFile, 'image_small');
+                      // console.log(resizedFile);
+                      sharedProperties.dataObj.image_small = {
+                        content_type: resizedFile.type,
+                        data: resizedFile
+                      }
+                    })
+                    .then(function() {
+                      console.log(sharedProperties.dataObj)
+                    });
                   // to remove a element by its id -> document.getElementById("image").outerHTML='';
-                  document.getElementById("image").outerHTML='';
+                  document.getElementById("image").outerHTML = '';
                 };
                 // to get the selected image to sharedProperties.dataObj to be able to share it between controllers
                 $scope.$watch('files', function () { 

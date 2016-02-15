@@ -27,6 +27,7 @@ angular.module('meancouchApp')
           vm.object._id = new Date().toISOString();
           // get the current user name and make him the owner
           vm.object.user = couchdb.user.name();
+          // if its new, we dont have an image. set it to false so we can use it later in an if function
           vm.object.image = false;
           return formFields(vm.object);
         } else {
@@ -51,7 +52,7 @@ angular.module('meancouchApp')
             promo: response.promo,
             description: response.description,
             user: response.user,
-            image: 'http://localhost:5984/test/' + response._id + '/media1'
+            image: 'http://localhost:5984/test/' + response._id + '/image_small'
           };
         })
         .then(function() {
@@ -135,7 +136,7 @@ angular.module('meancouchApp')
             }
           },
           {
-            key: 'media1',
+            key: 'image_large',
             type: 'upload-file',
             templateOptions: {label: 'Image', required: true}
             // to disable form fields
@@ -146,15 +147,15 @@ angular.module('meancouchApp')
             noFormControl: true,
             className: 'image',
             template: function() {
-              console.log('template invoked');
+              // console.log('template invoked');
               if(vm.profile.image !== false) {
-                console.log('we got an image');
+                // console.log('we got an image');
                 return  ['<div class="col-sm-offset-2 col-sm-8">',
                             '<img id="image" class="img-thumbnail img-responsive" style="margin-bottom: 15px;" data-ng-src="' + vm.profile.image + '" alt="">',
                           '</div>'
                         ].join(' ')
               } else {
-                console.log('we dont have an image');
+                // console.log('we dont have an image');
                 return ['<span id="image"></span>']
               };
               
