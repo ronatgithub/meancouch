@@ -50,7 +50,8 @@ angular.module('meancouchApp')
 						id: result[key]._id,
 						name: result[key].name,
 						link: result[key].link,
-						promo: result[key].promo,
+						promo1: result[key].promo1,
+						promo2: result[key].promo2,
 						description: result[key].description,
 						media: result[key]._attachments
 					};

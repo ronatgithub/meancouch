@@ -49,7 +49,8 @@ angular.module('meancouchApp')
             _rev: response._rev,
             name: response.name,
             link: response.link,
-            promo: response.promo,
+            promo1: response.promo1,
+            promo2: response.promo2,
             description: response.description,
             user: response.user,
             image: 'http://localhost:5984/test/' + response._id + '/image_small'
@@ -89,16 +90,31 @@ angular.module('meancouchApp')
             },
           },
           {
-            key: 'promo',
+            key: 'promo1',
             type: 'horizontalInput',
             templateOptions: {
               type: 'text',
               maxlength: 35,
-              label: 'Promotional message',
+              label: 'Promotional message 1',
               addonRight: {
                 class: 'fa fa-commenting fa-1x'
               },
-              placeholder: 'Best Bike Adventures in Peru with experienced guides',
+              placeholder: 'Best Bike Adventures in Peru',
+              description: 'Enter short but clear message to promote your business',
+              required: true
+            },
+          },
+          {
+            key: 'promo2',
+            type: 'horizontalInput',
+            templateOptions: {
+              type: 'text',
+              maxlength: 35,
+              label: 'Promotional message 2',
+              addonRight: {
+                class: 'fa fa-commenting fa-1x'
+              },
+              placeholder: 'with experienced guides',
               description: 'Enter short but clear message to promote your business',
               required: true
             },
@@ -177,7 +193,8 @@ angular.module('meancouchApp')
             user: vm.profile.user,
             name: vm.profile.name,
             link: vm.profile.link,
-            promo: vm.profile.promo,
+            promo1: vm.profile.promo1,
+            promo2: vm.profile.promo2,
             description: vm.profile.description,
             // _attachments: if new -> sharedProperties.dataObj comes from file-input - if edit -> sharedProperties.dataObj is defined in editProfile function
             _attachments: sharedProperties.dataObj
