@@ -20,7 +20,8 @@ angular.module('meancouchApp', [
   'nya.bootstrap.select',
   'ui-notification',
   'angularMoment',
-  'ngMessages'
+  'ngMessages',
+  'lk-google-picker'
 ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider

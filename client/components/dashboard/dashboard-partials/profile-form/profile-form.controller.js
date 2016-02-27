@@ -6,19 +6,20 @@
 'use strict';
 
 angular.module('meancouchApp')
-  .controller('ProfileFormCtrl', function ProfileFormCtrl($state, $q, Notification, couchdb, Database, sharedProperties) {
+  .controller('ProfileFormCtrl', function ProfileFormCtrl($state, $q, moment, Notification, couchdb, Database, sharedProperties) {
     // set database name for couchdb (angular app)
     	couchdb.db.use("test");
     // set databse name for local db (pouchdb)
-      var db = new Database('adsoko_v2');
+      var db          = new Database('adsoko_v2');
     // vm stands for "View Model" --> see https://github.com/johnpapa/angular-styleguide#controlleras-with-vm
-      var vm = this;
-    // set the object which holds the user submitted data
-      vm.profile = {};
-
-      var self = this;
+      var vm          = this;
+    // set the empty object which holds the user submitted data
+      vm.profile      = {};
+    // set the empty array which will hold the files from google file picker
+      vm.files        = [];
+      var self        = this;
     // to toogle elements
-      vm.isCollapsed = true;
+      vm.isCollapsed  = true;
 
       function checkId() {
         if ($state.params.id === undefined) {
@@ -42,7 +43,7 @@ angular.module('meancouchApp')
         // handle success
           // if we edit, we should have an attachment -> set it to sharedProperties.dataObj so we can retrieve it in the submit function
           sharedProperties.dataObj = response._attachments;
-          // to pre-populate the form values
+          // if we edit, we also have values, so we can pre-populate the form fields with this values
           vm.object = { 
           // set keys to the key name in formly form fields and the value to the response from databse to allow pre-populate a form with values
             _id: response._id,
@@ -74,64 +75,67 @@ angular.module('meancouchApp')
           {
             // the key to be used in the model values
             // so this will be bound to vm.profile.name
-            key: 'name',
+            key: 'title',
             type: 'horizontalInput',
             templateOptions: {
+              focus: 'true',
               type: 'text',
-              maxlength: 25,
-              minlength: 5,
-              label: 'Profile Name',
+              maxlength: 50,
+              minlength: 3,
+              label: 'Reise Ziel',
               addonRight: {
                 class: 'fa fa-file-text fa-1x'
               },
-              placeholder: 'Peru Bike Adventures',
-              description: 'Enter the name of your profile/business here',
+              placeholder: 'Tour Name',
+              description: 'Die Eingabe in diesem Feld wird als Titel der Reise verwendet.',
               required: true
             },
           },
           {
-            key: 'promo1',
+            key: 'price',
             type: 'horizontalInput',
             templateOptions: {
-              type: 'text',
-              maxlength: 35,
-              label: 'Promotional message 1',
+              type: 'number',
+              maxlength: 4,
+              label: 'Reise Preis',
               addonRight: {
-                class: 'fa fa-commenting fa-1x'
+                class: 'fa fa-eur fa-1x'
               },
-              placeholder: 'Best Bike Adventures in Peru',
-              description: 'Enter short but clear message to promote your business',
+              placeholder: '',
+              description: 'Reisepreis pro Person im Doppelzimmer',
               required: true
             },
           },
           {
-            key: 'promo2',
-            type: 'horizontalInput',
+            key: 'startDate',
+            type: 'horizontalDatepicker',
             templateOptions: {
-              type: 'text',
-              maxlength: 35,
-              label: 'Promotional message 2',
-              addonRight: {
-                class: 'fa fa-commenting fa-1x'
+              type: 'date',
+              label: 'Reise Termin',
+              datepickerPopup: 'MMMM, dd yyyy',
+              datepickerOptions: {
+                format: 'MMMM, dd yyyy'
               },
-              placeholder: 'with experienced guides',
-              description: 'Enter short but clear message to promote your business',
+              description: 'Das Datum in diesem Feld wird als Abreise Termin verwendet.',
               required: true
             },
+            /*expressionProperties: {
+              'templateOptions.disabled': 'model.checkbox'
+            }*/
           },
           {
-            key: 'link',
+            key: 'overnight',
             type: 'horizontalInput',
             templateOptions: {
-              type: 'url',
-              maxlength: 50,
-              label: 'Your Website',
+              type: 'number',
+              maxlength: 2,
+              label: 'Anzahl der Übernachtung',
               addonRight: {
-                class: 'fa fa-globe fa-1x'
+                class: 'fa fa-bed fa-1x'
               },
-              placeholder: 'Enter your website address here',
-              description: 'NOTE: please enter your website adress like this http://www.yourdomain.com',
-              required: false
+              placeholder: 'Anzahl der Nächte',
+              description: 'Die Eingabe in diesem Feld wird zur Berechnung der Reise Dauer und des Rückreise Termins verwendet.',
+              required: true
             },
             expressionProperties: {
               /*'templateOptions.disabled': '!model.item_name' // disabled when username is blank*/
@@ -142,13 +146,26 @@ angular.module('meancouchApp')
             type: 'horizontalTextArea',
             templateOptions: {
               type: 'textarea',
-              rows: 10,
-              maxlength: 1500,
-              minlength: 30,
-              label: 'Description',
-              placeholder: 'Enter a description about what you offer and what people will experience. Kepp it simple and informative.',
-              description: '1500 characters',
+              rows: 3,
+              maxlength: 100,
+              minlength: 5,
+              label: 'Kurzbeschreibung',
+              placeholder: 'Eine kurze Beschreibung der Reise.',
+              description: 'Die Eingabe in diesem Feld wird als Reisebeschreibung verwendet.',
               required: true
+            }
+          },
+          {
+            key: 'videoId',
+            type: 'horizontalInput',
+            templateOptions: {
+              type: 'text',
+              maxlength: 100,
+              minlength: 5,
+              label: 'Reise Video',
+              placeholder: 'YouTube Video id',
+              description: 'Die YouTube id findest Du in the Adresszeile des Browsers.',
+              required: false
             }
           },
           {
@@ -206,6 +223,60 @@ angular.module('meancouchApp')
           });
         }
       };
+
+      // Callback triggered after Picker is shown
+      vm.onLoaded = function () {
+        console.log('Google Picker loaded!');
+      }
+
+      // Callback triggered after selecting files
+      vm.onSelected = function (docs) {
+          angular.forEach(docs, function (file, index) {
+              vm.files.push(file);
+          });
+          console.log(vm.files);
+        }
+
+        // Callback triggered after clicking on cancel
+        vm.onCancel = function () {
+          console.log('Google picker close/cancel!');
+        }
+
+      // when google document is select, get values and put them into sharedPropertiesObj, so we ca use it in another controller
+        vm.onPicked = function(files) {
+          // console.log(files);
+            for(var key in files) {
+              if(files.hasOwnProperty(key)) {
+                  var value = files[key];
+
+                  vm.files.doc_id = value.id;
+                  vm.files.doc_title = value.name;
+                  vm.files.tour_startDate = moment(value.name.split("N")[0]).format('YYYY-MM-DD');         
+                  vm.files.tour_title = value.name.split("-")[3].split(",")[0];
+                  vm.files.tour_overnight = value.name.split("N")[1].split("-")[0].split("#")[0];
+                  vm.files.tour_price = value.name.split("#")[1].split("-")[0];
+                  vm.files.tour_description = value.description;
+              }
+            };
+            console.log(vm.files);
+
+            vm.object = {};
+            // if its new, we dont have an image. set it to false so we can use it later in an if function
+            vm.object.image = false;
+            
+            vm.object = {
+              _id: new moment().toISOString(),
+              // get the current user name and make him the owner
+              user: couchdb.user.name(),
+              title: vm.files.tour_title,
+              description: vm.files.tour_description,
+              price: parseInt(vm.files.tour_price),
+              startDate: new moment(vm.files.tour_startDate, 'YYYY-MM-DD').format('LL'),
+              overnight: parseInt(vm.files.tour_overnight)
+
+            };console.log(vm.object);
+            return formFields(vm.object)
+        }
 
     // function to start when controller loads
     checkId();
