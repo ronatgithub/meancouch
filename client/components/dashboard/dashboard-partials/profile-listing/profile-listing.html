@@ -14,8 +14,8 @@
     <div class="row margin-0 list-header hidden-sm hidden-xs">
         <div class="col-md-2"><div class="header">Reise Termin</div></div>
         <div class="col-md-2"><div class="header">Preis</div></div>
-        <div class="col-md-6"><div class="header">Reiseziel</div></div>
-        <div class="col-md-2"><div class="header">Action</div></div>
+        <div class="col-md-5"><div class="header">Reiseziel</div></div>
+        <div class="col-md-3"><div class="header">Action</div></div>
     </div>
 
     <div ng-repeat="doc in ctrl.docs | orderBy:'+startDate'" class="row margin-0 agenda">
@@ -35,26 +35,26 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-5">
             <div class="cell">
                 <div class="type description">
                     <strong>{{doc.overnight+1}} Tage {{doc.title}}</strong> <br> {{doc.description}}
                 </div>
             </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
             <div class="cell">
                 <div class="propertyname action">
                     <!-- Our delete modal takes a string as the first arg (used to display what we are deleting)
                     all other args are passed to the callback defined in profile.listing.controller.js -->
-                    <a ng-click="ctrl.delete(doc.name, doc)" tooltip="delete" tooltip-placement="top" style="color:red;" class="pull-right" href="#">
-                        <i class="fa fa-trash-o fa-2x "></i>
+                    <a ng-click="ctrl.edit(doc._id)" tooltip="edit" tooltip-placement="top" style="" href="#">
+                        <i class="fa fa-file-text fa-1x "></i> bearbeiten
                     </a>
-                    <a ng-click="ctrl.edit(doc._id)" tooltip="edit" tooltip-placement="top" style="padding-right:15px;" class="pull-right" href="#">
-                        <i class="fa fa-file-text fa-2x "></i>
+                    <a tooltip="view online" tooltip-placement="top" style="color:#B7B7B7;" href="/item/{{doc._id}}">
+                        <i class="fa fa-television fa-1x "></i> anschauen
                     </a>
-                    <a tooltip="view online" tooltip-placement="top" style="padding-right:15px;color:#B7B7B7;" class="pull-right" href="/item/{{doc._id}}">
-                        <i class="fa fa-television fa-2x "></i>
+                    <a ng-click="ctrl.delete(doc.title, doc)" tooltip="delete" tooltip-placement="top" style="color:red;" href="#">
+                        <i class="fa fa-trash-o fa-1x "></i> löschen
                     </a>
                 </div>
             </div>

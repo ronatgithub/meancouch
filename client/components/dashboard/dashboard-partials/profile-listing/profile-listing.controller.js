@@ -123,7 +123,7 @@ angular.module('meancouchApp')
 		    	if (data.hasOwnProperty('ok')) {
 		    		// go back to document list and show only the users own documents
 		    		self.check();
-		        	return Notification.success(doc.name + ' successful deleted');
+		        	return Notification.success(doc.title + ' successful deleted');
 		    	};
 		    	
 		    }, function (data) {

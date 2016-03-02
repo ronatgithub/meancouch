@@ -6,7 +6,7 @@
 'use strict';
 
 angular.module('meancouchApp')
-  .controller('ProfileFormCtrl', function ProfileFormCtrl($state, $q, googleDocument, moment, Notification, couchdb, Database, sharedProperties) {
+  .controller('ProfileFormCtrl', function ProfileFormCtrl($state, $q, $timeout, googleDocument, moment, Notification, couchdb, Database, sharedProperties) {
     // set database name for couchdb (angular app)
     	couchdb.db.use("test");
     // set databse name for local db (pouchdb)
@@ -56,7 +56,8 @@ angular.module('meancouchApp')
             itinerary: response.itinerary,
             videoId: response.videoId,
             user: response.user,
-            image: 'http://localhost:5984/test/' + response._id + '/image_small'
+            image: 'http://localhost:5984/test/' + response._id + '/image_small',
+            imagePresent: true
           };
         })
         .then(function() {
@@ -193,7 +194,13 @@ angular.module('meancouchApp')
           {
             key: 'image_large',
             type: 'upload-file',
-            templateOptions: {label: 'Image', required: true}
+            templateOptions: {label: 'Image'},
+            expressionProperties: {
+              'templateOptions.required': '!options.data.imagePresent'
+            },
+            data: {
+              imagePresent: false
+            }
             // to disable form fields
             //expressionProperties: {'templateOptions.disabled': function($viewValue, $modelValue, scope) {if(scope.model.ad_size === 4) {return false;} if(scope.model.ad_size === 6) {return false;} return true;}}
             // to hide form fields
@@ -217,6 +224,14 @@ angular.module('meancouchApp')
             }
           }
         ]; // END vm.formFields
+        // check if we have an imge so we can trigger true or false on the required field on file select
+        function() {
+          // vm.formFields[7] is the key: image_large in formly fields
+            var field = vm.formFields[7];
+            // console.log(vm.formFields[7]);
+            field.data.imagePresent = vm.profile.imagePresent;
+            field.runExpressions(); // re-run the expression properties
+        };
       };
     
       function onSubmit() { // console.log(vm.profile);
