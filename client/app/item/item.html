@@ -5,41 +5,113 @@
     <div class="item-header">
       <navbar></navbar>
     </div>
-    <div class="row" style="position: absolute; bottom: 7em; left: 0.5em; width: 100%; font-weight: bold; color: #fff; text-align: center;">
-    	<div  class="container">
-    		<div class=" page-header">
-        		<h3 style="text-shadow: #000000 0px 0px 5px">{{ctrl.return.name}}</h3>
-        		<p style="text-shadow: #000000 0px 0px 5px">{{ctrl.return.promo1}} {{ctrl.return.promo2}}</p>
-    		</div>
-    	</div>
+    
+    <div  class="container" style="position: absolute; bottom: 0em; left: 0em; width: 100%; font-weight: bold; color: #fff; text-align: left; background-color: rgba(9, 9, 9, 0.55); text-shadow: #000000 0px 0px 5px;">
+        <div class="container">
+            <div class="row extra-style">
+                <div class="col-sm-9">
+                    <div id="title">{{ctrl.return.overnight+1}} Tage {{ctrl.return.title}}</div>
+                	<div id="travel-date">{{ctrl.return.fromToDate}}</div>
+                    <p>{{ctrl.return.description}}</p>
+                </div>
+                <div class="col-sm-3">
+                    <i class="fa fa-euro fa-4x "></i> <span id="price">{{ctrl.return.price}}</span>
+                </div>
+        	</div>
+        </div>
     </div>
   </div>
 </div>
 
 <div class="container"> <!-- START container -->
-	<div class="page-header"></div>
     <div class="row">
-	    <div class="col-sm-1">
-	    	<div class="col-padding">
-	        	<p>About</p>
-	      	</div>
-	    </div>
-	    <div class="col-sm-11">
-	    	<div class="col-padding">
-	        	<p>{{ctrl.return.description}}</p>
-	    	</div>
-	    </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-1">
+        <div class="col-sm-8">
             <div class="col-padding">
-                <p>Contact</p>
+                <div class="itinerary" ng-bind-html="ctrl.return.itinerary"> <!-- itinerary here --> </div>
             </div>
         </div>
-        <div class="col-sm-11">
+        <div class="col-sm-4">
             <div class="col-padding">
-                <p>Website: <a href="#">{{ctrl.return.link}}</a></p>
+
+                <section id="labels">
+                  <div class="">
+                    <div class="row">
+                        <div class="col-sm-12">
+                          <div  class="dl">
+                            <div class="discount peter-river">
+                            <i class="fa fa-calendar fa-1x "></i>
+                                <div class="type">
+                                    {{ctrl.return.startDate | amDateFormat:'MMMM'}}
+                                </div>
+                            </div>
+                            <div class="descr">
+                                <strong style="color: #428bca;">
+                                     {{ctrl.return.fromToDate}} 
+                                </strong> 
+                                <p>Dauer: {{ctrl.return.overnight+1}} Tage</p>
+                                <p>Preis: {{ctrl.return.price}} Euro pro Person im Doppelzimmer</p>
+                            </div>
+                            <div class="ends">
+                                <small>
+                                   noch 12 Tage bis Abreise
+                                </small>
+                            </div>
+                            <div class="coupon midnight-grey">
+                                <a data-toggle="collapse" href="#code-3" class="open-code">Jetzt Buchen</a>
+                                <div id="code-3" class="collapse code">
+                                    OLV4SY3R
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </section>
+
+                <section id="labels">
+                  <div class="">
+                    <div class="row">
+                        <div class="col-sm-12">
+                          <div  class="dl">
+                            <!--<div class="brand">
+                                <h2>
+                                    Kontakt
+                                </h2>
+                            </div>-->
+                            <div class="discount peter-river">
+                            <i class="fa fa-phone fa-2x "></i>
+                                <!--<div class="type">
+                                    9.00 - 17.00
+                                </div>-->
+                            </div>
+                            <div class="descr">
+                                <strong style="color: #428bca;">
+                                     Telefon 03581 41 41 63 
+                                </strong> <br>
+                                Stadtschleicher Reisen, Obermarkt 13, 02826 Görlitz <br> 
+                                Email: reservation@stadtschleicher-görlitz.de <br> Internet: www.stadtschleicher-görlitz.de
+                            </div>
+                            <div class="ends">
+                                <small>
+                                   * von Montag bis Samstag.
+                                </small>
+                            </div>
+                            <div class="coupon midnight-grey" style="background: #999999;">
+                                <a data-toggle="collapse" href="#code-3" class="open-code">Email Senden</a>
+                                <div id="code-3" class="collapse code">
+                                    OLV4SY3R
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </section>
+
+                
+
+                
+
             </div>
         </div>
     </div>

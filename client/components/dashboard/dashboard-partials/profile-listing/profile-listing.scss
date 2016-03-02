@@ -1,5 +1,34 @@
 /* My Styles */
 
+/* Agenda styling */
+.agenda {  }
+
+/* Dates */
+.agenda .agenda-date { width: 170px; line-height: 1.669;}
+.agenda .agenda-date .dayofmonth {
+  width: 40px;
+  font-size: 36px;
+  line-height: 36px;
+  float: left;
+  text-align: right;
+  margin-right: 10px; 
+}
+.agenda .agenda-date .shortdate {
+  font-size: 0.75em; 
+}
+
+
+/* Times */
+.agenda .agenda-time { width: 140px; } 
+
+
+/* Events */
+.agenda .agenda-events {  } 
+.agenda .agenda-events .agenda-event {  } 
+
+@media (max-width: 767px) {
+    
+}
 
 /* Methods */
 .list-header {
@@ -20,7 +49,9 @@
   .method [class*=" row"]:hover {
     background-color: #f7f7f7; }
 .method .cell {
-  font-size: 0.85em; }
+  font-size: 0.85em;
+  border-left: 1px solid #ddd;
+  /*border-right: 1px solid #ddd;*/ }
   .method .cell .mobile-isrequired {
     display: none;
     font-weight: normal;
@@ -35,6 +66,13 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis; }
+  .price {
+    font-size: 1.5em;
+    line-height: 1.92857; }
+  .description {
+    line-height: 1.49; }
+  .action {
+    line-height: 2.95; }
   .method .cell code {
     color: #428bca; }
   .method .cell a, .method .cell a:hover {

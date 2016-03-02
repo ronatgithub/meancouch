@@ -17,7 +17,7 @@
 (function() {
 
 angular.module('meancouchApp')
-	.controller('ProfileListingCtrl', function ProfileListingCtrl($state, couchdb, Database, Notification, Modal) {
+	.controller('ProfileListingCtrl', function ProfileListingCtrl($state, moment, couchdb, Database, Notification, Modal) {
 		
 	    var self = this;
 	    // set databse name for local db
@@ -51,14 +51,17 @@ angular.module('meancouchApp')
 	    	db.query(user)
 	    	.then(function (result) {
 	    	  // handle result
-	    		// console.log(result);
+	    		 console.log(result);
 	    		for (var key in result.rows) {
 				// do stuff
 					self.data = {
 						_id: result.rows[key].id,
 						_rev: result.rows[key].doc._rev,
 						user: result.rows[key].key,
-						name: result.rows[key].value,
+						title: result.rows[key].value,
+						price: result.rows[key].doc.price,
+						startDate: result.rows[key].doc.startDate,
+						overnight: result.rows[key].doc.overnight,
 						description: result.rows[key].doc.description
 					};
 					self.docs.push(self.data);

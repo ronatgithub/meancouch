@@ -48,9 +48,9 @@ angular.module('meancouchApp')
 				// do stuff
 					self.data = {
 						id: result[key]._id,
-						name: result[key].name,
-						link: result[key].link,
-						promo1: result[key].promo1,
+						title: result[key].title,
+						startDate: result[key].startDate,
+						overnight: result[key].overnight,
 						promo2: result[key].promo2,
 						description: result[key].description,
 						media: result[key]._attachments

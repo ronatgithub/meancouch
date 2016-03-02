@@ -1,14 +1,26 @@
 <form class="form-horizontal" ng-submit="vm.onSubmit()" name="vm.form" novalidate>
 	<div class="page-header">
-	    <h2>Create New Profile</h2>
+	    <h2>Neue Reise Tour erstellen</h2>
 	    <p class="lead">
-	        We encourage you to setup as many profiles you want!
+	        Hier kannst Du eine neue Reise der Webseite hinzufügen
 	    </p>
-	    <div class="alert alert-warning">
-	        <h4>Profile Text Guidelines</h4>
-	        <p>Profile titles are limited to 25 characters. The two description lines are limited to 35 characters each. The display URL in your ad can show up to 35 characters. You can enter a URL longer than 35 characters, but it will appear shortened when your ad is displayed.
-	        <a href="javascript:;" lk-google-picker on-picked="vm.onPicked(docs)" on-loaded="vm.onLoaded()" on-cancel="vm.onCancel()">Open my Google Drive</a>
-	        </p>
+	    <div class="alert alert-info">
+	        <h4>Google Dokument Integration</h4>
+	        <p>Um Reisebeschreibungen als Google Dokument einzufügen müssen folgende Vorraussetzungen erfüllt sein:</p>
+	        <ul>
+	        	<li>
+	        		Google Dokument Titel muss folgenden Syntax haben:</br>
+	        		Jahr-Monat-TagNächte#Preis-Reiseziel z.B. 2015-06-01N03#376-Altmuehltal,Regensburg
+	        	</li>
+	        	<li>
+	        		Das Google Dokument sollte eine Beschreibung haben.
+	        	</li>
+	        	<li>
+	        		Das Google Document muss im Menue DATEI -> IM WEB VERÖFFENTLICHEN veröffentlicht sein
+	        	</li>
+	        </ul>
+	        </br> <button type="button" class="btn btn-primary" href="javascript:;" lk-google-picker on-picked="vm.onPicked(docs)" on-loaded="vm.onLoaded()" on-cancel="vm.onCancel()">Mein Google Drive öffnen</button>
+	        
 	    </div>
 	</div>
 	<formly-form model="vm.profile" fields="vm.formFields" options="vm.options" form="vm.form"> </formly-form>

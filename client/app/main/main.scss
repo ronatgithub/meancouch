@@ -1,4 +1,8 @@
-
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 /* Tablet and bigger */
 @media ( min-width: 768px ) {

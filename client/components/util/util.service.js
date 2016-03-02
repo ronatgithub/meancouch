@@ -47,13 +47,37 @@ function UtilService($window) {
           url.protocol === o.protocol;
       });
       return (origins.length >= 1);
-    }
+    },
   };
 
   return Util;
 }
 
-angular.module('meancouchApp.util')
-  .factory('Util', UtilService);
+angular.module('meancouchApp')
+  .factory('Util', UtilService)
+
+  /**
+   * Get content of published google doc via ajax request
+   *
+   * @param  {String}           key       - google document key
+   * @param  {String}           format    - google document export format (html, txt, pdf, rtf, odt, doc)
+   * @return {Object}                     - content of google document
+   */
+  .factory('googleDocument', function($http) {
+      return {
+          getContent: function(key, format) {
+              //return the promise directly.
+              return $http.get('https://docs.google.com/feeds/download/documents/export/Export?id=' + key + '&exportFormat=' + format)
+              .then(function(result) {
+                  //resolve the promise as the data
+                  return result.data;
+              });
+          }
+      }
+  });
 
 })();
+
+// https://docs.google.com/feeds/download/documents/export/Export?id=' + key + '&exportFormat=txt
+// https://docs.google.com/document/d/' + key + '/pub
+// https://docs.google.com/feeds/download/documents/export/Export?id=' + key + '&exportFormat=html

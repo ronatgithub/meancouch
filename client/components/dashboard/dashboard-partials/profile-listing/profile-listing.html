@@ -1,7 +1,7 @@
 <div class="page-header">
-    <h2>Profile Listing View</h2>
+    <h2>Reiseangebote</h2>
     <p class="lead">
-        This View lists all of your saved profiles. You can edit or delete them here.
+        Diese Übersicht listet alle verfügbaren Reiseangebote. Du kannst sie hier bearbeiten oder löschen.
     </p>
     <!-- <div class="alert alert-info">
         <h4>Row modifier class included</h4>
@@ -12,37 +12,39 @@
 
 <div class="method">
     <div class="row margin-0 list-header hidden-sm hidden-xs">
-        <div class="col-md-4"><div class="header">Profile Name</div></div>
-        <div class="col-md-2"><div class="header">created</div></div>
-        <div class="col-md-4"><div class="header">Description</div></div>
+        <div class="col-md-2"><div class="header">Reise Termin</div></div>
+        <div class="col-md-2"><div class="header">Preis</div></div>
+        <div class="col-md-6"><div class="header">Reiseziel</div></div>
         <div class="col-md-2"><div class="header">Action</div></div>
     </div>
 
-    <div ng-repeat="doc in ctrl.docs" class="row margin-0">
-        <div class="col-md-4">
+    <div ng-repeat="doc in ctrl.docs | orderBy:'+startDate'" class="row margin-0 agenda">
+        <div class="col-md-2">
             <div class="cell">
-                <div class="propertyname">
-                    {{doc.name}}
+                <div class="agenda-date">
+                    <div class="dayofmonth">{{doc.startDate | amDateFormat:'DD'}}</div>
+                    <div class="dayofweek">{{doc.startDate | amDateFormat:'dddd'}}</div>
+                    <div class="shortdate">{{doc.startDate | amDateFormat:'MMMM, YYYY'}}</div>
                 </div>
             </div>
         </div>       
         <div class="col-md-2">
             <div class="cell">
-                <div class="type">
-                    <span am-time-ago="doc._id"></span>
+                <div class="type price">
+                    {{doc.price}} Euro
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="cell">
-                <div class="type">
-                    {{doc.description}}
+                <div class="type description">
+                    <strong>{{doc.overnight+1}} Tage {{doc.title}}</strong> <br> {{doc.description}}
                 </div>
             </div>
         </div>
         <div class="col-md-2">
             <div class="cell">
-                <div class="propertyname">
+                <div class="propertyname action">
                     <!-- Our delete modal takes a string as the first arg (used to display what we are deleting)
                     all other args are passed to the callback defined in profile.listing.controller.js -->
                     <a ng-click="ctrl.delete(doc.name, doc)" tooltip="delete" tooltip-placement="top" style="color:red;" class="pull-right" href="#">
@@ -59,3 +61,4 @@
         </div>
     </div>
 </div>
+

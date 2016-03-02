@@ -6,7 +6,7 @@
 'use strict';
 
 angular.module('meancouchApp')
-  .controller('ProfileFormCtrl', function ProfileFormCtrl($state, $q, moment, Notification, couchdb, Database, sharedProperties) {
+  .controller('ProfileFormCtrl', function ProfileFormCtrl($state, $q, googleDocument, moment, Notification, couchdb, Database, sharedProperties) {
     // set database name for couchdb (angular app)
     	couchdb.db.use("test");
     // set databse name for local db (pouchdb)
@@ -39,7 +39,7 @@ angular.module('meancouchApp')
 
       function editProfile(id) { 
         // using couchdb-angular-app
-        couchdb.doc.get(id).then(function (response) { // console.log(response);
+        couchdb.doc.get(id).then(function (response) {  console.log(response);
         // handle success
           // if we edit, we should have an attachment -> set it to sharedProperties.dataObj so we can retrieve it in the submit function
           sharedProperties.dataObj = response._attachments;
@@ -48,11 +48,13 @@ angular.module('meancouchApp')
           // set keys to the key name in formly form fields and the value to the response from databse to allow pre-populate a form with values
             _id: response._id,
             _rev: response._rev,
-            name: response.name,
-            link: response.link,
-            promo1: response.promo1,
-            promo2: response.promo2,
+            title: response.title,
+            price: response.price,
+            startDate: response.startDate,
+            overnight: response.overnight,
             description: response.description,
+            itinerary: response.itinerary,
+            videoId: response.videoId,
             user: response.user,
             image: 'http://localhost:5984/test/' + response._id + '/image_small'
           };
@@ -156,6 +158,26 @@ angular.module('meancouchApp')
             }
           },
           {
+            key: 'itinerary',
+            type: 'horizontalTextArea',
+            templateOptions: {
+              type: 'textarea',
+              rows: 5,
+              minlength: 5,
+              label: 'Reiseverlauf',
+              placeholder: 'Eine ausführliche Beschreibung des Reiseverlaufs.',
+              description: 'Die Eingabe in diesem Feld wird als Reiseverlauf verwendet.',
+              required: true
+            },
+            /*expressionProperties: {
+              'templateOptions.disabled': function($viewValue, $modelValue) {
+                if($viewValue === undefined) {
+                  return false;
+                } return true;
+              }
+            } */
+          },
+          {
             key: 'videoId',
             type: 'horizontalInput',
             templateOptions: {
@@ -208,11 +230,13 @@ angular.module('meancouchApp')
             _id: vm.profile._id,
             _rev: vm.profile._rev,
             user: vm.profile.user,
-            name: vm.profile.name,
-            link: vm.profile.link,
-            promo1: vm.profile.promo1,
-            promo2: vm.profile.promo2,
+            title: vm.profile.title,
+            price: vm.profile.price,
+            startDate: vm.profile.startDate,
+            overnight: vm.profile.overnight,
             description: vm.profile.description,
+            itinerary: vm.profile.itinerary,
+            videoId: vm.profile.videoId,
             // _attachments: if new -> sharedProperties.dataObj comes from file-input - if edit -> sharedProperties.dataObj is defined in editProfile function
             _attachments: sharedProperties.dataObj
           })
@@ -237,15 +261,15 @@ angular.module('meancouchApp')
           console.log(vm.files);
         }
 
-        // Callback triggered after clicking on cancel
-        vm.onCancel = function () {
-          console.log('Google picker close/cancel!');
-        }
+      // Callback triggered after clicking on cancel
+      vm.onCancel = function () {
+        console.log('Google picker close/cancel!');
+      }
 
-      // when google document is select, get values and put them into sharedPropertiesObj, so we ca use it in another controller
-        vm.onPicked = function(files) {
-          // console.log(files);
-            for(var key in files) {
+      // when google document is select, get values and put them into the files object, so we ca use it to pre-populate the formly fields
+      vm.onPicked = function(files) {
+        //console.log(files);
+        for(var key in files) {
               if(files.hasOwnProperty(key)) {
                   var value = files[key];
 
@@ -257,26 +281,34 @@ angular.module('meancouchApp')
                   vm.files.tour_price = value.name.split("#")[1].split("-")[0];
                   vm.files.tour_description = value.description;
               }
-            };
-            console.log(vm.files);
-
-            vm.object = {};
-            // if its new, we dont have an image. set it to false so we can use it later in an if function
-            vm.object.image = false;
-            
-            vm.object = {
-              _id: new moment().toISOString(),
-              // get the current user name and make him the owner
-              user: couchdb.user.name(),
-              title: vm.files.tour_title,
-              description: vm.files.tour_description,
-              price: parseInt(vm.files.tour_price),
-              startDate: new moment(vm.files.tour_startDate, 'YYYY-MM-DD').format('LL'),
-              overnight: parseInt(vm.files.tour_overnight)
-
-            };console.log(vm.object);
-            return formFields(vm.object)
-        }
+        };
+        //console.log(vm.files);
+        // take the document id and get the content of the doc using googleDocument Service Factory in util.service.js
+        googleDocument.getContent(vm.files.doc_id, 'txt').then(function(response) {
+          // response from $http request in googleDocument Service Factory in util.service.js
+          //console.log(response);
+          // show an alert popup window to confirm its the correct document
+          alert(response);
+          // prepare the formfields to pre-populate data
+          vm.object = {};
+          // if its new, we dont have an image. set it to false so we can use it later in an if function
+          vm.object.image = false;
+          vm.object = {
+            _id: new moment().toISOString(),
+            // get the current user name and make him the owner
+            user: couchdb.user.name(),
+            title: vm.files.tour_title,
+            description: vm.files.tour_description,
+            price: parseInt(vm.files.tour_price),
+            startDate: new moment(vm.files.tour_startDate, 'YYYY-MM-DD').format('LL'),
+            overnight: parseInt(vm.files.tour_overnight),
+            itinerary: '{{' + vm.files.doc_id + '}}'
+          };
+          //console.log(vm.object);
+          // start the formFields function with data to pre-populate formly fields
+          return formFields(vm.object)
+        });
+      }
 
     // function to start when controller loads
     checkId();
