@@ -48,16 +48,16 @@
                                 <strong style="color: #428bca;">
                                      {{ctrl.return.fromToDate}} 
                                 </strong> 
-                                <p>Dauer: {{ctrl.return.overnight+1}} Tage</p>
-                                <p>Preis: {{ctrl.return.price}} Euro pro Person im Doppelzimmer</p>
+                                <p>Dauer: {{ctrl.return.overnight+1}} Tage</br>
+                                <strong>Preis: {{ctrl.return.price}} Euro pro Person im Doppelzimmer</strong></p>
                             </div>
                             <div class="ends">
-                                <small>
+                                <!--<small>
                                    noch 12 Tage bis Abreise
-                                </small>
+                                </small>-->
                             </div>
                             <div class="coupon midnight-grey">
-                                <a ng-controller="ModalBookingFormCtrl" ng-click="open()" data-toggle="collapse" href="#code-3" class="open-code">Jetzt Buchen</a>
+                                <a ng-controller="ModalBookingFormCtrl" ng-click="open()" data-toggle="collapse" href="#code-3" class="open-code">Jetzt Anfragen</a>
                                 
                             </div>
                           </div>
@@ -90,15 +90,12 @@
                                 Email: reservation@stadtschleicher-görlitz.de <br> Internet: www.stadtschleicher-görlitz.de
                             </div>
                             <div class="ends">
-                                <small>
+                                <!--<small>
                                    * von Montag bis Samstag.
-                                </small>
+                                </small>-->
                             </div>
                             <div class="coupon midnight-grey" style="background: #999999;">
-                                <a data-toggle="collapse" href="#code-3" class="open-code">Email Senden</a>
-                                <div id="code-3" class="collapse code">
-                                    OLV4SY3R
-                                </div>
+                                <a href="mailto:info@menzel-busreisen.de" class="open-code">Email Senden</a>
                             </div>
                           </div>
                         </div>
@@ -122,8 +119,9 @@
             <h3 class="modal-title">unverbindliche Buchungsanfrage</h3>
         </div>
         <form class="form-horizontal" method="get" action="https://script.google.com/macros/s/AKfycbzoTKiRmKAEtKMsmXJSwaDyaupiu-xkm2YwdbJKKf6kyMT2jCQ/exec" accept-charset="UTF-8">
-        <div class="modal-body">
-          <p>Bitte füllen Sie das Formular vollständig aus, wir werden uns umgehend bei Ihnen per Email oder Telefon melden. Bei Fragen stehen wir Ihnen auch gern telefonisch zur Verfügung. Rufen Sie uns an:  Telefon 03581 41 41 63</p>     
+        <div ng-controller="ItemCtrl as ctrl" class="modal-body">
+          <p>Bitte füllen Sie das Formular vollständig aus, wir werden uns umgehend bei Ihnen per Email oder Telefon melden. Bei Fragen stehen wir Ihnen auch gern telefonisch zur Verfügung. Rufen Sie uns an:  Telefon 03581 41 41 63</p>
+                <input name="tour" type="hidden" value="{{ctrl.return.overnight+1}} Tage {{ctrl.return.title}}">
                 <div class="form-group">
                   <label for="name" class="control-label col-md-2">Ihr Name</label>
                   <div class="col-md-6">

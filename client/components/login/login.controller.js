@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('meancouchApp')
-	.controller('LoginCtrl', function ($scope, $location, Database) {
+	.controller('LoginCtrl', function ($scope, $state, $location, Database) {
 	    $scope.message = 'Hello';
 		
 		var self = this;
@@ -28,7 +28,7 @@ angular.module('meancouchApp')
 		self.logout = function () {
 			db.logout().then(function (data) {
         	console.log(data);
-        	$location.path('/');
+        	$state.go('main', {}, {reload: true});
         	});
 		};
 
