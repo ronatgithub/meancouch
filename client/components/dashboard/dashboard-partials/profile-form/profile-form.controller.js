@@ -225,13 +225,14 @@ angular.module('meancouchApp')
           }
         ]; // END vm.formFields
         // check if we have an imge so we can trigger true or false on the required field on file select
-        function() {
+        $timeout(function() {
+        }, 100).then(function() {
           // vm.formFields[7] is the key: image_large in formly fields
             var field = vm.formFields[7];
             // console.log(vm.formFields[7]);
             field.data.imagePresent = vm.profile.imagePresent;
             field.runExpressions(); // re-run the expression properties
-        };
+        });
       };
     
       function onSubmit() { // console.log(vm.profile);
@@ -258,7 +259,7 @@ angular.module('meancouchApp')
           .then(function (response) { // console.log(response);
             // clear sharedProperties.dataObj
             sharedProperties.dataObj = {};
-            $state.go('dashboard.profile-listing');
+            $state.go('dashboard.profile-listing', {}, {reload: true});
           });
         }
       };
