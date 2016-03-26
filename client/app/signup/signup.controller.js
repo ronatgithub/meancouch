@@ -5,7 +5,7 @@ angular.module('meancouchApp')
 
 	    var self = this;
 		// set databse name for local db
-		var db = new Database('test');
+		var db = new Database('dev-3-diana');
 			
 		self.signup = function () {
 		    db.signup({

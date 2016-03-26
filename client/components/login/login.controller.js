@@ -6,7 +6,7 @@ angular.module('meancouchApp')
 		
 		var self = this;
 		// set databse name for local db
-		var db = new Database('adsoko_v2');
+		var db = new Database('dev-3-diana');
 
 	    self.login = function () {
 		    db.signin({

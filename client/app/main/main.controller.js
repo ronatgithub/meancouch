@@ -12,7 +12,7 @@ angular.module('meancouchApp')
 
 	    self.user = couchdb.user.name();
 	    self.roles = couchdb.user.roles();
-	    couchdb.db.use("test");
+	    couchdb.db.use("dev-3-diana");
 	    self.msg = '';
 	    self.docs = [];
 

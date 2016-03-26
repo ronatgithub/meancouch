@@ -7,7 +7,7 @@ angular.module('meancouchApp')
   	// get the item id from the URL paramater using $stateParams
   	var id = $stateParams.itemId;
   	var self = this;
-    couchdb.db.use("test");
+    couchdb.db.use("dev-3-diana");
 
       self.showDoc = function (id) {
           couchdb.doc.get(id).then(function (data) {
