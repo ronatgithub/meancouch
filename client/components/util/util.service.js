@@ -73,7 +73,7 @@ angular.module('meancouchApp')
                   return result.data;
               });
           }
-      }
+      };
   });
 
 })();

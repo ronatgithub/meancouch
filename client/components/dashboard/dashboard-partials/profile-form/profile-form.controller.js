@@ -8,9 +8,9 @@
 angular.module('meancouchApp')
   .controller('ProfileFormCtrl', function ProfileFormCtrl($state, $q, $timeout, googleDocument, moment, Notification, couchdb, Database, sharedProperties) {
     // set database name for couchdb (angular app)
-    	couchdb.db.use("test");
+    	couchdb.db.use("dev-3-diana");
     // set databse name for local db (pouchdb)
-      var db          = new Database('adsoko_v2');
+      var db          = new Database('dev-3-diana');
     // vm stands for "View Model" --> see https://github.com/johnpapa/angular-styleguide#controlleras-with-vm
       var vm          = this;
     // set the empty object which holds the user submitted data
@@ -56,7 +56,7 @@ angular.module('meancouchApp')
             itinerary: response.itinerary,
             videoId: response.videoId,
             user: response.user,
-            image: 'http://localhost:5984/test/' + response._id + '/image_small',
+            image: 'http://104.155.57.49:5984/dev-3-diana/' + response._id + '/image_small',
             imagePresent: true
           };
         })

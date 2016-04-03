@@ -10,7 +10,7 @@ angular.module('meancouchApp')
         controller: 'SignupCtrl',
         controllerAs: 'ctrl',
         access: {
-            requiresLogin: false,
+            requiresLogin: true,
             // requiredPermissions: ['Admin', 'UserManager'],
             // permissionType: 'AtLeastOne'
 
