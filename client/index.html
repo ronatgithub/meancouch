@@ -24,6 +24,36 @@
       <!-- injector:css -->
       <!-- endinjector -->
     <!-- endbuild -->
+    <!-- CSS for tour page -->
+    <!-- Fav and Touch Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/images/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="assets/images/ico/favicon.png">
+
+    <!-- CSS Plugins -->
+    <!-- <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" media="screen"> -->
+    <link href="assets/css/animate.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="assets/css/component.css" rel="stylesheet">
+    
+    <!-- CSS Font Icons -->
+    <link rel="stylesheet" href="assets/icons/ionicons/css/ionicons.css">
+    <link rel="stylesheet" href="assets/icons/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/icons/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="assets/icons/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="assets/icons/rivolicons/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic,300italic,300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,300italic,300,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
+
+    <!-- CSS Custom -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/color-04.css" rel="stylesheet">
+    <!-- CSS for tour page END -->
   </head>
   <body ng-app="meancouchApp">
     <!--[if lt IE 7]>
@@ -83,7 +113,9 @@
       <script src="app/app.js"></script>
       <!-- injector:js -->
       <script src="components/util/util.module.js"></script>
-      <script src="components/file-upload/file-upload.service.js"></script>
+      <script src="components/file-upload/file-upload.js"></script>
+      <script src="app/index/index.js"></script>
+      <script src="app/item/item.controller.js"></script>
       <script src="app/item/item.js"></script>
       <script src="app/item/item.service.js"></script>
       <script src="app/main/main.controller.js"></script>
@@ -96,8 +128,8 @@
       <script src="components/dashboard/dashboard.directive.js"></script>
       <script src="components/dashboard/dashboard.js"></script>
       <script src="components/file-upload/file-upload.controller.js"></script>
-      <script src="components/file-upload/file-upload.js"></script>
-      <script src="app/item/item.controller.js"></script>
+      <script src="app/index/index.controller.js"></script>
+      <script src="components/file-upload/file-upload.service.js"></script>
       <script src="components/footer/footer.directive.js"></script>
       <script src="components/google-picker/google-picker.controller.js"></script>
       <script src="components/google-picker/google-picker.service.js"></script>

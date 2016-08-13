@@ -56,6 +56,9 @@
     "controllerTemplates": "",
     "decoratorTemplates": "",
     "providerTemplates": "",
-    "routeTemplates": ""
+    "routeTemplates": "",
+    "componentDirectory": "app/components/",
+    "modulePrompt": true,
+    "componentTemplates": ""
   }
 }
