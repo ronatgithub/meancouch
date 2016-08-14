@@ -5,7 +5,7 @@ angular.module('meancouchApp')
     $stateProvider
       // the index view will have listing of all items
       .state('index', {
-        url: '/index',
+        url: '/',
         templateUrl: 'app/index/index.html',
         controller: 'IndexController',
         controllerAs: 'indexCtrl',
