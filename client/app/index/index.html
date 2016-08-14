@@ -1,6 +1,7 @@
 <body>
 
 	<div id="introLoader" class="introLoading"></div>
+
 	
 	<!-- start Container Wrapper -->
 	<div class="container-wrapper">
@@ -275,7 +276,7 @@
 							<!-- for smaller items: <div class="GridLex-col-3_sm-4_xs-6_xss-12 mb-20"> -->
 							<div class="GridLex-col-4_sm-6_xs-12 mb-30" ng-repeat="doc in indexCtrl.docs | orderBy:'+startDate'" ng-if="$index < 9">
 								<div class="package-grid-item"> 
-									<a href="detail-page.html">
+									<a ui-sref="item({ itemId: doc.id })">
 										<div class="image">
 											<img ng-if="doc.id" data-ng-src="http://104.155.57.49:5984/dev-3-diana/{{doc.id}}/image_small" alt="" />
 											<div class="absolute-in-image">

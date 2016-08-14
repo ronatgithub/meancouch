@@ -248,7 +248,7 @@ jQuery(function($) {
 			}
 		});
 		
-		// Read onlu default size star
+		// Read only default size star
 		$('.star-rating-read-only').raty({
 			readOnly: true,
 			round : { down: .2, full: .6, up: .8 },
