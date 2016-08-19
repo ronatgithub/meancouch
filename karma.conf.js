@@ -35,6 +35,7 @@ module.exports = function(config) {
       'client/bower_components/angular-messages/angular-messages.js',
       'client/bower_components/angular-google-picker/dist/google-picker.js',
       'client/bower_components/ngDialog/js/ngDialog.js',
+      'client/bower_components/angular-ui-select/dist/select.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'client/app/app.js',

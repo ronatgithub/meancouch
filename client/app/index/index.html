@@ -1,6 +1,6 @@
 <body>
 
-	<!-- <div id="introLoader" class="introLoading"></div> -->
+	<!-- <div intro id="introLoader" class="introLoading"></div> -->
 	
 	<!-- start Container Wrapper -->
 	<div class="container-wrapper">
@@ -36,8 +36,17 @@
 							<div class="column-item">
 							
 								<div class="form-group">
+
+									<ui-select ng-model="selected.value" theme="bootstrap" name="destination">
+									    <ui-select-match placeholder="Destination">
+									        <span ng-bind="$select.selected.name"></span>
+									    </ui-select-match>
+									    <ui-select-choices repeat="item in (indexCtrl.destinationArray | filter: $select.search) track by item.id">
+									        <span ng-bind="item.name"></span>
+									    </ui-select-choices>
+									</ui-select>
 								
-									<select name="destination" class="select2-multi form-control" data-placeholder="Choose a Destination" multiple>
+									<!-- <select name="destination" class="select2-multi form-control" data-placeholder="Choose a Destination" multiple>
 										<option value="">Choose a Destination</option>
 										<option value="0">Any Destination</option>
 										<option value="Albania">Albania</option>
@@ -79,7 +88,7 @@
 										<option value="Turkey">Turkey</option>
 										<option value="Vatican City">Vatican City</option>
 										<option value="Wales">Wales</option>
-									</select>
+									</select> -->
 
 								</div>
 							
@@ -88,8 +97,17 @@
 							<div class="column-item">
 							
 								<div class="form-group">
+
+									<ui-select ng-model="selected.value" theme="bootstrap" name="month">
+									    <ui-select-match placeholder="Month">
+									        <span ng-bind="$select.selected.name"></span>
+									    </ui-select-match>
+									    <ui-select-choices repeat="item in (indexCtrl.monthArray | filter: $select.search) track by item.id">
+									        <span ng-bind="item.name"></span>
+									    </ui-select-choices>
+									</ui-select>
 								
-									<select name="month" class="select2-multi form-control" data-placeholder="Choose a Departure Month" multiple>
+									<!-- <select name="month" class="select2-multi form-control" data-placeholder="Choose a Departure Month" multiple>
 										<option value="">Choose a Departure Month</option>
 										<option value="0">Any Departure Month</option>
 										<option value="1">January</option>
@@ -104,7 +122,7 @@
 										<option value="10">October</option>
 										<option value="11">November</option>
 										<option value="12">December</option>
-									</select>
+									</select> -->
 									
 								</div>
 							
@@ -114,12 +132,22 @@
 							
 								<div class="form-group">
 
-									<select name="year" class="select2-multi form-control" data-placeholder="Choose a Departure Year" multiple>
+							    <ui-select ng-model="selected.value" theme="bootstrap" name="year">
+							        <ui-select-match placeholder="Year">
+							        	<span ng-bind="$select.selected.value"></span>
+							        </ui-select-match>
+							        <ui-select-choices repeat="val in indexCtrl.values | filter: $select.search track by val.value">
+							            <div ng-bind="val.value | highlight: $select.search"></div>
+							        </ui-select-choices>
+							        
+							    </ui-select>
+
+									<!-- <select name="year" class="select2-multi form-control" data-placeholder="Choose a Departure Year" multiple>
 										<option value="">Choose a Departure Year</option>
 										<option value="0">Any Departure Year</option>
 										<option value="2016">2016</option>
 										<option value="2017">2017</option>
-									</select>
+									</select> -->
 									
 								</div>
 							
@@ -203,53 +231,8 @@
 						</div>
 					
 					</div>
-
-
-
-
-					<div resgrid class="grid destination-grid-wrapper">
-
-						<div class="grid-item" data-colspan="10" data-rowspan="10">
-							<a href="result-grid.html" class="top-destination-image-bg" style="background-image:url('assets/images/destination-grid/01.jpg');">
-								<div class="relative">
-									<h4>Maasai Mara</h4>
-									<span>Starting from $322</span>
-								</div>
-							</a>
-						</div>
-						
-						<div class="grid-item" data-colspan="10" data-rowspan="4">
-							<a href="result-grid.html" class="top-destination-image-bg" style="background-image:url('assets/images/destination-grid/02.jpg');">
-								<div class="relative">
-									<h4>Tsavo</h4>
-									<span>Starting from $322</span>
-								</div>
-							</a>
-						</div>
-						
-						<div class="grid-item" data-colspan="5" data-rowspan="6">
-							<a href="result-grid.html" class="top-destination-image-bg" style="background-image:url('assets/images/destination-grid/03.jpg');">
-								<div class="relative">
-									<h4>Amboseli</h4>
-									<span>Starting from $322</span>
-								</div>
-							</a>
-						</div>
-						
-						<div class="grid-item" data-colspan="5" data-rowspan="6">
-							<a href="result-grid.html" class="top-destination-image-bg" style="background-image:url('assets/images/destination-grid/04.jpg');">
-								<div class="relative">
-									<h4>Lake Nakuru</h4>
-									<span>Starting from $322</span>
-								</div>
-							</a>
-						</div>
-
-					</div>
-
-
 					
-					<!-- <div class="grid destination-grid-wrapper">
+					<div resgrid class="grid destination-grid-wrapper">
 			
 						<div class="grid-item" data-colspan="10" data-rowspan="10">
 							<a href="result-grid.html" class="top-destination-image-bg" style="background-image:url('assets/images/destination-grid/01.jpg');">
@@ -287,7 +270,7 @@
 							</a>
 						</div>
 						
-					</div> -->
+					</div>
 					
 				</div>
 				
