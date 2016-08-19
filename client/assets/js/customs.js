@@ -1,5 +1,6 @@
 
-jQuery(function($) {
+jQuery.noConflict();
+(function($) {
 
 	"use strict";
 
@@ -236,7 +237,7 @@ jQuery(function($) {
 		/**
 		 * Raty - Rating Star
 		 */
-		$.fn.raty.defaults.path = 'assets/images/raty';
+		$.fn.raty.defaults.path = 'images/raty';
 		
 		// Default size star 
 		$('.star-rating').raty({
@@ -248,7 +249,7 @@ jQuery(function($) {
 			}
 		});
 		
-		// Read only default size star
+		// Read onlu default size star
 		$('.star-rating-read-only').raty({
 			readOnly: true,
 			round : { down: .2, full: .6, up: .8 },
@@ -261,7 +262,7 @@ jQuery(function($) {
 		
 		// Smaller size star
 		$('.star-rating-12px').raty({
-			path: 'assets/images/raty',
+			path: 'images/raty',
 			starHalf: 'star-half-sm.png',
 			starOff: 'star-off-sm.png',
 			starOn: 'star-on-sm.png',
@@ -276,7 +277,7 @@ jQuery(function($) {
 		
 		// White color default size star
 		$('.star-rating-white').raty({
-			path: 'assets/images/raty',
+			path: 'images/raty',
 			starHalf: 'star-half-white.png',
 			starOff: 'star-off-white.png',
 			starOn: 'star-on-white.png',
@@ -406,7 +407,7 @@ jQuery(function($) {
 		/**
 		 * Instagram
 		 */
-		/*function createPhotoElement(photo) {
+		function createPhotoElement(photo) {
 			var innerHtml = $('<img>')
 			.addClass('instagram-image')
 			.attr('src', photo.images.thumbnail.url);
@@ -438,6 +439,6 @@ jQuery(function($) {
 				accessToken: '3301700665.4445ec5.c3ba39ad7828412286c1563cac3f594b'
 			});
 
-		});*/
+		});
 
 })(jQuery);

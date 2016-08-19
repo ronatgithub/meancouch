@@ -1,3 +1,26 @@
+ /* Bricklayer */
+
+.box {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  border: 1px solid black;
+  display:block;
+}
+
+
+
+
+
+
+
+
+
 /* mixin for multiline truncate */
 @mixin multiLineEllipsis($lineHeight: 1.2em, $lineCount: 1, $bgColor: white){
   overflow: hidden;

@@ -1,7 +1,6 @@
 <body>
 
-	<div id="introLoader" class="introLoading"></div>
-
+	<!-- <div id="introLoader" class="introLoading"></div> -->
 	
 	<!-- start Container Wrapper -->
 	<div class="container-wrapper">
@@ -204,8 +203,17 @@
 						</div>
 					
 					</div>
+
 					
-					<div class="grid destination-grid-wrapper">
+					<!-- Bricklayer needs to have "bricklayer" class name. -->
+					<div class="bricklayer" ng-cloak>
+					    <div class="box" bricklayer-append ng-repeat="item in data" style="background-color: {{item.color}};" ng-cloak>
+					        <img ng-src="http://placehold.it/{{item.width}}x{{item.height}}">
+					    </div>
+					</div>
+					
+					
+					<!-- <div class="grid destination-grid-wrapper">
 			
 						<div class="grid-item" data-colspan="10" data-rowspan="10">
 							<a href="result-grid.html" class="top-destination-image-bg" style="background-image:url('assets/images/destination-grid/01.jpg');">
@@ -243,7 +251,7 @@
 							</a>
 						</div>
 						
-					</div>
+					</div> -->
 					
 				</div>
 				
@@ -276,7 +284,7 @@
 							<!-- for smaller items: <div class="GridLex-col-3_sm-4_xs-6_xss-12 mb-20"> -->
 							<div class="GridLex-col-4_sm-6_xs-12 mb-30" ng-repeat="doc in indexCtrl.docs | orderBy:'+startDate'" ng-if="$index < 9">
 								<div class="package-grid-item"> 
-									<a ui-sref="item({ itemId: doc.id })">
+									<a ui-sref="detail-page({ itemId: doc.id })">
 										<div class="image">
 											<img ng-if="doc.id" data-ng-src="http://104.155.57.49:5984/dev-3-diana/{{doc.id}}/image_small" alt="" />
 											<div class="absolute-in-image">

@@ -1,0 +1,33 @@
+
+
+
+/* Google Document styling */
+.itinerary h1 {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.itinerary h2 {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.itinerary h3 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.itinerary img {
+    width: 100%;
+    display: block;
+    padding: 4px;
+    margin-bottom: 20px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-transition: border .2s ease-in-out;
+    -o-transition: border .2s ease-in-out;
+    transition: border .2s ease-in-out;
+}
+
