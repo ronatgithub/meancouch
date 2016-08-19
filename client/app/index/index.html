@@ -204,14 +204,85 @@
 					
 					</div>
 
-					
-					<!-- Bricklayer needs to have "bricklayer" class name. -->
-					<div class="bricklayer" ng-cloak>
-					    <div class="box" bricklayer-append ng-repeat="item in data" style="background-color: {{item.color}};" ng-cloak>
-					        <img ng-src="http://placehold.it/{{item.width}}x{{item.height}}">
-					    </div>
+
+
+
+					<div resgrid="{
+			gutter : '0',
+			itemSelector : '.grid-item',
+			'breakpoints': {
+				'desktop' : {
+					'range' : '1200-',
+					'options' : {
+						'column' : 20,
+					}
+				},
+				'tablet-landscape' : {
+					'range' : '1000-1200',
+					'options' : {
+						'column' : 20,
+					}
+				},
+				'tablet-portrate' : {
+					'range' : '767-1000',
+					'options' : {
+						'column' : 20,
+					}
+				},
+				'mobile-landscape' : {
+					'range' : '-767',
+					'options' : {
+						'column' : 10,
+					}
+				},
+				'mobile-portrate' : {
+					'range' : '-479',
+					'options' : {
+						'column' : 10,
+					}
+				},
+			}
+		}" class="grid destination-grid-wrapper">
+
+						<div class="grid-item" data-colspan="10" data-rowspan="10">
+							<a href="result-grid.html" class="top-destination-image-bg" style="background-image:url('assets/images/destination-grid/01.jpg');">
+								<div class="relative">
+									<h4>Maasai Mara</h4>
+									<span>Starting from $322</span>
+								</div>
+							</a>
+						</div>
+						
+						<div class="grid-item" data-colspan="10" data-rowspan="4">
+							<a href="result-grid.html" class="top-destination-image-bg" style="background-image:url('assets/images/destination-grid/02.jpg');">
+								<div class="relative">
+									<h4>Tsavo</h4>
+									<span>Starting from $322</span>
+								</div>
+							</a>
+						</div>
+						
+						<div class="grid-item" data-colspan="5" data-rowspan="6">
+							<a href="result-grid.html" class="top-destination-image-bg" style="background-image:url('assets/images/destination-grid/03.jpg');">
+								<div class="relative">
+									<h4>Amboseli</h4>
+									<span>Starting from $322</span>
+								</div>
+							</a>
+						</div>
+						
+						<div class="grid-item" data-colspan="5" data-rowspan="6">
+							<a href="result-grid.html" class="top-destination-image-bg" style="background-image:url('assets/images/destination-grid/04.jpg');">
+								<div class="relative">
+									<h4>Lake Nakuru</h4>
+									<span>Starting from $322</span>
+								</div>
+							</a>
+						</div>
+
 					</div>
-					
+
+
 					
 					<!-- <div class="grid destination-grid-wrapper">
 			

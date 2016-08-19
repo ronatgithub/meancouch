@@ -22,8 +22,7 @@ angular.module('meancouchApp', [
   'angularMoment',
   'ngMessages',
   'lk-google-picker',
-  'ngSanitize',
-  'jtt_bricklayer'
+  'ngSanitize'
 ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider
