@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('meancouchApp')
-  .controller('DetailPageCtrl', function ($scope, $sanitize, moment, googleDocument, couchdb, $state, $stateParams) {
+  .controller('DetailPageCtrl', function ($scope, $sanitize, moment, googleDocument, couchdb, $state, $stateParams, $document) {
     $scope.message = 'Hello';
 	
   	// get the item id from the URL paramater using $stateParams
@@ -112,6 +112,12 @@ angular.module('meancouchApp')
               }
           }
       };
+
+      // scrollspy from angular-scroll
+      // display scrolled pixel in console
+        $document.on('scroll', function() {
+          console.log('Document scrolled to ', $document.scrollLeft(), $document.scrollTop());
+        });
   })
 
   .controller('ModalBookingFormCtrl', function ($scope, $modal, $log) {
