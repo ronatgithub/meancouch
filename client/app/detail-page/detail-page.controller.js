@@ -50,6 +50,68 @@ angular.module('meancouchApp')
       };
 
       self.showDoc(id);
+
+      // angular-slick-carousel
+      $scope.slickConfig1 = {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          speed: 500,
+          arrows: true,
+          fade: true,
+          asNavFor: '.gallery-nav',
+          method: {},
+          event: {
+              beforeChange: function (event, slick, currentSlide, nextSlide) {
+              },
+              afterChange: function (event, slick, currentSlide, nextSlide) {
+              }
+          }
+      };
+
+      $scope.slickConfig2 = {
+          slidesToShow: 7,
+          slidesToScroll: 1,
+          speed: 500,
+          arrows: false,
+          asNavFor: '.gallery-slideshow',
+          dots: false,
+          centerMode: true,
+          focusOnSelect: true,
+          infinite: true,
+          responsive: [
+            {
+            breakpoint: 1199,
+            settings: {
+              slidesToShow: 7,
+              }
+            }, 
+            {
+            breakpoint: 991,
+            settings: {
+              slidesToShow: 5,
+              }
+            }, 
+            {
+            breakpoint: 767,
+            settings: {
+              slidesToShow: 5,
+              }
+            }, 
+            {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 3,
+              }
+            }
+          ],
+          method: {},
+          event: {
+              beforeChange: function (event, slick, currentSlide, nextSlide) {
+              },
+              afterChange: function (event, slick, currentSlide, nextSlide) {
+              }
+          }
+      };
   })
 
   .controller('ModalBookingFormCtrl', function ($scope, $modal, $log) {

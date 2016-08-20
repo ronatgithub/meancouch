@@ -37,6 +37,8 @@ module.exports = function(config) {
       'client/bower_components/ngDialog/js/ngDialog.js',
       'client/bower_components/angular-ui-select/dist/select.js',
       'client/bower_components/angular-scroll/angular-scroll.js',
+      'client/bower_components/slick-carousel/slick/slick.js',
+      'client/bower_components/angular-slick-carousel/dist/angular-slick.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'client/app/app.js',
