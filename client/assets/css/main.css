@@ -30,6 +30,10 @@
 * 18. Customized Flex Grid from FOundation
 -------------------------------------------------------------------*/
 
+/* CSS class to mask the visibility of an element  */
+.not-visible {
+  visibility: hidden;
+}
 
 /**
  * Reset

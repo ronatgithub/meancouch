@@ -122,38 +122,38 @@ angular.module('meancouchApp')
 			  {stateOff: 'glyphicon-off'}
 			];
 
-// back to top scroll from https://github.com/oblador/angular-scroll
-	$scope.toTheTop = function() {
-      $document.scrollTopAnimated(0, 1500).then(function() {
-        console && console.log('You just scrolled to the top!');
-      });
-    }
+		// back to top scroll from https://github.com/oblador/angular-scroll
+			$scope.toTheTop = function() {
+		      $document.scrollTopAnimated(0, 1500).then(function() {
+		        console && console.log('You just scrolled to the top!');
+		      });
+		    }
 
-// display an anchor link when scrolled below 500px
-	$document.on('scroll', function() {
-      var anchorLink = angular.element(document.getElementById('back-to-top'));
+		// display an anchor link when scrolled below 500px
+			$document.on('scroll', function() {
+		      var anchorLink = angular.element(document.getElementById('back-to-top'));
 
-      if($document.scrollTop() > 500){
-				anchorLink.fadeIn(200);
-			} else{
-				anchorLink.fadeOut(200);
-			}
-    });
+		      if($document.scrollTop() > 500){
+						anchorLink.fadeIn(200);
+					} else{
+						anchorLink.fadeOut(200);
+					}
+		    });
 
-// display scrolled pixel in console
-//    $document.on('scroll', function() {
-//      console.log('Document scrolled to ', $document.scrollLeft(), $document.scrollTop());
-//    });
+		// display scrolled pixel in console
+		//    $document.on('scroll', function() {
+		//      console.log('Document scrolled to ', $document.scrollLeft(), $document.scrollTop());
+		//    });
 
-	// the below is just as a note in case i need the code snipped again
-		/* var container = angular.element(document.getElementById('container'));
-	    var section2 = angular.element(document.getElementById('section-2'));
-	    $scope.toTheTop = function() {
-	      container.scrollTop(0, 5000);
-	    }
-	    $scope.toSection2 = function() {
-	      container.scrollTo(section2, 0, 1000);
-	    } */
+		// the below is just as a note in case i need the code snipped again
+			/* var container = angular.element(document.getElementById('container'));
+		    var section2 = angular.element(document.getElementById('section-2'));
+		    $scope.toTheTop = function() {
+		      container.scrollTop(0, 5000);
+		    }
+		    $scope.toSection2 = function() {
+		      container.scrollTo(section2, 0, 1000);
+		    } */
 
 	}); // end controller
 })();
