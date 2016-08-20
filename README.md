@@ -46,3 +46,14 @@ function(newDoc, oldDoc, userCtx) {
     throw({forbidden : "Only the user himself or an Admin can modify this documents."});
   }
 }
+
+# Github
+
+If you deleted a file from the working tree, then commit the deletion:
+
+git commit -a -m "A file was deleted"
+And push your commit upstream:
+
+git push
+      
+or git commit -am "A file was deleted"
