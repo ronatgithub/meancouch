@@ -22,7 +22,8 @@ angular.module('meancouchApp', [
   'angularMoment',
   'ngMessages',
   'lk-google-picker',
-  'ui.select'
+  'ui.select',
+  'duScroll'
 ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider

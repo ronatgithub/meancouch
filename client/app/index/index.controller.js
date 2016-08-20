@@ -53,7 +53,8 @@ angular.module('meancouchApp')
 						overnight: result[key].overnight,
 						promo2: result[key].promo2,
 						description: result[key].description,
-						media: result[key]._attachments
+						media: result[key]._attachments,
+						price: result[key].price
 					};
 					self.docs.push(self.data);
 				}
@@ -104,22 +105,32 @@ angular.module('meancouchApp')
 		    self.selected;
 
 		// Bootstrap-ui rating
-			$scope.rate = 3;
-			$scope.max = 5;
-			$scope.isReadonly = true;
+			self.rate = 3;
+			self.max = 5;
+			self.isReadonly = true;
 
-			$scope.hoveringOver = function(value) {
-			  $scope.overStar = value;
-			  $scope.percent = 100 * (value / $scope.max);
+			self.hoveringOver = function(value) {
+			  self.overStar = value;
+			  self.percent = 100 * (value / self.max);
 			};
 
-			$scope.ratingStates = [
+			self.ratingStates = [
 			  {stateOn: 'glyphicon-ok-sign', stateOff: 'glyphicon-ok-circle'},
 			  {stateOn: 'glyphicon-star', stateOff: 'glyphicon-star-empty'},
 			  {stateOn: 'glyphicon-heart', stateOff: 'glyphicon-ban-circle'},
 			  {stateOn: 'glyphicon-heart'},
 			  {stateOff: 'glyphicon-off'}
 			];
+
+// scroll from https://github.com/oblador/angular-scroll
+		var container = angular.element(document.getElementById('container'));
+	    var section2 = angular.element(document.getElementById('section-2'));
+	    $scope.toTheTop = function() {
+	      container.scrollTop(0, 5000);
+	    }
+	    $scope.toSection2 = function() {
+	      container.scrollTo(section2, 0, 1000);
+	    }
 
 	}); // end controller
 })();

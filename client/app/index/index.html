@@ -50,44 +50,6 @@
 										<option value="">Choose a Destination</option>
 										<option value="0">Any Destination</option>
 										<option value="Albania">Albania</option>
-										<option value="Austria">Austria</option>
-										<option value="Belgium">Belgium</option>
-										<option value="Bosnia">Bosnia</option>
-										<option value="Croatia">Croatia</option>
-										<option value="Czech Republic">Czech Republic</option>
-										<option value="Denmark">Denmark</option>
-										<option value="Egypt">Egypt</option>
-										<option value="England">England</option>
-										<option value="Estonia">Estonia</option>
-										<option value="Finland">Finland</option>
-										<option value="France">France</option>
-										<option value="Germany">Germany</option>
-										<option value="Greece">Greece</option>
-										<option value="Herzegovina">Herzegovina</option>
-										<option value="Hungary">Hungary</option>
-										<option value="Ireland">Ireland</option>
-										<option value="Italy">Italy</option>
-										<option value="Latvia">Latvia</option>
-										<option value="Liechtenstein">Liechtenstein</option>
-										<option value="Lithuania">Lithuania</option>
-										<option value="Luxembourg">Luxembourg</option>
-										<option value="Monaco">Monaco</option>
-										<option value="Montenegro">Montenegro</option>
-										<option value="Netherlands">Netherlands</option>
-										<option value="Northern Ireland">Northern Ireland</option>
-										<option value="Poland">Poland</option>
-										<option value="Portugal">Portugal</option>
-										<option value="Russia">Russia</option>
-										<option value="Scotland">Scotland</option>
-										<option value="Serbia">Serbia</option>
-										<option value="Slovakia">Slovakia</option>
-										<option value="Slovenia">Slovenia</option>
-										<option value="Spain">Spain</option>
-										<option value="Sweden">Sweden</option>
-										<option value="Switzerland">Switzerland</option>
-										<option value="Turkey">Turkey</option>
-										<option value="Vatican City">Vatican City</option>
-										<option value="Wales">Wales</option>
 									</select> -->
 
 								</div>
@@ -111,17 +73,6 @@
 										<option value="">Choose a Departure Month</option>
 										<option value="0">Any Departure Month</option>
 										<option value="1">January</option>
-										<option value="2">February</option>
-										<option value="3">March</option>
-										<option value="4">April</option>
-										<option value="5">May</option>
-										<option value="6">June</option>
-										<option value="7">July</option>
-										<option value="8">August</option>
-										<option value="9">September</option>
-										<option value="10">October</option>
-										<option value="11">November</option>
-										<option value="12">December</option>
 									</select> -->
 									
 								</div>
@@ -314,12 +265,12 @@
 											<h5 class="block-with-text-to-truncate">{{doc.title}}</h5>
 											<div class="rating-wrapper">
 												<div class="raty-wrapper">
-													<rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating> <span></span>
+													<rating ng-model="indexCtrl.rate" max="indexCtrl.max" readonly="indexCtrl.isReadonly" on-hover="indexCtrl.hoveringOver(value)" on-leave="indexCtrl.overStar = null"></rating> <span></span>
 												</div>
 											</div>
 											<div class="absolute-in-content">
 												<span class="btn"><i class="fa fa-heart-o"></i></span>
-												<div class="price">$1422</div>
+												<div class="price">EUR {{doc.price}}</div>
 											</div>
 										</div>
 									</a>

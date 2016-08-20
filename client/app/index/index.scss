@@ -1,3 +1,5 @@
+
+
 /* mixin for multiline truncate */
 @mixin multiLineEllipsis($lineHeight: 1.2em, $lineCount: 1, $bgColor: white){
   overflow: hidden;
