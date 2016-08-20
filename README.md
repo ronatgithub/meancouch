@@ -57,3 +57,6 @@ And push your commit upstream:
 git push
       
 or git commit -am "A file was deleted"
+
+### how to detached Head
+http://stackoverflow.com/questions/5772192/how-can-i-reconcile-detached-head-with-master-origin

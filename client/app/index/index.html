@@ -314,7 +314,7 @@
 											<h5 class="block-with-text-to-truncate">{{doc.title}}</h5>
 											<div class="rating-wrapper">
 												<div class="raty-wrapper">
-													<div class="star-rating-read-only" data-rating-score="3.0"></div> <span></span>
+													<rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating> <span></span>
 												</div>
 											</div>
 											<div class="absolute-in-content">

@@ -64,44 +64,62 @@ angular.module('meancouchApp')
 		};
 	  	
 	  	// ui-select options for destination
-		self.destinationArray = [
-	        {id: 1, name: 'Maasai Mara'},
-	        {id: 2, name: 'Tsavo'},
-	        {id: 3, name: 'Amboseli'},
-	        {id: 4, name: 'Lake Nakuru'},
-	        {id: 5, name: 'Shimba Hills'},
-    	];
+			self.destinationArray = [
+		        {id: 1, name: 'Maasai Mara'},
+		        {id: 2, name: 'Tsavo'},
+		        {id: 3, name: 'Amboseli'},
+		        {id: 4, name: 'Lake Nakuru'},
+		        {id: 5, name: 'Shimba Hills'},
+	    	];
 
-    	self.selected = { value: self.destinationArray[0] };
+	    	self.selected = { value: self.destinationArray[0] };
 
     	// ui-select options for month
-		self.monthArray = [
-	        {id: 1, name: 'January'},
-	        {id: 2, name: 'February'},
-	        {id: 3, name: 'March'},
-	        {id: 4, name: 'April'},
-	        {id: 5, name: 'May'},
-	        {id: 6, name: 'June'},
-	        {id: 7, name: 'July'},
-	        {id: 8, name: 'August'},
-	        {id: 9, name: 'September'},
-	        {id: 10, name: 'October'},
-	        {id: 11, name: 'November'},
-	        {id: 12, name: 'December'},
-    	];
+			self.monthArray = [
+		        {id: 1, name: 'January'},
+		        {id: 2, name: 'February'},
+		        {id: 3, name: 'March'},
+		        {id: 4, name: 'April'},
+		        {id: 5, name: 'May'},
+		        {id: 6, name: 'June'},
+		        {id: 7, name: 'July'},
+		        {id: 8, name: 'August'},
+		        {id: 9, name: 'September'},
+		        {id: 10, name: 'October'},
+		        {id: 11, name: 'November'},
+		        {id: 12, name: 'December'},
+	    	];
 
-    	self.selected2 = { value: self.monthArray[0] };
+	    	self.selected2 = { value: self.monthArray[0] };
 
 		// ui-select options for year
-    	self.isLoaded = false;
-	    self.values = [{
-	        'key': 1,
-	        'value': '2016'
-	    }, {
-	        'key': 2,
-	        'value': '2017'
-	    }];
-	    self.selected;
+	    	self.isLoaded = false;
+		    self.values = [{
+		        'key': 1,
+		        'value': '2016'
+		    }, {
+		        'key': 2,
+		        'value': '2017'
+		    }];
+		    self.selected;
+
+		// Bootstrap-ui rating
+			$scope.rate = 3;
+			$scope.max = 5;
+			$scope.isReadonly = true;
+
+			$scope.hoveringOver = function(value) {
+			  $scope.overStar = value;
+			  $scope.percent = 100 * (value / $scope.max);
+			};
+
+			$scope.ratingStates = [
+			  {stateOn: 'glyphicon-ok-sign', stateOff: 'glyphicon-ok-circle'},
+			  {stateOn: 'glyphicon-star', stateOff: 'glyphicon-star-empty'},
+			  {stateOn: 'glyphicon-heart', stateOff: 'glyphicon-ban-circle'},
+			  {stateOn: 'glyphicon-heart'},
+			  {stateOff: 'glyphicon-off'}
+			];
 
 	}); // end controller
 })();
