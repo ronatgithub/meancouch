@@ -60,6 +60,8 @@ angular.module('meancouchApp', [
       positionY: 'bottom'
     });
   })
+  // angular-scroll set default speed to scroll
+  .value('duScrollDuration', 2000)
 
 
 

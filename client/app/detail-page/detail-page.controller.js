@@ -113,11 +113,28 @@ angular.module('meancouchApp')
           }
       };
 
-      // scrollspy from angular-scroll
-      // display scrolled pixel in console
-        $document.on('scroll', function() {
-          console.log('Document scrolled to ', $document.scrollLeft(), $document.scrollTop());
+      // back to top scroll from https://github.com/oblador/angular-scroll
+      $scope.toTheTop = function() {
+          $document.scrollTopAnimated(0, 1500).then(function() {
+            console && console.log('You just scrolled to the top!');
+          });
+        };
+
+      // display an anchor link when scrolled below 500px
+      $document.on('scroll', function() {
+          var anchorLink = angular.element(document.getElementById('back-to-top'));
+
+          if($document.scrollTop() > 500){
+            anchorLink.fadeIn(200);
+          } else{
+            anchorLink.fadeOut(200);
+          }
         });
+
+      // display scrolled pixel in console
+      //  $document.on('scroll', function() {
+      //    console.log('Document scrolled to ', $document.scrollLeft(), $document.scrollTop());
+      //  });
   })
 
   .controller('ModalBookingFormCtrl', function ($scope, $modal, $log) {
