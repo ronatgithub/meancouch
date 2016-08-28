@@ -24,7 +24,8 @@ angular.module('meancouchApp', [
   'lk-google-picker',
   'ui.select',
   'duScroll',
-  'slickCarousel'
+  'slickCarousel',
+  'mgcrea.bootstrap.affix'
 ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider

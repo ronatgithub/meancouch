@@ -31,7 +31,8 @@
     "ngDialog": "~0.5.8",
     "angular-ui-select": "^0.19.4",
     "angular-scroll": "^1.0.0",
-    "angular-slick-carousel": "^3.1.7"
+    "angular-slick-carousel": "^3.1.7",
+    "angular-bootstrap-affix": "^0.2.2"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.0"
@@ -39,6 +40,11 @@
   "overrides": {
     "angular-formly-templates-bootstrap": {
       "main": "dist/angular-formly-templates-bootstrap.min.js"
+    },
+    "angular-jquery": {
+      "main": [
+        "dist/angular-jquery.js"
+      ]
     }
   }
 }
