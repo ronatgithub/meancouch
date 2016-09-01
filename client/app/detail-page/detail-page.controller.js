@@ -184,32 +184,32 @@ angular.module('meancouchApp')
       
   })
 
-.controller('AccordionDemoCtrl', function ($scope) {
-  $scope.oneAtATime = false;
-  $scope.groups = [
-    {
-      title: "Visit: Sipan/Trstenik - 1",
-      content: "Among going manor who did. Do ye is celebrated it sympathize considered. May ecstatic did surprise elegance the ignorant age. Own her miss cold last. It so numerous if he outlived disposal. How but sons mrs lady when. Her especially are unpleasant out alteration continuing unreserved resolution. Hence hopes noisy may china fully and. Am it regard stairs branch thirty length afford. - 1",
-      open: false
-    },
-    {
-      title: "Dynamic Group Header - 2",
-      content: "Dynamic Group Body - 2",
-      open: false
-    }
-  ];
-  
-  $scope.opened = function (group, i) {
-    console.log("Opened group with offset: "+ i);
-  };
-  $scope.$watch('groups', function(groups){
-    angular.forEach(groups, function(group, idx){
-      if (group.open) {
-        console.log("Opened group with idx: "+idx);
+  .controller('AccordionCtrl', function ($scope) {
+    $scope.oneAtATime = false;
+    $scope.groups = [
+      {
+        title: "Visit: Tsavo East",
+        content: "Among going manor who did. Do ye is celebrated it sympathize considered. May ecstatic did surprise elegance the ignorant age. Own her miss cold last. It so numerous if he outlived disposal. How but sons mrs lady when. Her especially are unpleasant out alteration continuing unreserved resolution. Hence hopes noisy may china fully and. Am it regard stairs branch thirty length afford. - 1",
+        open: false
+      },
+      {
+        title: "Visit: Tsavo West",
+        content: "Among going manor who did. Do ye is celebrated it sympathize considered. May ecstatic did surprise elegance the ignorant age. Own her miss cold last. It so numerous if he outlived disposal. How but sons mrs lady when. Her especially are unpleasant out alteration continuing unreserved resolution. Hence hopes noisy may china fully and. Am it regard stairs branch thirty length afford. - 1",
+        open: false
       }
-    })   
-  }, true);
-})
+    ];
+    
+    $scope.opened = function (group, i) {
+      console.log("Opened group with offset: "+ i);
+    };
+    $scope.$watch('groups', function(groups){
+      angular.forEach(groups, function(group, idx){
+        if (group.open) {
+          console.log("Opened group with idx: "+idx);
+        }
+      })   
+    }, true);
+  })
 
   .controller('ModalBookingFormCtrl', function ($scope, $modal, $log) {
 

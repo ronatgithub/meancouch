@@ -3,6 +3,22 @@
     background-color: #fff;
 }
 
+/* Accordion Day number close/open styling */
+.itinerary-item-wrapper .panel-open .absolute-day-number-open {
+    position: absolute;
+    top: -1px;
+    left: -42px;
+    background: #FFF;
+    border: 2px solid #F0A42B;
+    color: #F0A42B;
+    width: 22px;
+    height: 22px;
+    line-height: 18px;
+    border-radius: 50%;
+    display: block;
+    text-align: center;
+    font-size: 12px;
+}
 
 /* Overights for active state on sidebar anchor links */
 .scrollspy-sidebar .nav > li .active {
