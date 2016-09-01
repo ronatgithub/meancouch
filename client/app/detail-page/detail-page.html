@@ -1,4 +1,19 @@
-
+  <script type="text/ng-template" id="group-template.html">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title" style="color:#fa39c3">
+          <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" accordion-transclude="heading">
+            <span accordion-header ng-class="{'text-muted': isDisabled}">
+              {{heading}}
+            </span>
+          </a>
+        </h4>
+      </div>
+      <div class="panel-collapse collapse" collapse="!isOpen">
+        <div class="panel-body" style="text-align: right" ng-transclude></div>
+      </div>
+    </div>
+  </script>
 
 <body class="">
   
@@ -198,8 +213,12 @@
                         </div>
                         
                         <div class="col-sm-8 col-md-9">
+
+
+<!-- ng-class="{'icon-minus-sign':groups[$index].open,'icon-plus-sign':!groups[$index].open }" -->
                         
-                          <div class="itinerary-wrapper">
+                          <div  ng-controller="AccordionDemoCtrl" class="itinerary-wrapper">
+                          <accordion close-others="oneAtATime">
                           
                             <div class="itinerary-item intro-item">
                               <h5>Introduction</h5>
@@ -212,19 +231,22 @@
                             <div class="itinerary-day-label font600 uppercase"><span>Day</span></div>
                             
                             <div class="itinerary-item-wrapper">
-                            
+
                               <div class="panel-group bootstarp-toggle">
-                              
+                                
+                                <accordion-group class="panel itinerary-item" ng-repeat="group in groups" is-open="group.open">
                                 <div class="panel itinerary-item">
                                   <div class="panel-heading">
                                     <h5 class="panel-title">
-                                      <a data-toggle="collapse" data-parent="#" href="#bootstarp-toggle-one"><span class="absolute-day-number">1</span> Visit: Dubrovnik</a>
+                                      <accordion-heading>
+                                          <span class="absolute-day-number">{{$index + 1}}</span> {{group.title}}
+                                      </accordion-heading>
                                     </h5>
                                   </div>
-                                  <div id="bootstarp-toggle-one" class="panel-collapse collapse">
+                                  
                                     <div class="panel-body">
                                     
-                                      <p>Ecstatic advanced and procured civility not absolute put continue. Overcame breeding or my concerns removing desirous so absolute. My melancholy unpleasing imprudence considered in advantages so impression. Almost unable put piqued talked likely houses her met. Met any nor may through resolve entered. An mr cause tried oh do shade happy.</p>
+                                      <p>{{group.content}}</p>
                                       
                                       <ul class="itinerary-meta clearfix">
                                         <li><i class="fa fa-building-o"></i> stay at Hilton Hotel</li>
@@ -232,11 +254,11 @@
                                       </ul>
                                       
                                     </div>
-                                  </div>
-
+                                  
                                 </div>
+                                </accordion-group>
                                 <!-- end of panel -->
-
+<!--
                                 <div class="panel itinerary-item">
                                   <div class="panel-heading">
                                     <h5 class="panel-title">
@@ -256,7 +278,7 @@
                                     </div>
                                   </div>
                                 </div>
-                                <!-- end of panel -->
+                                <! end of panel 
 
                                 <div class="panel itinerary-item">
                                   <div class="panel-heading">
@@ -277,7 +299,7 @@
                                     </div>
                                   </div>
                                 </div>
-                                <!-- end of panel -->
+                                <! end of panel 
 
                                 <div class="panel itinerary-item">
                                   <div class="panel-heading">
@@ -298,12 +320,12 @@
                                     </div>
                                   </div>
                                 </div>
-                                <!-- end of panel -->
-
+                                <! end of panel 
+-->
                               </div>
                             
                             </div>
-                            
+                          </accordion>  
                           </div>
                           
                         </div>
