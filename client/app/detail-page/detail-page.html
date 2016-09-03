@@ -15,6 +15,46 @@
     </div>
   </script>
 
+      <script type="text/ng-template" id="ModalBookingFormContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Make an inquiry</h3>
+        </div>
+        <form class="form-horizontal" method="get" action="https://script.google.com/macros/s/AKfycbzoTKiRmKAEtKMsmXJSwaDyaupiu-xkm2YwdbJKKf6kyMT2jCQ/exec" accept-charset="UTF-8">
+        <div class="modal-body">
+          <p>Please fill out this form so we can contact you. You can as well give as a call +49 3581 41 41 63 or send an email to denis@dm-tours.net</p>
+                <input name="tour" type="hidden" value="{{ctrl.return.overnight+1}} Tage {{ctrl.return.title}}">
+                <div class="form-group">
+                  <label for="name" class="control-label col-md-2">Your Name</label>
+                  <div class="col-md-6">
+                      <input name="name" type="text" class="form-control" placeholder="Vor und Nachname">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="email" class="control-label col-md-2">Email</label>
+                  <div class="col-md-6">
+                      <input name="email" type="text" class="form-control" placeholder="Email Adresse">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="phone" class="control-label col-md-2">Phone</label>
+                  <div class="col-md-6">
+                      <input name="phone" type="text" class="form-control" placeholder="Vorwahl und Telefon Nummer">
+                  </div>
+                </div>            
+        </div>
+        <div class="modal-footer">
+          <div class="form-group">
+            <div class="col-md-12">
+              <input class="btn btn-primary pull-left col-md-3" type="submit" ng-click="ok()" value="Absenden"/>
+              <input class="btn btn-default pull-left col-md-3" type="reset" ng-click="cancel()" value="Abrechen"/>
+            </div>
+          </div>
+        </div>
+        </form>
+      </script>
+
 <body class="">
   
   <!-- start Container Wrapper -->
@@ -88,7 +128,7 @@
             
             <div class="flex-column flex-md-4 flex-align-bottom flex-sm-12 mt-20-sm">
               <div class="text-right text-left-sm">
-                <a href="#section-5" class="anchor btn btn-primary">See dates &amp; Book Now</a>
+                <a href="#section-5" offset="165" du-smooth-scroll du-scrollspy class="anchor btn btn-primary">See dates &amp; Book Now</a>
               </div>
             </div>
           
@@ -229,21 +269,21 @@
                               <div class="itinerary-item-wrapper">
                                 <div class="panel-group bootstarp-toggle">
                                   
-                                  <accordion-group class="panel itinerary-item" ng-repeat="group in groups" is-open="group.open">
+                                  <accordion-group class="panel itinerary-item" ng-repeat="item in itineraryItems" is-open="item.open">
                                     
                                     <div class="panel itinerary-item">
                                       
                                       <div class="panel-heading">
                                         <h5 class="panel-title">
                                           <accordion-heading>
-                                              <span ng-class="{'absolute-day-number-open':groups[$index].open,'absolute-day-number':!groups[$index].open }">{{$index + 1}}</span> {{group.title}}
+                                              <span ng-class="{'absolute-day-number-open':itineraryItems[$index].open,'absolute-day-number':!itineraryItems[$index].open }">{{$index + 1}}</span> {{item.title}}
                                           </accordion-heading>
                                         </h5>
                                       </div>
                                       
                                         <div class="panel-body">
                                         
-                                          <p>{{group.content}}</p>
+                                          <p>{{item.content}}</p>
                                           
                                           <ul class="itinerary-meta clearfix">
                                             <li><i class="fa fa-building-o"></i> stay at Galdessa Camp</li>
@@ -775,52 +815,25 @@
                     <div class="faq-alt-2-wrapper">
                       <!-- <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i> -->
                       <accordion close-others="oneAtATime">
-                        <div accordion-group class="bootstarp-accordion" is-open="status.open">
+                        <div accordion-group class="bootstarp-accordion" ng-repeat="item in faqItems" is-open="item.open">
                           <accordion-heading>
-                            What is this faq?
+                            {{item.title}}
                           </accordion-heading>
-                            His exquisite sincerity education shameless ten earnestly breakfast add. So we me unknown as improve hastily sitting forming. Especially favourable compliment but thoroughly unreserved saw she themselves. Sufficient impossible him may ten insensible put continuing. Oppose exeter income simple few joy cousin but twenty. Scale began quiet up short wrong in in. Sportsmen shy forfeited <a href="#">engrossed may</a> can.
+                            {{item.content}}
                         </div>
                         <!-- end of panel -->
-                        <div accordion-group class="bootstarp-accordion">
-                          <accordion-heading>
-                            What is this faq?
-                          </accordion-heading>
-                            His exquisite sincerity education shameless ten earnestly breakfast add. So we me unknown as improve hastily sitting forming. Especially favourable compliment but thoroughly unreserved saw she themselves. Sufficient impossible him may ten insensible put continuing. Oppose exeter income simple few joy cousin but twenty. Scale began quiet up short wrong in in. Sportsmen shy forfeited <a href="#">engrossed may</a> can.
+                      
+                        <div class="text-center pt-10" style="margin-top:20px;">
+                          <a href="#" ng-click="openAllItems()" class="btn btn-primary">Show ALl FAQs</a>
                         </div>
-                        <!-- end of panel -->
-                        <div accordion-group class="bootstarp-accordion">
-                          <accordion-heading>
-                            What is this faq?
-                          </accordion-heading>
-                            His exquisite sincerity education shameless ten earnestly breakfast add. So we me unknown as improve hastily sitting forming. Especially favourable compliment but thoroughly unreserved saw she themselves. Sufficient impossible him may ten insensible put continuing. Oppose exeter income simple few joy cousin but twenty. Scale began quiet up short wrong in in. Sportsmen shy forfeited <a href="#">engrossed may</a> can.
-                        </div>
-                        <!-- end of panel -->
-                        <div accordion-group class="bootstarp-accordion">
-                          <accordion-heading>
-                            What is this faq?
-                          </accordion-heading>
-                            His exquisite sincerity education shameless ten earnestly breakfast add. So we me unknown as improve hastily sitting forming. Especially favourable compliment but thoroughly unreserved saw she themselves. Sufficient impossible him may ten insensible put continuing. Oppose exeter income simple few joy cousin but twenty. Scale began quiet up short wrong in in. Sportsmen shy forfeited <a href="#">engrossed may</a> can.
-                        </div>
-                        <!-- end of panel -->
-                        <div accordion-group class="bootstarp-accordion">
-                          <accordion-heading>
-                            What is this faq?
-                          </accordion-heading>
-                            His exquisite sincerity education shameless ten earnestly breakfast add. So we me unknown as improve hastily sitting forming. Especially favourable compliment but thoroughly unreserved saw she themselves. Sufficient impossible him may ten insensible put continuing. Oppose exeter income simple few joy cousin but twenty. Scale began quiet up short wrong in in. Sportsmen shy forfeited <a href="#">engrossed may</a> can.
-                        </div>
-                        <!-- end of panel -->
+
                       </accordion>
                       <!-- end of #accordion -->
-                      
-                      <div class="text-center pt-10">
-                        <a href="#" class="btn btn-primary">Show ALl FAQs</a>
-                      </div>
                       
                     </div>
                     
                   </div>
-                  
+                  <!--
                   <div id="section-7" class="detail-content">
                   
                     <div class="section-title text-left">
@@ -1327,10 +1340,10 @@
                     </div>
                     
                   </div>  
-                  
+                  -->
                   <div class="call-to-action">
                   
-                    Question? <a href="#" class="btn btn-primary btn-sm btn-inverse">Make an inquiry</a> or call +66 28 878 5452
+                    Question? <a href="#" ng-controller="ModalBookingFormCtrl" ng-click="open()" class="btn btn-primary btn-sm btn-inverse">Make an inquiry</a> or call +49 3581 41 41 63
                   
                   </div>
                     
@@ -1353,7 +1366,7 @@
                       <li><a href="#section-4" offset="165" du-smooth-scroll du-scrollspy class="anchor">What's Included</a></li>
                       <li><a href="#section-5" offset="165" du-smooth-scroll du-scrollspy class="anchor">Availabilities</a></li>
                       <li><a href="#section-6" offset="165" du-smooth-scroll du-scrollspy class="anchor">Information &amp; FAQ</a></li>
-                      <li><a href="#section-7" offset="165" du-smooth-scroll du-scrollspy class="anchor">Reviews</a></li>
+                      <!-- <li><a href="#section-7" offset="165" du-smooth-scroll du-scrollspy class="anchor">Reviews</a></li> -->
                     </ul>
                   </li>
 

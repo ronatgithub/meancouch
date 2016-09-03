@@ -51,7 +51,7 @@ angular.module('meancouchApp')
 
       self.showDoc(id);
 
-      // ui-accordion true/false switches to change states
+    // ui-accordion true/false switches to change states
       $scope.oneAtATime = true;
       $scope.manyAtATime = false;
       $scope.status = {
@@ -60,8 +60,71 @@ angular.module('meancouchApp')
         isFirstDisabled: false,
         open: false
       };
+      
+    // ui-accordion for faq to toogle all items
+      /* http://plnkr.co/edit/WUKEfcBrSf3XrIQAik67?p=preview */
+      $scope.toggleAllItems = function(){
+        $scope.faqItems.map(function(item){
+          item.open = !item.open;
+        });
+      }
 
-      // ui-select options for month
+    // ui-accordion for faq to open all items
+      $scope.openAllItems = function(){
+        $scope.faqItems.map(function(item){
+          item.open = true;
+        });
+      };
+
+    // ui-accordion for travel itineraries items
+      $scope.itineraryItems = [
+        {
+          title: "Visit: Tsavo East",
+          content: "Among going manor who did. Do ye is celebrated it sympathize considered. May ecstatic did surprise elegance the ignorant age. Own her miss cold last. It so numerous if he outlived disposal. How but sons mrs lady when. Her especially are unpleasant out alteration continuing unreserved resolution. Hence hopes noisy may china fully and. Am it regard stairs branch thirty length afford. - 1",
+          open: false
+        },
+        {
+          title: "Visit: Tsavo West",
+          content: "Among going manor who did. Do ye is celebrated it sympathize considered. May ecstatic did surprise elegance the ignorant age. Own her miss cold last. It so numerous if he outlived disposal. How but sons mrs lady when. Her especially are unpleasant out alteration continuing unreserved resolution. Hence hopes noisy may china fully and. Am it regard stairs branch thirty length afford. - 1",
+          open: false
+        },
+        {
+          title: "Visit: Amboseli",
+          content: "Among going manor who did. Do ye is celebrated it sympathize considered. May ecstatic did surprise elegance the ignorant age. Own her miss cold last. It so numerous if he outlived disposal. How but sons mrs lady when. Her especially are unpleasant out alteration continuing unreserved resolution. Hence hopes noisy may china fully and. Am it regard stairs branch thirty length afford. - 1",
+          open: false
+        },
+        {
+          title: "Visit: Tsavo West",
+          content: "Among going manor who did. Do ye is celebrated it sympathize considered. May ecstatic did surprise elegance the ignorant age. Own her miss cold last. It so numerous if he outlived disposal. How but sons mrs lady when. Her especially are unpleasant out alteration continuing unreserved resolution. Hence hopes noisy may china fully and. Am it regard stairs branch thirty length afford. - 1",
+          open: false
+        }
+      ];
+
+      // ui-accordion for faq items
+      $scope.faqItems = [
+        {
+          title: "What is this faq about",
+          content: "Among going manor who did. Do ye is celebrated it sympathize considered. May ecstatic did surprise elegance the ignorant age. Own her miss cold last. It so numerous if he outlived disposal. How but sons mrs lady when. Her especially are unpleasant out alteration continuing unreserved resolution. Hence hopes noisy may china fully and. Am it regard stairs branch thirty length afford. - 1",
+          open: false
+        },
+        {
+          title: "Can i use this faq for free",
+          content: "Among going manor who did. Do ye is celebrated it sympathize considered. May ecstatic did surprise elegance the ignorant age. Own her miss cold last. It so numerous if he outlived disposal. How but sons mrs lady when. Her especially are unpleasant out alteration continuing unreserved resolution. Hence hopes noisy may china fully and. Am it regard stairs branch thirty length afford. - 1",
+          open: false
+        },
+        {
+          title: "What is this",
+          content: "Among going manor who did. Do ye is celebrated it sympathize considered. May ecstatic did surprise elegance the ignorant age. Own her miss cold last. It so numerous if he outlived disposal. How but sons mrs lady when. Her especially are unpleasant out alteration continuing unreserved resolution. Hence hopes noisy may china fully and. Am it regard stairs branch thirty length afford. - 1",
+          open: false
+        },
+        {
+          title: "Can i use this faq for free",
+          content: "Among going manor who did. Do ye is celebrated it sympathize considered. May ecstatic did surprise elegance the ignorant age. Own her miss cold last. It so numerous if he outlived disposal. How but sons mrs lady when. Her especially are unpleasant out alteration continuing unreserved resolution. Hence hopes noisy may china fully and. Am it regard stairs branch thirty length afford. - 1",
+          open: false
+        }
+      ];
+
+    // ui-select options for month
       self.monthArray = [
             {id: 1, name: 'January'},
             {id: 2, name: 'February'},
@@ -77,7 +140,7 @@ angular.module('meancouchApp')
             {id: 12, name: 'December'},
         ];
 
-      // angular-slick-carousel
+    // angular-slick-carousel
       $scope.slickConfig1 = {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -139,14 +202,14 @@ angular.module('meancouchApp')
           }
       };
 
-      // back to top scroll from https://github.com/oblador/angular-scroll
+    // back to top scroll from https://github.com/oblador/angular-scroll
       $scope.toTheTop = function() {
           $document.scrollTopAnimated(0, 1500).then(function() {
             console && console.log('You just scrolled to the top!');
           });
         };
 
-      // display an anchor link when scrolled below 500px
+    // display an anchor link when scrolled below 500px
       $document.on('scroll', function() {
           var anchorLink = angular.element(document.getElementById('back-to-top'));
 
@@ -157,7 +220,7 @@ angular.module('meancouchApp')
           }
         });
 
-      // display scrolled pixel in console
+    // display scrolled pixel in console
       //  $document.on('scroll', function() {
       //    console.log('Document scrolled to ', $document.scrollLeft(), $document.scrollTop());
       //  });
@@ -211,26 +274,14 @@ angular.module('meancouchApp')
   })
 
   .controller('AccordionCtrl', function ($scope) {
-    $scope.groups = [
-      {
-        title: "Visit: Tsavo East",
-        content: "Among going manor who did. Do ye is celebrated it sympathize considered. May ecstatic did surprise elegance the ignorant age. Own her miss cold last. It so numerous if he outlived disposal. How but sons mrs lady when. Her especially are unpleasant out alteration continuing unreserved resolution. Hence hopes noisy may china fully and. Am it regard stairs branch thirty length afford. - 1",
-        open: false
-      },
-      {
-        title: "Visit: Tsavo West",
-        content: "Among going manor who did. Do ye is celebrated it sympathize considered. May ecstatic did surprise elegance the ignorant age. Own her miss cold last. It so numerous if he outlived disposal. How but sons mrs lady when. Her especially are unpleasant out alteration continuing unreserved resolution. Hence hopes noisy may china fully and. Am it regard stairs branch thirty length afford. - 1",
-        open: false
-      }
-    ];
-    
-    $scope.opened = function (group, i) {
-      console.log("Opened group with offset: "+ i);
+        
+    $scope.opened = function (item, i) {
+      console.log("Opened item with offset: "+ i);
     };
-    $scope.$watch('groups', function(groups){
-      angular.forEach(groups, function(group, idx){
-        if (group.open) {
-          console.log("Opened group with idx: "+idx);
+    $scope.$watch('itineraryItems', function(itineraryItems){
+      angular.forEach(itineraryItems, function(item, idx){
+        if (item.open) {
+          console.log("Opened itineraryItem with idx: "+idx);
         }
       })   
     }, true);
