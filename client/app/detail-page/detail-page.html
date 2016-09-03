@@ -24,31 +24,31 @@
           <p>Please fill out this form so we can contact you. You can as well give as a call +49 3581 41 41 63 or send an email to denis@dm-tours.net</p>
                 <input name="tour" type="hidden" value="{{ctrl.return.overnight+1}} Tage {{ctrl.return.title}}">
                 <div class="form-group">
-                  <label for="name" class="control-label col-md-2">Your Name</label>
+                  <label for="name" class="control-label col-md-3">Your Name</label>
                   <div class="col-md-6">
-                      <input name="name" type="text" class="form-control" placeholder="Vor und Nachname">
+                      <input name="name" type="text" class="form-control" placeholder="First and Last name">
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="email" class="control-label col-md-2">Email</label>
+                  <label for="email" class="control-label col-md-3">Email</label>
                   <div class="col-md-6">
-                      <input name="email" type="text" class="form-control" placeholder="Email Adresse">
+                      <input name="email" type="text" class="form-control" placeholder="Email">
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="phone" class="control-label col-md-2">Phone</label>
+                  <label for="phone" class="control-label col-md-3">Phone</label>
                   <div class="col-md-6">
-                      <input name="phone" type="text" class="form-control" placeholder="Vorwahl und Telefon Nummer">
+                      <input name="phone" type="text" class="form-control" placeholder="Phone Number">
                   </div>
                 </div>            
         </div>
         <div class="modal-footer">
           <div class="form-group">
             <div class="col-md-12">
-              <input class="btn btn-primary pull-left col-md-3" type="submit" ng-click="ok()" value="Absenden"/>
-              <input class="btn btn-default pull-left col-md-3" type="reset" ng-click="cancel()" value="Abrechen"/>
+              <input class="btn btn-primary pull-left col-md-3" type="submit" ng-click="ok()" value="Send Now"/>
+              <input class="btn btn-default pull-left col-md-3" type="reset" ng-click="cancel()" value="Cancel"/>
             </div>
           </div>
         </div>
