@@ -62,6 +62,7 @@ angular.module('meancouchApp')
       };
       
     // ui-accordion for faq to toogle all items
+      /* http://stackoverflow.com/questions/20887536/angular-ui-bootstrap-accordion-collapse-expand-all */
       /* http://plnkr.co/edit/WUKEfcBrSf3XrIQAik67?p=preview */
       $scope.toggleAllItems = function(){
         $scope.faqItems.map(function(item){

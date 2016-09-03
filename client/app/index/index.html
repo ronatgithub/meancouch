@@ -44,7 +44,7 @@
 									    <ui-select-match placeholder="Destination">
 									        <span ng-bind="$select.selected.name"></span>
 									    </ui-select-match>
-									    <ui-select-choices repeat="item in (indexCtrl.destinationArray | filter: $select.search) track by item.id">
+									    <ui-select-choices repeat="item in (ctrl.destinationArray | filter: $select.search) track by item.id">
 									        <span ng-bind="item.name"></span>
 									    </ui-select-choices>
 									</ui-select>
@@ -67,7 +67,7 @@
 									    <ui-select-match placeholder="Month">
 									        <span ng-bind="$select.selected.name"></span>
 									    </ui-select-match>
-									    <ui-select-choices repeat="item in (indexCtrl.monthArray | filter: $select.search) track by item.id">
+									    <ui-select-choices repeat="item in (ctrl.monthArray | filter: $select.search) track by item.id">
 									        <span ng-bind="item.name"></span>
 									    </ui-select-choices>
 									</ui-select>
@@ -90,7 +90,7 @@
 							        <ui-select-match placeholder="Year">
 							        	<span ng-bind="$select.selected.value"></span>
 							        </ui-select-match>
-							        <ui-select-choices repeat="val in indexCtrl.values | filter: $select.search track by val.value">
+							        <ui-select-choices repeat="val in ctrl.values | filter: $select.search track by val.value">
 							            <div ng-bind="val.value | highlight: $select.search"></div>
 							        </ui-select-choices>
 							        
@@ -255,7 +255,7 @@
 							
 							<!-- for larger items: <div class="GridLex-col-4_sm-6_xs-12 mb-30"> -->
 							<!-- for smaller items: <div class="GridLex-col-3_sm-4_xs-6_xss-12 mb-20"> -->
-							<div class="GridLex-col-4_sm-6_xs-12 mb-30" ng-repeat="doc in indexCtrl.docs | orderBy:'+startDate'" ng-if="$index < 9">
+							<div class="GridLex-col-4_sm-6_xs-12 mb-30" ng-repeat="doc in ctrl.docs | orderBy:'+startDate'" ng-if="$index < 9">
 								<div class="package-grid-item"> 
 									<a ui-sref="detail-page({ itemId: doc.id })">
 										<div class="image">
@@ -268,7 +268,7 @@
 											<h5 class="block-with-text-to-truncate">{{doc.title}}</h5>
 											<div class="rating-wrapper">
 												<div class="raty-wrapper">
-													<rating ng-model="indexCtrl.rate" max="indexCtrl.max" readonly="indexCtrl.isReadonly" on-hover="indexCtrl.hoveringOver(value)" on-leave="indexCtrl.overStar = null"></rating> <span></span>
+													<rating ng-model="ctrl.rate" max="ctrl.max" readonly="ctrl.isReadonly" on-hover="ctrl.hoveringOver(value)" on-leave="ctrl.overStar = null"></rating> <span></span>
 												</div>
 											</div>
 											<div class="absolute-in-content">
