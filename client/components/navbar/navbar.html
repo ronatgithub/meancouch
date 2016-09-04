@@ -22,6 +22,7 @@
 </div> -->
 
 <!-- BEGIN # MODAL LOGIN -->
+<script type="text/ng-template" id="ModalBookingFormContent.html">
   <div class="modal fade modal-login modal-border-transparent" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -179,6 +180,7 @@
       </div>
     </div>
   </div>
+</script>
 <!-- END # MODAL LOGIN -->
 
 <!-- start Header -->
@@ -239,7 +241,7 @@
                       </li>
                       
                       <li class="user-action">
-                        <a data-toggle="modal" href="#loginModal" class="btn">Sign up/in</a>
+                        <a href="#" ng-controller="ModalBookingFormCtrl" ng-click="open()" class="btn">Sign up/in</a>
                       </li>
 
                     </ul>

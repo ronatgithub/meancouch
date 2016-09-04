@@ -41,6 +41,8 @@ module.exports = function(config) {
       'client/bower_components/angular-slick-carousel/dist/angular-slick.js',
       'client/bower_components/angular-jquery/dist/angular-jquery.js',
       'client/bower_components/angular-bootstrap-affix/dist/angular-bootstrap-affix.js',
+      'client/bower_components/ion.rangeslider/js/ion.rangeSlider.js',
+      'client/bower_components/ion.rangeslider-angularjs/ionic-range-slider.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'client/app/app.js',
