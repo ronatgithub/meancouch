@@ -14,9 +14,6 @@ class NavbarController {
     }
 }
 
-angular.module('meancouchApp')
-  .controller('NavbarController', NavbarController)
-
   .controller('ModalLoginFormCtrl', function ($scope, $modal, $log) {
 
     $scope.open = function (size) {
