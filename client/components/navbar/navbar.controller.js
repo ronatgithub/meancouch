@@ -17,12 +17,12 @@ class NavbarController {
 angular.module('meancouchApp')
   .controller('NavbarController', NavbarController)
 
-  .controller('ModalBookingFormCtrl', function ($scope, $modal, $log) {
+  .controller('ModalLoginFormCtrl', function ($scope, $modal, $log) {
 
     $scope.open = function (size) {
 
       var modalInstance = $modal.open({
-        templateUrl: 'ModalBookingFormContent.html',
+        templateUrl: 'ModalLoginFormContent.html',
         controller: 'ModalInstanceCtrl',
         size: size,
         backdrop: 'static',

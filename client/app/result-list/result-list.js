@@ -3,11 +3,11 @@
 angular.module('meancouchApp')
   .config(function($stateProvider) {
     $stateProvider
-      // the index view will have listing of all items
-      .state('index', {
-        url: '/',
-        templateUrl: 'app/index/index.html',
-        controller: 'IndexController',
+      // the result-list view will have listing of all items
+      .state('result-list', {
+        url: '/result-list',
+        templateUrl: 'app/result-list/result-list.html',
+        controller: 'resultListController',
         controllerAs: 'ctrl',
         access: {
             requiresLogin: false,
