@@ -57,7 +57,14 @@ angular.module('meancouchApp')
             videoId: response.videoId,
             user: response.user,
             image: 'http://104.155.57.49:5984/dm-tours_v1/' + response._id + '/image_small',
-            imagePresent: true
+            imagePresent: true,
+            tour_accommodation: response.tour_accommodation,
+            tour_stopover: response.tour_stopover,
+            tour_includes: response.tour_includes,
+            tour_excludes: response.tour_excludes,
+            tour_rating: response.tour_rating,
+            tour_start_location: response.tour_start_location,
+            tour_end_location: response.tour_end_location
           };
         })
         .then(function() {
@@ -85,12 +92,12 @@ angular.module('meancouchApp')
               type: 'text',
               maxlength: 50,
               minlength: 3,
-              label: 'Reise Ziel',
+              label: 'Safari Name',
               addonRight: {
                 class: 'fa fa-file-text fa-1x'
               },
-              placeholder: 'Tour Name',
-              description: 'Die Eingabe in diesem Feld wird als Titel der Reise verwendet.',
+              placeholder: 'Safari Tour Name',
+              description: 'The content from this field will be used as the tour title.',
               required: true
             },
           },
@@ -100,12 +107,12 @@ angular.module('meancouchApp')
             templateOptions: {
               type: 'number',
               maxlength: 4,
-              label: 'Reise Preis',
+              label: 'Safari Price',
               addonRight: {
                 class: 'fa fa-eur fa-1x'
               },
               placeholder: '',
-              description: 'Reisepreis pro Person im Doppelzimmer',
+              description: 'Safari price per person in double room',
               required: true
             },
           },
@@ -114,12 +121,12 @@ angular.module('meancouchApp')
             type: 'horizontalDatepicker',
             templateOptions: {
               type: 'date',
-              label: 'Reise Termin',
+              label: 'Tour Date',
               datepickerPopup: 'MMMM, dd yyyy',
               datepickerOptions: {
                 format: 'MMMM, dd yyyy'
               },
-              description: 'Das Datum in diesem Feld wird als Abreise Termin verwendet.',
+              description: 'The date you enter here will be used as safari tour start date.',
               required: true
             },
             /*expressionProperties: {
@@ -132,12 +139,12 @@ angular.module('meancouchApp')
             templateOptions: {
               type: 'number',
               maxlength: 2,
-              label: 'Anzahl der Übernachtung',
+              label: 'Overnights',
               addonRight: {
                 class: 'fa fa-bed fa-1x'
               },
-              placeholder: 'Anzahl der Nächte',
-              description: 'Die Eingabe in diesem Feld wird zur Berechnung der Reise Dauer und des Rückreise Termins verwendet.',
+              placeholder: 'No. of overnights',
+              description: 'The number you enter here will be used to calculate the total travel duration and the tour end date.',
               required: true
             },
             expressionProperties: {
@@ -152,9 +159,9 @@ angular.module('meancouchApp')
               rows: 3,
               maxlength: 100,
               minlength: 5,
-              label: 'Kurzbeschreibung',
-              placeholder: 'Eine kurze Beschreibung der Reise.',
-              description: 'Die Eingabe in diesem Feld wird als Reisebeschreibung verwendet.',
+              label: 'Highlights',
+              placeholder: 'A short description about the Safari tour.',
+              description: 'The content from this field will be used as short descriptions.',
               required: true
             }
           },
@@ -165,7 +172,7 @@ angular.module('meancouchApp')
               type: 'textarea',
               rows: 5,
               minlength: 5,
-              label: 'Reiseverlauf',
+              label: 'Travel Itinerary',
               placeholder: 'Eine ausführliche Beschreibung des Reiseverlaufs.',
               description: 'Die Eingabe in diesem Feld wird als Reiseverlauf verwendet.',
               required: true
@@ -222,6 +229,97 @@ angular.module('meancouchApp')
               };
               
             }
+          },
+          {
+            key: 'tour_accommodation',
+            type: 'horizontalInput',
+            templateOptions: {
+              type: 'text',
+              maxlength: 100,
+              minlength: 5,
+              label: 'Safari Tour Accommodation',
+              placeholder: 'comma seperated list of tour accommodations',
+              description: 'Enter each accommodation seperated by comma like so: Camp A, Camp B, Camp C',
+              required: true
+            }
+          },
+          {
+            key: 'tour_stopover',
+            type: 'horizontalInput',
+            templateOptions: {
+              type: 'text',
+              maxlength: 100,
+              minlength: 5,
+              label: 'Safari Parks To Visit',
+              placeholder: 'comma seperated list of safari parks',
+              description: 'Enter each safari park seperated by comma like so: Tsavo, Amboseli, Nakuru',
+              required: true
+            }
+          },
+          {
+            key: 'tour_includes',
+            type: 'horizontalInput',
+            templateOptions: {
+              type: 'text',
+              maxlength: 100,
+              minlength: 5,
+              label: 'Whats Included',
+              placeholder: 'comma seperated list of included services',
+              description: 'Enter each service seperated by comma like so: Hotel pickup, meals, extra lunch',
+              required: true
+            }
+          },
+          {
+            key: 'tour_excludes',
+            type: 'horizontalInput',
+            templateOptions: {
+              type: 'text',
+              maxlength: 100,
+              minlength: 5,
+              label: 'Whats Exluded',
+              placeholder: 'comma seperated list of excluded services',
+              description: 'Enter each service seperated by comma like so: drinks, tips, pocket money',
+              required: true
+            }
+          },
+          {
+            key: 'tour_rating',
+            type: 'horizontalInput',
+            templateOptions: {
+              type: 'number',
+              maxlength: 1,
+              minlength: 1,
+              label: 'Tour Rating',
+              placeholder: '1 - 5 star rating',
+              description: 'Enter a number from 1 to 5 to show a star rating',
+              required: true
+            }
+          },
+          {
+            key: 'tour_start_location',
+            type: 'horizontalInput',
+            templateOptions: {
+              type: 'text',
+              maxlength: 50,
+              minlength: 5,
+              label: 'Safari Starting Point',
+              placeholder: 'Tour start location',
+              description: 'Enter the location where this Safari tour starts.',
+              required: true
+            }
+          },
+          {
+            key: 'tour_end_location',
+            type: 'horizontalInput',
+            templateOptions: {
+              type: 'text',
+              maxlength: 50,
+              minlength: 5,
+              label: 'Safari End Point',
+              placeholder: 'Tour end location',
+              description: 'Enter the location where the Safari will end.',
+              required: true
+            }
           }
         ]; // END vm.formFields
         // check if we have an imge so we can trigger true or false on the required field on file select
@@ -254,7 +352,14 @@ angular.module('meancouchApp')
             itinerary: vm.profile.itinerary,
             videoId: vm.profile.videoId,
             // _attachments: if new -> sharedProperties.dataObj comes from file-input - if edit -> sharedProperties.dataObj is defined in editProfile function
-            _attachments: sharedProperties.dataObj
+            _attachments: sharedProperties.dataObj,
+            tour_accommodation: vm.profile.tour_accommodation,
+            tour_stopover: vm.profile.tour_stopover,
+            tour_includes: vm.profile.tour_includes,
+            tour_excludes: vm.profile.tour_excludes,
+            tour_rating: vm.profile.tour_rating,
+            tour_start_location: vm.profile.tour_start_location,
+            tour_end_location: vm.profile.tour_end_location
           })
           .then(function (response) { // console.log(response);
             // clear sharedProperties.dataObj
