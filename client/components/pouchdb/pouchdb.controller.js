@@ -5,7 +5,7 @@ angular.module('meancouchApp')
 	    $scope.message = 'Hello';
 		
 		// set databse name for local db
-		var db = new Database('dev-3-diana');
+		var db = new Database('dm-tours_v1');
 		
 		var self = this;
 		

@@ -1,7 +1,7 @@
 <div class="page-header">
-    <h2>Alle Reiseangebote</h2>
+    <h2>Listing All Safari Tours</h2>
     <p class="lead">
-        Diese Übersicht listet alle verfügbaren Reiseangebote. Du kannst sie hier bearbeiten oder löschen.
+        This table lists all available Safari tours. You can edit or delete them here.
     </p>
     <!-- <div class="alert alert-info">
         <h4>Row modifier class included</h4>
@@ -12,9 +12,9 @@
 
 <div class="method">
     <div class="row margin-0 list-header hidden-sm hidden-xs">
-        <div class="col-md-2"><div class="header">Reise Termin</div></div>
-        <div class="col-md-2"><div class="header">Preis</div></div>
-        <div class="col-md-5"><div class="header">Reiseziel</div></div>
+        <div class="col-md-2"><div class="header">Tour Date</div></div>
+        <div class="col-md-2"><div class="header">Price</div></div>
+        <div class="col-md-5"><div class="header">Destination</div></div>
         <div class="col-md-3"><div class="header">Action</div></div>
     </div>
 
@@ -38,7 +38,7 @@
         <div class="col-md-5">
             <div class="cell">
                 <div class="type description">
-                    <strong>{{doc.overnight+1}} Tage {{doc.title}}</strong> <br> {{doc.description}}
+                    <strong>{{doc.overnight+1}} Days {{doc.title}}</strong> <br> {{doc.description}}
                 </div>
             </div>
         </div>
@@ -48,13 +48,13 @@
                     <!-- Our delete modal takes a string as the first arg (used to display what we are deleting)
                     all other args are passed to the callback defined in profile.listing.controller.js -->
                     <a ng-click="ctrl.edit(doc._id)" tooltip="edit" tooltip-placement="top" style="" href="#">
-                        <i class="fa fa-file-text fa-1x "></i> bearbeiten
+                        <i class="fa fa-file-text fa-1x "></i> edit
                     </a>
                     <a tooltip="view online" tooltip-placement="top" style="color:#B7B7B7;" href="/item/{{doc._id}}">
-                        <i class="fa fa-television fa-1x "></i> anschauen
+                        <i class="fa fa-television fa-1x "></i> view
                     </a>
                     <a ng-click="ctrl.delete(doc.title, doc)" tooltip="delete" tooltip-placement="top" style="color:red;" href="#">
-                        <i class="fa fa-trash-o fa-1x "></i> löschen
+                        <i class="fa fa-trash-o fa-1x "></i> delete
                     </a>
                 </div>
             </div>

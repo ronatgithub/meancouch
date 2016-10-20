@@ -13,7 +13,7 @@ angular.module('meancouchApp')
         var Database = function (databaseName) {
             _databaseName = databaseName;
             // setup remote db (couchdb)
-            _db = new PouchDB('http://104.155.57.49:5984/dev-3-diana', {skipSetup: true});
+            _db = new PouchDB('http://104.155.57.49:5984/dm-tours_v1', {skipSetup: true});
             // https://github.com/nolanlawson/pouchdb-authentication
             PouchDB.plugin('pouchdb-authentication');
             // get local db name from controller

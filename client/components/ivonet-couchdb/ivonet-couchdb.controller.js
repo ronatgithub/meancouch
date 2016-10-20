@@ -27,7 +27,7 @@
       self.roles = couchdb.user.roles();
       self.msg = '';
       self.server = couchdb.server.getUrl();
-      couchdb.db.use("dev-3-diana");
+      couchdb.db.use("dm-tours_v1");
       self.db = couchdb.db.getName();
       self.docs = [];
 

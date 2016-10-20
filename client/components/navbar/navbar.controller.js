@@ -1,18 +1,13 @@
 'use strict';
 
-class NavbarController {
-  //start-non-standard
-  menu = [{
-    'title': 'Dashboard',
-    'state': 'dashboard.profile-listing'
-  }];
-
-  isCollapsed = true;
-  //end-non-standard
-
-  constructor() {
-    }
-}
+angular.module('meancouchApp')
+  .controller('NavbarController', function ($scope) {
+      //start-non-standard
+      var menu = [{
+        'title': 'Dashboard',
+        'state': 'dashboard.profile-listing'
+      }];
+  })
 
   .controller('ModalLoginFormCtrl', function ($scope, $modal, $log) {
 
@@ -47,4 +42,4 @@ class NavbarController {
     $scope.cancel = function () {
       $modalInstance.dismiss('cancel');
     };
-  });;
+  });

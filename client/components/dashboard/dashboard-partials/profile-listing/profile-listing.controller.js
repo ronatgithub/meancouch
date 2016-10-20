@@ -21,9 +21,9 @@ angular.module('meancouchApp')
 		
 	    var self = this;
 	    // set databse name for local db
-		var db = new Database('test');
+		var db = new Database('dm-tours_v1');
 		// set databse name for couchdb
-		couchdb.db.use("test");
+		couchdb.db.use("dm-tours_v1");
 		// current user
 	    self.user = couchdb.user.name();
 		// the object which holds the data coming from database
