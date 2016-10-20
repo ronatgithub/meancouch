@@ -162,8 +162,8 @@ angular.module('meancouchApp')
               maxlength: 800,
               minlength: 5,
               label: 'Highlights',
-              placeholder: 'A short description about the Safari tour.',
-              description: 'The content from this field will be used as short descriptions.',
+              placeholder: 'A brief description highlighting the unique selling points of this safari tour.',
+              description: 'The content from this field will be used as short description.',
               required: true
             }
           },
@@ -174,9 +174,9 @@ angular.module('meancouchApp')
               type: 'textarea',
               rows: 5,
               minlength: 5,
-              label: 'Travel Itinerary',
-              placeholder: 'Eine ausführliche Beschreibung des Reiseverlaufs.',
-              description: 'Die Eingabe in diesem Feld wird als Reiseverlauf verwendet.',
+              label: 'Introduction',
+              placeholder: 'Descriptive summary of this Safari tour.',
+              description: 'The content you enter here will be used as tour description.',
               required: true
             },
             /*expressionProperties: {
@@ -187,6 +187,71 @@ angular.module('meancouchApp')
               }
             } */
           },
+          ////////////////////////////////
+          // add formly fields on button click
+          {
+            "type": "repeatSection",
+            "key": "days",
+            "templateOptions": {
+              "btnText": "Add another Day",
+              "fields": [
+                {
+                  "className": "row",
+                  "fieldGroup": [
+                    {
+                      "className": "section-label",
+                      "template": [
+                          '<div class="form-group">',
+                            '<div class="col-sm-offset-2 col-sm-10">',
+                              '<h2>Day 1</div>',
+                            '</div>',
+                          '</div>'].join(' ')
+                    },
+                    {
+                      key: 'day_accommodation',
+                      type: 'horizontalInput',
+                      templateOptions: {
+                        type: 'text',
+                        maxlength: 100,
+                        minlength: 5,
+                        label: 'Stay At',
+                        placeholder: 'accommodation name',
+                        description: 'Enter Safari camp or lodge name.',
+                        required: true
+                      }
+                    },
+                    {
+                      key: 'day_location',
+                      type: 'horizontalInput',
+                      templateOptions: {
+                        type: 'text',
+                        maxlength: 100,
+                        minlength: 5,
+                        label: 'Visit',
+                        placeholder: 'safari park',
+                        description: 'Enter name of Safari park to vist.',
+                        required: true
+                      }
+                    },
+                    {
+                      key: 'day_activity',
+                      type: 'horizontalTextArea',
+                      templateOptions: {
+                        type: 'textarea',
+                        rows: 5,
+                        minlength: 5,
+                        label: 'Itinerary',
+                        placeholder: 'day trip activity',
+                        description: 'Enter full day activity description.',
+                        required: true
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          ////////////////////////////////
           {
             key: 'videoId',
             type: 'horizontalInput',
@@ -230,32 +295,6 @@ angular.module('meancouchApp')
                 return ['<span id="image"></span>']
               };
               
-            }
-          },
-          {
-            key: 'tour_accommodation',
-            type: 'horizontalInput',
-            templateOptions: {
-              type: 'text',
-              maxlength: 100,
-              minlength: 5,
-              label: 'Safari Tour Accommodation',
-              placeholder: 'comma seperated list of tour accommodations',
-              description: 'Enter each accommodation seperated by comma like so: Camp A, Camp B, Camp C',
-              required: true
-            }
-          },
-          {
-            key: 'tour_stopover',
-            type: 'horizontalInput',
-            templateOptions: {
-              type: 'text',
-              maxlength: 100,
-              minlength: 5,
-              label: 'Safari Parks To Visit',
-              placeholder: 'comma seperated list of safari parks',
-              description: 'Enter each safari park seperated by comma like so: Tsavo, Amboseli, Nakuru',
-              required: true
             }
           },
           {
@@ -348,7 +387,7 @@ angular.module('meancouchApp')
               description: 'Enter the Safari vehicle like so: 4x4 Landcruiser.',
               required: true
             }
-          }
+          },
         ]; // END vm.formFields
         // check if we have an imge so we can trigger true or false on the required field on file select
         $timeout(function() {
