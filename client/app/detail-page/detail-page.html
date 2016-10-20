@@ -81,8 +81,8 @@
             
             <div class="flex-column flex-md-8 flex-sm-12">
               
-              <h1 class="hero-title">{{ctrl.return.title}}</h1>
-              <p class="line18">He do subjects prepared bachelor juvenile ye oh. He feelings removing informed he as ignorant we prepared.</p>
+              <h1 class="hero-title">{{ctrl.return.overnight+1}} Days {{ctrl.return.tour_stopover}} {{ctrl.return.tour_vehicle}} Safari</h1>
+              <p class="line18">{{ctrl.return.overnight}} Nights on Safari in {{ctrl.return.tour_accommodation}} and Game drives in comfortable {{ctrl.return.tour_vehicle}}</p>
               
               <ul class="list-col clearfix">
                 <li class="rating-box">
@@ -172,10 +172,7 @@
                     
                     <img src="assets/images/map-route.jpg" alt="Map" class="map-route" />
                     
-                    <p>His exquisite sincerity education shameless ten earnestly breakfast add. So we me unknown as improve hastily sitting forming. Especially favourable compliment but thoroughly unreserved saw she themselves. Sufficient impossible him may ten insensible put continuing. Oppose exeter income simple few joy cousin but twenty. Scale began quiet up short wrong in in. Sportsmen shy forfeited engrossed may can.</p>
-                    
-
-                    <p>Mr oh winding it enjoyed by between. The servants securing material goodness her. Saw principles themselves ten are possession. So endeavor to continue cheerful doubtful we to. Turned advice the set vanity why mutual. Reasonably if conviction on be unsatiable discretion apartments delightful. Are melancholy appearance stimulated occasional entreaties end. Shy ham had esteem happen active county. Winding morning am shyness evident to. Garrets because elderly new manners however one village she.</p>
+                    <p>{{ctrl.return.description}}</p>
 
                   </div>
                   
@@ -242,12 +239,12 @@
                         <div class="col-sm-3 col-sm-3 mb-30">
                         
                           <ul class="list-info no-icon bb-dotted">
-                            <li><span class="font600">Duration: </span>4 days &amp; 3 nights</li>
-                            <li><span class="font600">Countries: (1)</span> Croatia</li>
-                            <li><span class="font600">Experiences:</span> 5</li>
-                            <li><span class="font600">Ages:</span> 10 - 45+</li>
-                            <li><span class="font600">Starting Point:</span> Dubrovnik</li>
-                            <li><span class="font600">Ending Point:</span> Hvar</li>
+                            <li><span class="font600">Duration: </span>{{ctrl.return.overnight+1}} days &amp; {{ctrl.return.overnight}} nights</li>
+                            <li><span class="font600">Safari Hotel: (3)</span> {{ctrl.return.tour_accommodation}}</li>
+                            <li><span class="font600">Safari Park (3):</span> {{ctrl.return.tour_stopover}}</li>
+                            <li><span class="font600">Safari Vehicle:</span> {{ctrl.return.tour_vehicle}}</li>
+                            <li><span class="font600">Safari Start:</span> {{ctrl.return.tour_start_location}}</li>
+                            <li><span class="font600">Safari End:</span> {{ctrl.return.tour_end_location}}</li>
                           </ul>
                         
                         </div>
@@ -260,7 +257,7 @@
                               <div class="itinerary-item intro-item">
                                 <h5>Introduction</h5>
                                 <div class="intro-item-body">
-                                  <p>She literature discovered increasing how diminution understood. Though and highly the enough county for man. Of it up he still court alone widow seems. Suspected he remainder rapturous my sweetness. All vanity regard sudden nor simple can. World mrs and vexed china since after often.</p>
+                                  <p>{{ctrl.return.itinerary}}</p>
                                 </div>
                               </div>
                               

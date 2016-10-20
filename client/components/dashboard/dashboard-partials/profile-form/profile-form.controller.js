@@ -60,11 +60,13 @@ angular.module('meancouchApp')
             imagePresent: true,
             tour_accommodation: response.tour_accommodation,
             tour_stopover: response.tour_stopover,
-            tour_includes: response.tour_includes,
-            tour_excludes: response.tour_excludes,
+            tour_include: response.tour_include,
+            tour_exclude: response.tour_exclude,
             tour_rating: response.tour_rating,
             tour_start_location: response.tour_start_location,
-            tour_end_location: response.tour_end_location
+            tour_end_location: response.tour_end_location,
+            tour_avail_seat: response.tour_avail_seat,
+            tour_vehicle: response.tour_vehicle
           };
         })
         .then(function() {
@@ -157,7 +159,7 @@ angular.module('meancouchApp')
             templateOptions: {
               type: 'textarea',
               rows: 3,
-              maxlength: 100,
+              maxlength: 800,
               minlength: 5,
               label: 'Highlights',
               placeholder: 'A short description about the Safari tour.',
@@ -257,7 +259,7 @@ angular.module('meancouchApp')
             }
           },
           {
-            key: 'tour_includes',
+            key: 'tour_include',
             type: 'horizontalInput',
             templateOptions: {
               type: 'text',
@@ -270,7 +272,7 @@ angular.module('meancouchApp')
             }
           },
           {
-            key: 'tour_excludes',
+            key: 'tour_exclude',
             type: 'horizontalInput',
             templateOptions: {
               type: 'text',
@@ -320,6 +322,32 @@ angular.module('meancouchApp')
               description: 'Enter the location where the Safari will end.',
               required: true
             }
+          },
+          {
+            key: 'tour_avail_seat',
+            type: 'horizontalInput',
+            templateOptions: {
+              type: 'number',
+              maxlength: 2,
+              minlength: 1,
+              label: 'Available Seats',
+              placeholder: 'Available seats for this tour',
+              description: 'Enter the number of available seats.',
+              required: true
+            }
+          },
+          {
+            key: 'tour_vehicle',
+            type: 'horizontalInput',
+            templateOptions: {
+              type: 'text',
+              maxlength: 50,
+              minlength: 5,
+              label: 'Safari Vehicle',
+              placeholder: 'Vehicle type',
+              description: 'Enter the Safari vehicle like so: 4x4 Landcruiser.',
+              required: true
+            }
           }
         ]; // END vm.formFields
         // check if we have an imge so we can trigger true or false on the required field on file select
@@ -355,11 +383,13 @@ angular.module('meancouchApp')
             _attachments: sharedProperties.dataObj,
             tour_accommodation: vm.profile.tour_accommodation,
             tour_stopover: vm.profile.tour_stopover,
-            tour_includes: vm.profile.tour_includes,
-            tour_excludes: vm.profile.tour_excludes,
+            tour_include: vm.profile.tour_include,
+            tour_exclude: vm.profile.tour_exclude,
             tour_rating: vm.profile.tour_rating,
             tour_start_location: vm.profile.tour_start_location,
-            tour_end_location: vm.profile.tour_end_location
+            tour_end_location: vm.profile.tour_end_location,
+            tour_avail_seat: vm.profile.tour_avail_seat,
+            tour_vehicle: vm.profile.tour_vehicle
           })
           .then(function (response) { // console.log(response);
             // clear sharedProperties.dataObj
