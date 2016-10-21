@@ -23,7 +23,7 @@ angular.module('meancouchApp')
 
       function checkId() {
         if ($state.params.id === undefined) {
-        // if (new) we dont have an id, set an empty object then set _id to a timestamp then start function formFields to trigger formly to load the form with _id set to data
+        // if (new) we dont have an id, set an empty object then set _id to a timestamp then start function formFields to trigger formly to load the form with _id set to date
           vm.object = {};
           vm.object._id = new Date().toISOString();
           // get the current user name and make him the owner
@@ -86,7 +86,7 @@ angular.module('meancouchApp')
         vm.formFields = [
           {
             // the key to be used in the model values
-            // so this will be bound to vm.profile.name
+            // so this will be bound to vm.profile.title
             key: 'title',
             type: 'horizontalInput',
             templateOptions: {
@@ -158,7 +158,7 @@ angular.module('meancouchApp')
             type: 'horizontalTextArea',
             templateOptions: {
               type: 'textarea',
-              rows: 3,
+              rows: 5,
               maxlength: 800,
               minlength: 5,
               label: 'Highlights',
@@ -193,20 +193,11 @@ angular.module('meancouchApp')
             "type": "repeatSection",
             "key": "days",
             "templateOptions": {
-              "btnText": "Add another Day",
+              "btnText": "Add one Day",
               "fields": [
                 {
                   "className": "row",
                   "fieldGroup": [
-                    {
-                      "className": "section-label",
-                      "template": [
-                          '<div class="form-group">',
-                            '<div class="col-sm-offset-2 col-sm-10">',
-                              '<h2>Day 1</div>',
-                            '</div>',
-                          '</div>'].join(' ')
-                    },
                     {
                       key: 'day_accommodation',
                       type: 'horizontalInput',
