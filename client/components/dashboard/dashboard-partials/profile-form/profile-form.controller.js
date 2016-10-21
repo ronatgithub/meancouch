@@ -58,14 +58,12 @@ angular.module('meancouchApp')
             user: response.user,
             image: 'http://104.155.57.49:5984/dm-tours_v1/' + response._id + '/image_small',
             imagePresent: true,
-            tour_accommodation: response.tour_accommodation,
             tour_stopover: response.tour_stopover,
             tour_include: response.tour_include,
             tour_exclude: response.tour_exclude,
             tour_rating: response.tour_rating,
             tour_start_location: response.tour_start_location,
             tour_end_location: response.tour_end_location,
-            tour_avail_seat: response.tour_avail_seat,
             tour_vehicle: response.tour_vehicle
           };
         })
@@ -119,41 +117,6 @@ angular.module('meancouchApp')
             },
           },
           {
-            key: 'startDate',
-            type: 'horizontalDatepicker',
-            templateOptions: {
-              type: 'date',
-              label: 'Tour Date',
-              datepickerPopup: 'MMMM, dd yyyy',
-              datepickerOptions: {
-                format: 'MMMM, dd yyyy'
-              },
-              description: 'The date you enter here will be used as safari tour start date.',
-              required: true
-            },
-            /*expressionProperties: {
-              'templateOptions.disabled': 'model.checkbox'
-            }*/
-          },
-          {
-            key: 'overnight',
-            type: 'horizontalInput',
-            templateOptions: {
-              type: 'number',
-              maxlength: 2,
-              label: 'Overnights',
-              addonRight: {
-                class: 'fa fa-bed fa-1x'
-              },
-              placeholder: 'No. of overnights',
-              description: 'The number you enter here will be used to calculate the total travel duration and the tour end date.',
-              required: true
-            },
-            expressionProperties: {
-              /*'templateOptions.disabled': '!model.item_name' // disabled when username is blank*/
-            },
-          },
-          {
             key: 'description',
             type: 'horizontalTextArea',
             templateOptions: {
@@ -163,9 +126,13 @@ angular.module('meancouchApp')
               minlength: 5,
               label: 'Highlights',
               placeholder: 'A brief description highlighting the unique selling points of this safari tour.',
-              description: 'The content from this field will be used as short description.',
+              description: 'The content from this field will be used as general tour description.',
               required: true
             }
+          },
+          {
+            "className": "section-label",
+            "template": "<h2>Safari Tour Itinerary</h2><strong>Setup accommodation details and daily activities.</strong><hr />"
           },
           {
             key: 'itinerary',
@@ -175,8 +142,8 @@ angular.module('meancouchApp')
               rows: 5,
               minlength: 5,
               label: 'Introduction',
-              placeholder: 'Descriptive summary of this Safari tour.',
-              description: 'The content you enter here will be used as tour description.',
+              placeholder: 'Descriptive summary of the Safari itinerary.',
+              description: 'The content you enter here will be used as itinerary description.',
               required: true
             },
             /*expressionProperties: {
@@ -187,17 +154,21 @@ angular.module('meancouchApp')
               }
             } */
           },
-          ////////////////////////////////
-          // add formly fields on button click
+        //-START-//////////////////////////////
+          // ITINERARY add formly fields on button click
           {
-            "type": "repeatSection",
+            "type": "repeatSection1",
             "key": "days",
             "templateOptions": {
-              "btnText": "Add one Day",
+              "btnText": "Add Day Activity",
               "fields": [
                 {
                   "className": "row",
                   "fieldGroup": [
+                    /*{
+                      "className": "section-label",
+                      "template": "<h2>Itinerary</h2>"
+                    },*/
                     {
                       key: 'day_accommodation',
                       type: 'horizontalInput',
@@ -242,7 +213,11 @@ angular.module('meancouchApp')
               ]
             }
           },
-          ////////////////////////////////
+        //-END-/////////////////////////////
+          {
+            "className": "section-label",
+            "template": "<h2>Media</h2><strong>Setup Video ID and upload images.</strong><hr />"
+          },
           {
             key: 'videoId',
             type: 'horizontalInput',
@@ -287,6 +262,75 @@ angular.module('meancouchApp')
               };
               
             }
+          },
+        //-START-//////////////////////////////
+          // AVAILABILITY add formly fields on button click
+          {
+            "className": "section-label",
+            "template": "<h2>Availability</h2><strong>Setup Special price, Start Date and remaining available seats.</strong><hr />"
+          },
+          {
+            "type": "repeatSection2",
+            "key": "availability",
+            "templateOptions": {
+              "btnText": "Add Price, Date and Availability here",
+              "fields": [
+                {
+                  "className": "row",
+                  "fieldGroup": [
+                    {
+                      key: 'start_date',
+                      type: 'horizontalDatepicker',
+                      templateOptions: {
+                        type: 'date',
+                        label: 'Start Date',
+                        datepickerPopup: 'MMMM, dd yyyy',
+                        datepickerOptions: {
+                          format: 'MMMM, dd yyyy'
+                        },
+                        description: 'The date you enter here will be used as safari tour start date.',
+                        required: true
+                      },
+                      /*expressionProperties: {
+                        'templateOptions.disabled': 'model.checkbox'
+                      }*/
+                    },
+                    {
+                      key: 'avail',
+                      type: 'horizontalInput',
+                      templateOptions: {
+                        type: 'number',
+                        maxlength: 2,
+                        label: 'Seats left',
+                        placeholder: 'available seats',
+                        description: 'Enter number of available seats.',
+                        required: true
+                      }
+                    },
+                    {
+                      key: 'price',
+                      type: 'horizontalInput',
+                      templateOptions: {
+                        type: 'number',
+                        maxlength: 4,
+                        label: 'Safari Price',
+                        addonRight: {
+                          class: 'fa fa-eur fa-1x'
+                        },
+                        placeholder: '',
+                        description: 'Safari price per person in double room',
+                        required: true
+                      },
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+        //-END-//////////////////////////////
+          {
+            "className": "section-label",
+            "template": "<h2>Tour Details</h2><strong>Setup additional information like inclusive / excluive services, tour start and end point.</strong><hr />"
           },
           {
             key: 'tour_include',
@@ -354,19 +398,6 @@ angular.module('meancouchApp')
             }
           },
           {
-            key: 'tour_avail_seat',
-            type: 'horizontalInput',
-            templateOptions: {
-              type: 'number',
-              maxlength: 2,
-              minlength: 1,
-              label: 'Available Seats',
-              placeholder: 'Available seats for this tour',
-              description: 'Enter the number of available seats.',
-              required: true
-            }
-          },
-          {
             key: 'tour_vehicle',
             type: 'horizontalInput',
             templateOptions: {
@@ -375,7 +406,7 @@ angular.module('meancouchApp')
               minlength: 5,
               label: 'Safari Vehicle',
               placeholder: 'Vehicle type',
-              description: 'Enter the Safari vehicle like so: 4x4 Landcruiser.',
+              description: 'Enter the Safari vehicle like so: Landcruiser.',
               required: true
             }
           },
@@ -411,14 +442,12 @@ angular.module('meancouchApp')
             videoId: vm.profile.videoId,
             // _attachments: if new -> sharedProperties.dataObj comes from file-input - if edit -> sharedProperties.dataObj is defined in editProfile function
             _attachments: sharedProperties.dataObj,
-            tour_accommodation: vm.profile.tour_accommodation,
-            tour_stopover: vm.profile.tour_stopover,
             tour_include: vm.profile.tour_include,
             tour_exclude: vm.profile.tour_exclude,
             tour_rating: vm.profile.tour_rating,
             tour_start_location: vm.profile.tour_start_location,
             tour_end_location: vm.profile.tour_end_location,
-            tour_avail_seat: vm.profile.tour_avail_seat,
+            tour_avail_seat: vm.profile.availability,
             tour_vehicle: vm.profile.tour_vehicle,
             tour_detail: vm.profile.days
           })
