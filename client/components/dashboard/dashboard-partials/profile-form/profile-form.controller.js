@@ -419,7 +419,8 @@ angular.module('meancouchApp')
             tour_start_location: vm.profile.tour_start_location,
             tour_end_location: vm.profile.tour_end_location,
             tour_avail_seat: vm.profile.tour_avail_seat,
-            tour_vehicle: vm.profile.tour_vehicle
+            tour_vehicle: vm.profile.tour_vehicle,
+            tour_detail: vm.profile.days
           })
           .then(function (response) { // console.log(response);
             // clear sharedProperties.dataObj
