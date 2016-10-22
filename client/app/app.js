@@ -120,7 +120,6 @@ angular.module('meancouchApp', [
       }
     });
   })
-
   .config(function config(formlyConfigProvider) {
     var unique = 1;
     formlyConfigProvider.setType({

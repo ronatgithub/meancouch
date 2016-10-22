@@ -330,7 +330,7 @@ angular.module('meancouchApp')
         //-END-//////////////////////////////
           {
             "className": "section-label",
-            "template": "<h2>Tour Details</h2><strong>Setup additional information like inclusive / excluive services, tour start and end point.</strong><hr />"
+            "template": "<h2>Tour Information</h2><strong>Setup additional information.</strong><hr />"
           },
           {
             key: 'tour_include',

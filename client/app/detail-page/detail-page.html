@@ -1,19 +1,19 @@
-  <script type="text/ng-template" id="group-template.html">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title" style="color:#fa39c3">
-          <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" accordion-transclude="heading">
-            <span accordion-header ng-class="{'text-muted': isDisabled}">
-              {{heading}}
-            </span>
-          </a>
-        </h4>
-      </div>
-      <div class="panel-collapse collapse" collapse="!isOpen">
-        <div class="panel-body" style="text-align: right" ng-transclude></div>
-      </div>
-    </div>
-  </script>
+      <script type="text/ng-template" id="group-template.html">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title" style="color:#fa39c3">
+              <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" accordion-transclude="heading">
+                <span accordion-header ng-class="{'text-muted': isDisabled}">
+                  {{heading}}
+                </span>
+              </a>
+            </h4>
+          </div>
+          <div class="panel-collapse collapse" collapse="!isOpen">
+            <div class="panel-body" style="text-align: right" ng-transclude></div>
+          </div>
+        </div>
+      </script>
 
       <script type="text/ng-template" id="ModalBookingFormContent.html">
         <div class="modal-header">
@@ -240,8 +240,8 @@
                         
                           <ul class="list-info no-icon bb-dotted">
                             <li><span class="font600">Duration: </span>{{ctrl.return.overnight+1}} days &amp; {{ctrl.return.overnight}} nights</li>
-                            <li><span class="font600">Safari Hotel: (3)</span> {{ctrl.return.tour_accommodation}}</li>
-                            <li><span class="font600">Safari Park (3):</span> {{ctrl.return.tour_stopover}}</li>
+                            <li><span class="font600">Safari Hotel: </span> {{ctrl.return.tour_accommodation}}</li>
+                            <li><span class="font600">Safari Park:</span> {{ctrl.return.tour_stopover}}</li>
                             <li><span class="font600">Safari Vehicle:</span> {{ctrl.return.tour_vehicle}}</li>
                             <li><span class="font600">Safari Start:</span> {{ctrl.return.tour_start_location}}</li>
                             <li><span class="font600">Safari End:</span> {{ctrl.return.tour_end_location}}</li>
@@ -283,9 +283,8 @@
                                           <p>{{item.content}}</p>
                                           
                                           <ul class="itinerary-meta clearfix">
-                                            <li><i class="fa fa-building-o"></i> stay at Galdessa Camp</li>
-                                            <li><i class="fa fa-clock-o"></i> trip time: 8am - 4.30px</li>
-                                          </ul>
+                                            <li><i class="fa fa-building-o"></i> stay at {{item.accommodation}}</li>
+                                            <!-- <li><i class="fa fa-clock-o"></i> trip time: 6am - 4.30pm</li> -->
                                           
                                         </div>
                                       
