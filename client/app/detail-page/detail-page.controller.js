@@ -36,8 +36,8 @@ console.log(data)
 
                 // get the number of overnights for this tour
                 data.overnight = data.tour_detail.length - 1;
-
                 // prepare itinerary items to use with ui-accordion
+                var myObjects = [];
                 for (var i = 0; i < data.tour_detail.length; i++) {
                     myObjects.push({
                         title: data.tour_detail[i].day_location,
