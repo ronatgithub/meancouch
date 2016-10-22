@@ -28,11 +28,18 @@ console.log(data)
                   // make string from array
                   data.tour_accommodation = accommodation_array.toString();
                 
-                // find all safari park and get as array
+                // find all safari parks and get as array
                 // http://stackoverflow.com/questions/19590865/from-an-array-of-objects-extract-value-of-a-property-as-array
                 var location_array = data.tour_detail.map(function(a) {return a.day_location;});
                   // make string from array
-                  data.tour_stopover = location_array.toString();
+                  var string = location_array.toString();
+                  // Remove occurrences of duplicate words in a string
+                  // http://stackoverflow.com/questions/16843991/remove-occurrences-of-duplicate-words-in-a-string
+                  var uniqueListIndex=string.split(',').filter(function(currentItem,i,allItems){
+                      return (i == allItems.indexOf(currentItem));
+                  });
+                  var uniqueList=uniqueListIndex.join(',');
+                  data.tour_stopover = uniqueList;//Result: a list without dublicate names
 
                 // get the number of overnights for this tour
                 data.overnight = data.tour_detail.length - 1;
