@@ -28,7 +28,7 @@ console.log(data)
                   // make string from array
                   data.tour_accommodation = accommodation_array.toString();
                 
-                // find safari park and get as array
+                // find all safari park and get as array
                 // http://stackoverflow.com/questions/19590865/from-an-array-of-objects-extract-value-of-a-property-as-array
                 var location_array = data.tour_detail.map(function(a) {return a.day_location;});
                   // make string from array
@@ -38,15 +38,6 @@ console.log(data)
                 data.overnight = data.tour_detail.length - 1;
 
                 // prepare itinerary items to use with ui-accordion
-                var activity_array = data.tour_detail.map(function(a) {return a.day_activity;});
-                location_array;
-                accommodation_array;
-
-                var ageArray = location_array,
-                    nameArray = activity_array,
-                    accomArray = accommodation_array,
-                    myObjects = [];
-
                 for (var i = 0; i < data.tour_detail.length; i++) {
                     myObjects.push({
                         title: data.tour_detail[i].day_location,
@@ -56,20 +47,6 @@ console.log(data)
                     });
                 };
                 $scope.itineraryItems = myObjects;
-
-                /* console.log(myObjects);
-
-                $scope.itineraryItems = [
-                  {
-                    title: "Diani Beach - Tsavo West National Park",
-                    content: "Among going manor who did. Do ye is celebrated it sympathize considered. May ecstatic did surprise elegance the ignorant age. Own her miss cold last. It so numerous if he outlived disposal. How but sons mrs lady when. Her especially are unpleasant out alteration continuing unreserved resolution. Hence hopes noisy may china fully and. Am it regard stairs branch thirty length afford. - 1",
-                    open: false
-                  }
-                ]; */
-
-                // find daily itinerary and prepare for view
-                // http://stackoverflow.com/questions/19590865/from-an-array-of-objects-extract-value-of-a-property-as-array
-                var itnerary_array = data.tour_detail.map(function(a) {return a.day_activity;});
 
                 // return data to the view
                 self.return = data;
