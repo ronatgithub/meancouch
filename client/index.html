@@ -59,11 +59,22 @@
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/color-04.css" rel="stylesheet">
     <!-- CSS for tour page END -->
+
+<!-- CSS for page-loader - https://github.com/codekraft-studio/angular-page-loader -->
+<link rel="stylesheet" href="https://cdn.rawgit.com/codekraft-studio/angular-page-loader/master/dist/angular-page-loader.css">
+
   </head>
-  <body ng-app="meancouchApp">
+  <body ng-app="meancouchApp" ng-cloak>
     <!--[if lt IE 7]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+
+<!-- HTML for page-loader - https://github.com/codekraft-studio/angular-page-loader -->
+<page-loader>
+    <div class="pacman"></div>
+    <div class="dot"></div>
+</page-loader>
+<!-- HTML for page-loader END -->
 
     <!-- Add your site or application content here -->
     <ui-view autoscroll="true"></ui-view>
@@ -182,5 +193,8 @@
     <script type="text/javascript" src="assets/libs/jquery.raty.js"></script> 
     <script type="text/javascript" src="assets/js/customs.js"></script>
     <!-- end JS for tour page -->
+
+<!-- JS for page-loader - https://github.com/codekraft-studio/angular-page-loader -->
+<script type="text/javascript" src="https://cdn.rawgit.com/codekraft-studio/angular-page-loader/master/dist/angular-page-loader.min.js"></script>
   </body>
 </html>

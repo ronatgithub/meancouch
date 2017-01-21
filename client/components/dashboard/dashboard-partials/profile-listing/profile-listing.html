@@ -12,22 +12,12 @@
 
 <div class="method">
     <div class="row margin-0 list-header hidden-sm hidden-xs">
-        <div class="col-md-2"><div class="header">Tour Date</div></div>
-        <div class="col-md-2"><div class="header">Price</div></div>
-        <div class="col-md-5"><div class="header">Destination</div></div>
+        <div class="col-md-2"><div class="header">Safari Price</div></div>
+        <div class="col-md-7"><div class="header">Safari Tour Name</div></div>
         <div class="col-md-3"><div class="header">Action</div></div>
     </div>
 
-    <div ng-repeat="doc in ctrl.docs | orderBy:'+startDate'" class="row margin-0 agenda">
-        <div class="col-md-2">
-            <div class="cell">
-                <div class="agenda-date">
-                    <div class="dayofmonth">{{doc.startDate | amDateFormat:'DD'}}</div>
-                    <div class="dayofweek">{{doc.startDate | amDateFormat:'dddd'}}</div>
-                    <div class="shortdate">{{doc.startDate | amDateFormat:'MMMM, YYYY'}}</div>
-                </div>
-            </div>
-        </div>       
+    <div ng-repeat="doc in ctrl.docs | orderBy:'+price'" class="row margin-0 agenda">      
         <div class="col-md-2">
             <div class="cell">
                 <div class="type price">
@@ -35,10 +25,10 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-7">
             <div class="cell">
                 <div class="type description">
-                    <strong>{{doc.overnight+1}} Days {{doc.title}}</strong> <br> {{doc.description}}
+                    <strong>{{doc.title}}</strong> <br> {{doc.description}}
                 </div>
             </div>
         </div>

@@ -41,7 +41,7 @@ angular.module('meancouchApp')
 			    attachments: false
 			}).then(function (result) {
 			// handle result
-			// console.log(result);
+			 // console.log('result ', result);
 				self.docs = [];
 
 				for (var key in result) {
@@ -50,7 +50,7 @@ angular.module('meancouchApp')
 						id: result[key]._id,
 						title: result[key].title,
 						startDate: result[key].startDate,
-						overnight: result[key].overnight,
+						overnight: result[key].tour_detail.length-1,
 						promo2: result[key].promo2,
 						description: result[key].description,
 						media: result[key]._attachments,
@@ -58,7 +58,7 @@ angular.module('meancouchApp')
 					};
 					self.docs.push(self.data);
 				}
-				// console.log('docs ', self.docs);
+				 // console.log('docs ', self.docs);
 			}).catch(function (err) {
 				console.log(err);
 			});

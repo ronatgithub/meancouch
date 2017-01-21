@@ -21,28 +21,36 @@ angular.module('meancouchApp')
                 // convert the startDate to a nice date
                 var niceDate = moment(data.startDate).format('LL');
                 data.startDate = niceDate;
-console.log(data)
-                // find all accommodations and get as array
-                // http://stackoverflow.com/questions/19590865/from-an-array-of-objects-extract-value-of-a-property-as-array
-                var accommodation_array = data.tour_detail.map(function(a) {return a.day_accommodation;});
+                // console.log(data)
+                  // find all accommodations and get as array
+                  // http://stackoverflow.com/questions/19590865/from-an-array-of-objects-extract-value-of-a-property-as-array
+                  var accommodation_array = data.tour_detail.map(function(a) {return a.day_accommodation;});
                   // make string from array
-                  data.tour_accommodation = accommodation_array.toString();
+                  var string = accommodation_array.toString();
+                  // Remove occurrences of duplicate words in a string
+                  // http://stackoverflow.com/questions/16843991/remove-occurrences-of-duplicate-words-in-a-string
+                  var uniqueList1Index=string.split(',').filter(function(currentItem,i,allItems){
+                      return (i == allItems.indexOf(currentItem));
+                  });
+                  var uniqueList1=uniqueList1Index.join(',');
+                  data.tour_accommodation = uniqueList1;//Result: a list without dublicate names
                 
-                // find all safari parks and get as array
-                // http://stackoverflow.com/questions/19590865/from-an-array-of-objects-extract-value-of-a-property-as-array
-                var location_array = data.tour_detail.map(function(a) {return a.day_location;});
+                  // find all safari parks and get as array
+                  // http://stackoverflow.com/questions/19590865/from-an-array-of-objects-extract-value-of-a-property-as-array
+                  var location_array = data.tour_detail.map(function(a) {return a.day_location;});
                   // make string from array
                   var string = location_array.toString();
                   // Remove occurrences of duplicate words in a string
                   // http://stackoverflow.com/questions/16843991/remove-occurrences-of-duplicate-words-in-a-string
-                  var uniqueListIndex=string.split(',').filter(function(currentItem,i,allItems){
+                  var uniqueList2Index=string.split(',').filter(function(currentItem,i,allItems){
                       return (i == allItems.indexOf(currentItem));
                   });
-                  var uniqueList=uniqueListIndex.join(',');
-                  data.tour_stopover = uniqueList;//Result: a list without dublicate names
+                  var uniqueList2=uniqueList2Index.join(',');
+                  data.tour_stopover = uniqueList2;//Result: a list without dublicate names
 
                 // get the number of overnights for this tour
                 data.overnight = data.tour_detail.length - 1;
+
                 // prepare itinerary items to use with ui-accordion
                 var myObjects = [];
                 for (var i = 0; i < data.tour_detail.length; i++) {
@@ -54,7 +62,6 @@ console.log(data)
                     });
                 };
                 $scope.itineraryItems = myObjects;
-
                 // return data to the view
                 self.return = data;
             } else {

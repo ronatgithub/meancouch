@@ -26,7 +26,8 @@ angular.module('meancouchApp', [
   'duScroll',
   'slickCarousel',
   'mgcrea.bootstrap.affix',
-  'ion.rangeslider'
+  'ion.rangeslider',
+  'angular-page-loader'
 ])
 
   .config(function($urlRouterProvider, $locationProvider) {

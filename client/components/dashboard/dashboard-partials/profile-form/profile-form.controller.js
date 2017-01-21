@@ -170,19 +170,6 @@ angular.module('meancouchApp')
                       "template": "<h2>Itinerary</h2>"
                     },*/
                     {
-                      key: 'day_accommodation',
-                      type: 'horizontalInput',
-                      templateOptions: {
-                        type: 'text',
-                        maxlength: 100,
-                        minlength: 5,
-                        label: 'Stay At',
-                        placeholder: 'accommodation name',
-                        description: 'Enter Safari camp or lodge name.',
-                        required: true
-                      }
-                    },
-                    {
                       key: 'day_location',
                       type: 'horizontalInput',
                       templateOptions: {
@@ -193,6 +180,19 @@ angular.module('meancouchApp')
                         placeholder: 'safari park',
                         description: 'Enter name of Safari park to vist.',
                         required: true
+                      }
+                    },
+                    {
+                      key: 'day_accommodation',
+                      type: 'horizontalInput',
+                      templateOptions: {
+                        type: 'text',
+                        maxlength: 100,
+                        minlength: 5,
+                        label: 'Stay At',
+                        placeholder: 'accommodation name',
+                        description: 'Enter Safari camp or lodge name.',
+                        required: false
                       }
                     },
                     {
@@ -271,7 +271,7 @@ angular.module('meancouchApp')
           },
           {
             "type": "repeatSection2",
-            "key": "availability",
+            "key": "price_cat",
             "templateOptions": {
               "btnText": "Add Price, Date and Availability here",
               "fields": [
@@ -283,12 +283,12 @@ angular.module('meancouchApp')
                       type: 'horizontalDatepicker',
                       templateOptions: {
                         type: 'date',
-                        label: 'Start Date',
+                        label: 'Season Start',
                         datepickerPopup: 'MMMM, dd yyyy',
                         datepickerOptions: {
                           format: 'MMMM, dd yyyy'
                         },
-                        description: 'The date you enter here will be used as safari tour start date.',
+                        description: 'The date you enter here will be used as FROM date.',
                         required: true
                       },
                       /*expressionProperties: {
@@ -296,14 +296,31 @@ angular.module('meancouchApp')
                       }*/
                     },
                     {
-                      key: 'avail',
+                      key: 'end_date',
+                      type: 'horizontalDatepicker',
+                      templateOptions: {
+                        type: 'date',
+                        label: 'Season End',
+                        datepickerPopup: 'MMMM, dd yyyy',
+                        datepickerOptions: {
+                          format: 'MMMM, dd yyyy'
+                        },
+                        description: 'The date you enter here will be used as TO date.',
+                        required: true
+                      },
+                      /*expressionProperties: {
+                        'templateOptions.disabled': 'model.checkbox'
+                      }*/
+                    },
+                    {
+                      key: 'price_category',
                       type: 'horizontalInput',
                       templateOptions: {
                         type: 'number',
                         maxlength: 2,
-                        label: 'Seats left',
-                        placeholder: 'available seats',
-                        description: 'Enter number of available seats.',
+                        label: 'Price Category',
+                        placeholder: 'category',
+                        description: 'Enter price category here.',
                         required: true
                       }
                     },
@@ -447,7 +464,7 @@ angular.module('meancouchApp')
             tour_rating: vm.profile.tour_rating,
             tour_start_location: vm.profile.tour_start_location,
             tour_end_location: vm.profile.tour_end_location,
-            tour_avail_seat: vm.profile.availability,
+            tour_price_category: vm.profile.price_cat,
             tour_vehicle: vm.profile.tour_vehicle,
             tour_detail: vm.profile.days
           })

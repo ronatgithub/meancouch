@@ -21,7 +21,7 @@
         </div>
         <form class="form-horizontal" method="get" action="https://script.google.com/macros/s/AKfycbzoTKiRmKAEtKMsmXJSwaDyaupiu-xkm2YwdbJKKf6kyMT2jCQ/exec" accept-charset="UTF-8">
         <div class="modal-body">
-          <p>Please fill out this form so we can contact you. You can as well give as a call +49 3581 41 41 63 or send an email to denis@dm-tours.net</p>
+          <p>Please fill out this form and we will contact you. You can also give as a call +49 3581 41 41 63 or send an email to denis@dm-tours.net</p>
                 <input name="tour" type="hidden" value="{{ctrl.return.overnight+1}} Tage {{ctrl.return.title}}">
                 <div class="form-group">
                   <label for="name" class="control-label col-md-3">Your Name</label>
@@ -145,9 +145,9 @@
         
           <ol class="breadcrumb-list">
             <li><a href="index.html">Homepage</a></li>
-            <li><a href="#">Desinations</a></li>
+            <!-- <li><a href="#">Desinations</a></li>
             <li><a href="#">City</a></li>
-            <li><span>Croatia Sailing &amp; Cruising</span></li>
+            <li><span>Croatia Sailing &amp; Cruising</span></li> -->
           </ol>
           
         </div>
@@ -282,10 +282,11 @@
                                         
                                           <p>{{item.content}}</p>
                                           
-                                          <ul class="itinerary-meta clearfix">
-                                            <li><i class="fa fa-building-o"></i> stay at {{item.accommodation}}</li>
+                                          <ul ng-if="item.accommodation" class="itinerary-meta clearfix">
+                                            <li><i class="fa fa-bed"></i> stay at {{item.accommodation}}</li>
                                             <!-- <li><i class="fa fa-clock-o"></i> trip time: 6am - 4.30pm</li> -->
-                                          
+                                          </ul>
+
                                         </div>
                                       
                                     </div>
@@ -378,91 +379,85 @@
                     
                       <li>
                         <i class="fa fa-check-circle text-primary"></i>
-                        <h6 class="heading mt-0">Guide</h6>
-                        <p>Adieus except say barton put feebly favour him.</p>
+                        <h6 class="heading mt-0">Licensed Drivers</h6>
+                        <p>Our driver and tour guides are all well trained and have good knowledge.</p>
                       </li>
                       
                       <li>
                         <i class="fa fa-check-circle text-primary"></i>
-                        <h6 class="heading mt-0">Meals</h6>
-                        <p>4 breakfast &amp; 3 dinners </p>
+                        <h6 class="heading mt-0">Full Meals</h6>
+                        <p>Full board + extra lunch on last day </p>
                       </li>
                       
                       <li>
                         <i class="fa fa-check-circle text-primary"></i>
-                        <h6 class="heading mt-0">Transport</h6>
-                        <p>Modern air conditioned coach with reclining seats, TV for showing DVDs, and toilet</p>
+                        <h6 class="heading mt-0">Save Transport</h6>
+                        <p>All gamedrives in company owned modern and save 4x4 Safari Landcruiser</p>
                       </li>
                       
-                      <li>
-                        <i class="fa fa-check-circle text-primary"></i>
-                        <h6 class="heading mt-0">5 Experiences</h6>
-                        <p>Warmth object matter course active law spring six. Pursuit showing tedious unknown winding see had man add.</p>
-                      </li>
-                      
-                      <li>
+                      <!-- <li>
                         <i class="fa fa-check-circle text-primary"></i>
                         <h6 class="heading mt-0">Other</h6>
                         <p>Free Wi-fi in all hotels <br />All taxes and fees <br />Any public transport used as part of the tour (excludes free days) <br />Free Expat Explore tour souvenir</p>
-                      </li>
-                      
+                      </li> -->
+
                       <li>
-                        <i class="fa fa-times-circle text-light"></i>
-                        <h6 class="heading mt-0">Flights</h6>
-                        <p>Warmth object matter course active law spring six <a href="#">line to some where</a>. Pursuit showing tedious unknown winding see had man add.</p>
-                      </li>
-                      
-                      <li>
-                        <i class="fa fa-times-circle text-light"></i>
+                        <i class="fa fa-times-circle text-primary"></i>
                         <h6 class="heading mt-0">Insurance</h6>
-                        <p>Had repulsive dashwoods suspicion sincerity but advantage now him. Remark easily garret nor nay <a href="#">line to some where</a>. Civil those mrs enjoy shy fat merry. You greatest jointure saw horrible.</p>
+                        <p>24/7 Flying Doctor insurance covers transport into next hospital</p>
+                      </li>
+                      
+                      <li>
+                        <i class="fa fa-times-circle text-light"></i>
+                        <h6 class="heading mt-0">Drinks are not included</h6>
+                        <p>Drinks in Lodges and Camps are to be paid extra</p>
                       </li>
                       
                     </ul>
                     
                     <h5 class="heading">Optional Excursions</h5>
-                    <p>Why painful the sixteen how minuter looking nor. Subject but why ten earnest husband imagine sixteen brandon. Are unpleasing occasional celebrated motionless unaffected conviction out.</p>
+                    <p>You can combine your Safari Trip with any of our excursions and daily tours from Diani Beach.</p>
                     
                     <ul class="list-with-icon col-3 clearfix">
                     
                       <li>
                         <i class="fa fa-check-circle text-primary"></i>
-                        <p>Marianne property cheerful.</p>
+                        <p>Visit Shimba Hills Rainforest.</p>
                       </li>
                       
                       <li>
                         <i class="fa fa-check-circle text-primary"></i>
-                        <p>Clothes parlors however by cottage.</p>
+                        <p>Dhow Safari to Wasini Island.</p>
                       </li>
                       
                       <li>
                         <i class="fa fa-check-circle text-primary"></i>
-                        <p>In views it or meant drift.</p>
+                        <p>Visit Diani Cottages.</p>
                       </li>
                       
                       <li>
                         <i class="fa fa-check-circle text-primary"></i>
-                        <p>Be concern parlors settled.</p>
+                        <p>Mombasa City Tour.</p>
                       </li>
                       
                       <li>
                         <i class="fa fa-check-circle text-primary"></i>
-                        <p>Remainder northward performed</p>
+                        <p>Local Bush Village Tour.</p>
                       </li>
                       
                       <li>
                         <i class="fa fa-check-circle text-primary"></i>
-                        <p>Yet late add name was rent.</p>
+                        <p>Visit african school.</p>
                       </li>
                       
                       <li>
                         <i class="fa fa-check-circle text-primary"></i>
-                        <p>park from rich</p>
+                        <p>Deap Sea Fishing</p>
                       </li>
                       
                       <li>
                         <i class="fa fa-check-circle text-primary"></i>
-                        <p>He always do do former.</p>
+                        <p>Diving and Snorkling Trips.</p>
                       </li>
                       
                     </ul>
@@ -513,15 +508,15 @@
                         <li class="availabily-heading clearfix">
                         
                           <div class="date-from">
-                            start
+                            from
                           </div>
                           
                           <div class="date-to">
-                            end
+                            to
                           </div>
                           
                           <div class="status">
-                            status
+                            category
                           </div>
                           
                           <div class="price">
@@ -534,121 +529,29 @@
                         
                         </li>
                         
-                        <li class="availabily-content clearfix">
+                        <li ng-repeat="item in ctrl.return.tour_price_category" class="availabily-content clearfix">
                           
                           <div class="date-from">
                             <span class="availabily-heading-label">start:</span>
-                            Monday
-                            <span>March 7, 2016</span>
+                            
+                            <span>{{ item.start_date | date:'longDate' }}</span>
                           </div>
                           
                           <div class="date-to">
                             <span class="availabily-heading-label">end:</span>
-                            Thursday
-                            <span>March 10, 2016</span>
+                            
+                            <span>{{ item.end_date | date:'longDate'  }}</span>
                           </div>
                           
                           <div class="status">
                             <span class="availabily-heading-label">status:</span>
-                            seats left
-                            <span>15</span>
+                            <!-- High Season -->
+                            <span>{{ item.price_category }}</span>
                           </div>
                           
                           <div class="price">
                             <span class="availabily-heading-label">price:</span>
-                            <span>$1458</span>
-                          </div>
-                          
-                          <div class="action">
-                            <a href="#" class="btn btn-primary btn-sm btn-inverse">Book now</a>
-                          </div>
-                        
-                        </li>
-                        
-                        <li class="availabily-content clearfix">
-                          
-                          <div class="date-from">
-                            <span class="availabily-heading-label">start:</span>
-                            Saturday
-                            <span>March 26, 2016</span>
-                          </div>
-                          
-                          <div class="date-to">
-                            <span class="availabily-heading-label">end:</span>
-                            Tuesday
-                            <span>March 29, 2016</span>
-                          </div>
-                          
-                          <div class="status">
-                            <span class="availabily-heading-label">status:</span>
-                            seats left
-                            <span>20</span>
-                          </div>
-                          
-                          <div class="price">
-                            <span class="availabily-heading-label">price:</span>
-                            <span>$1400</span>
-                          </div>
-                          
-                          <div class="action">
-                            <a href="#" class="btn btn-primary btn-sm btn-inverse">Book now</a>
-                          </div>
-                        
-                        </li>
-                        
-                        <li class="availabily-content sold-out clearfix">
-                          
-                          <div class="date-from">
-                            <span class="availabily-heading-label">start:</span>
-                            Sunday
-                            <span>April 10, 2016</span>
-                          </div>
-                          
-                          <div class="date-to">
-                            <span class="availabily-heading-label">end:</span>
-                            Wednesday
-                            <span>April 13, 2016</span>
-                          </div>
-                          
-                          <div class="status">
-                            <span class="availabily-heading-label">status:</span>
-                            <span class="text-success">sold-out</span>
-                          </div>
-                          
-                          <div class="price">
-                            <span class="availabily-heading-label">price:</span>
-                            <span>$1300</span>
-                          </div>
-                          
-                          <div class="action">
-                            <a href="#" class="btn btn-primary btn-sm btn-inverse">Book now</a>
-                          </div>
-                        
-                        </li>
-                        
-                        <li class="availabily-content clearfix">
-                          
-                          <div class="date-from">
-                            <span class="availabily-heading-label">start:</span>
-                            Friday
-                            <span>April 18, 2016</span>
-                          </div>
-                          
-                          <div class="date-to">
-                            <span class="availabily-heading-label">end:</span>
-                            Monday
-                            <span>April 21, 2016</span>
-                          </div>
-                          
-                          <div class="status">
-                            <span class="availabily-heading-label">status:</span>
-                            seats left
-                            <span>4</span>
-                          </div>
-                          
-                          <div class="price">
-                            <span class="availabily-heading-label">price:</span>
-                            <span>$1458</span>
+                            <span>EUR {{ item.price }}</span>
                           </div>
                           
                           <div class="action">
@@ -661,17 +564,17 @@
                       
                     </div>
                     
-                    <div class="text-center mt-30">
+                    <!-- <div class="text-center mt-30">
                     
                       <button class="btn btn-primary">Show more departures</button>
-                    </div>
+                    </div> -->
 
                   </div>
                   
                   <div class="detail-content">
                   
                     <div class="section-title text-left">
-                      <h4>Similar Packages</h4>
+                      <h4>Similar Safari Packages</h4>
                     </div>
                     
                     <div class="GridLex-gap-20-wrappper package-grid-item-wrapper on-page-result-page alt-smaller">
@@ -688,7 +591,7 @@
                                 </div>
                               </div>
                               <div class="content clearfix">
-                                <h6>Paris in Love</h6>
+                                <h6>3 Days Maasai Mara</h6>
                                 <div class="rating-wrapper">
                                   <div class="raty-wrapper">
                                     <div class="star-rating-12px" data-rating-score="4.0"></div> <span> / 7 review</span>
@@ -713,7 +616,7 @@
                                 </div>
                               </div>
                               <div class="content clearfix">
-                                <h6>Classic Europe</h6>
+                                <h6>Classic Camp Safari</h6>
                                 <div class="rating-wrapper">
                                   <div class="raty-wrapper">
                                     <div class="star-rating-12px" data-rating-score="3.5"></div> <span> / 7 review</span>
@@ -738,7 +641,7 @@
                                 </div>
                               </div>
                               <div class="content clearfix">
-                                <h6>Best of Egypt</h6>
+                                <h6>5 Days Lake Nakuru</h6>
                                 <div class="rating-wrapper">
                                   <div class="raty-wrapper">
                                     <div class="star-rating-12px" data-rating-score="4.5"></div> <span> / 7 review</span>
@@ -775,11 +678,11 @@
       
                           <div class="read-more-div-inner">
                           
-                            <h5 class="heading mt-0">Heading Information 1</h5>
+                            <h5 class="heading mt-0">WHEN IS THE BEST TIME TO VISIT KENYA?</h5>
                             
-                            <p>No in he real went find mr. Wandered or strictly raillery stanhill as. Jennings appetite disposed me an at subjects an. To no indulgence diminution so discovered mr apartments. Are off under folly death wrote cause her way spite. Plan upon yet way get cold spot its week. Almost do am or limits hearts. Resolve parties but why she shewing. She sang know now how nay cold real case.</p>
+                            <p>Kenya is a year-round destination and it is possible to see wildlife at all times of the year. Depending on your interests, certain times may be better than others. For instance, if you want to see the Great Migration, this tends to travel through Kenya between June and October. However, even this can be difficult to determine, as the movements of the wildebeest depend on rain and weather conditions.</p>
 
-                            <p>Your it to gave life whom as. Favourable dissimilar resolution led for and had. At play much to time four many. Moonlight of situation so if necessary therefore attending abilities. Calling looking enquire up me to in removal. Park fat she nor does play deal our. Procured sex material his offering humanity laughing moderate can. Unreserved had she nay dissimilar admiration interested. Departure performed exquisite rapturous so ye me resources.</p>
+                            <p>The Kenyan Coast is a beautiful and idyllic region that is extremely popular for its white sandy beaches, palm trees and relaxed holiday feel. The balmy waters of the Indian Ocean are perfect for swimming, snorkelling, diving, fishing and other water sports. We recommend including a beach visit to the end of a Kenya safari so that you are able to experience all that magical Kenya has to offer.</p>
 
                           </div>
                           
@@ -793,11 +696,11 @@
       
                           <div class="read-more-div-inner">
                           
-                            <h5 class="heading mt-0">Heading Information 2</h5>
+                            <h5 class="heading mt-0">DO I NEED A VISA TO TRAVEL TO KENYA?</h5>
                             
-                            <p>Your it to gave life whom as. Favourable dissimilar resolution led for and had. At play much to time four many. Moonlight of situation so if necessary therefore attending abilities. Calling looking enquire up me to in removal. Park fat she nor does play deal our. Procured sex material his offering humanity laughing moderate can. Unreserved had she nay dissimilar admiration interested. Departure performed exquisite rapturous so ye me resources.</p>
+                            <p>Visas are compulsory for all visitors, including those from countries that were previously exempt, such as the USA, UK, Germany and Belgium. Visas may be applied for at a Kenyan embassy in your home country or upon arrival at Moi International, Jomo Kenyatta or Wilson Airports. However, it is recommended that visitors obtain their visas prior to arrival to avoid the possibility of long queues at the airport. Passports are required by all foreign visitors and must be valid for six months beyond the intended length of stay. Please ensure that there are sufficient blank pages in your passport (a minimum of two is required) for any visas as well as for entry stamps upon arrival.</p>
                             
-                            <p>No in he real went find mr. Wandered or strictly raillery stanhill as. Jennings appetite disposed me an at subjects an. To no indulgence diminution so discovered mr apartments. Are off under folly death wrote cause her way spite. Plan upon yet way get cold spot its week. Almost do am or limits hearts. Resolve parties but why she shewing. She sang know now how nay cold real case.</p>
+                            <p>All major credit cards (MasterCard, Visa, Diners Club and American Express) are widely accepted.</p>
                             
                           </div>
                           
